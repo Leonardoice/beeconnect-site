@@ -1,0 +1,35 @@
+# Bee Connect Agency
+
+> AI search optimization (AIO / GEO) for local service businesses in the Lehigh Valley and Berks County, Pennsylvania. We get small companies named and recommended inside AI answers from ChatGPT, Gemini, Perplexity, and Google's AI Overviews — so when someone asks AI for the best service business near them, the client comes up first.
+
+Bee Connect Agency helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The free AI-search snapshot is no-obligation; setup work is paid.
+
+## What we do
+
+- **AI Search Launch (one-time, $600–$900):** hand-written llms.txt; AI-crawler allow-rules (GPTBot, ClaudeBot, PerplexityBot, Google-Extended); LocalBusiness + FAQ + Service schema; answer-formatted pricing and FAQ content; one Spanish-language page.
+- **AI Search Watch (monthly, $75–$150):** monthly check on whether ChatGPT, Perplexity, and Google AI cite the business; review-velocity nudges; content refresh; a plain-English report.
+- **Free AI-search snapshot:** a one-page audit showing exactly where a business is invisible to AI, plus proof that local competitors have the same gap. No charge to look.
+
+## Who we serve
+
+Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk removal and hauling, roofing and contractors, tattoo studios, salons and barbershops, dental and medical, real estate, law and accounting, auto detailing, estate cleanouts, and mobile notary. The method also works in similar mid-size local markets.
+
+## Why it matters
+
+- ChatGPT has roughly 900 million weekly users (early 2026), up from about 300 million a year earlier.
+- Google's AI Overviews reach billions of users each month.
+- Pew Research (2025) found that when an AI summary appears, people click a website link about 8% of the time, versus 15% without one — the "answer" is increasingly the destination.
+- A competitor's ad budget buys nothing inside an AI answer. AI recommends whoever is clearest, best-reviewed, and most machine-readable. The first business in a category to set this up tends to become the default answer.
+
+## Proof of work
+
+- Dr Clutter (junk removal) — live AI-search-ready site: https://drclutterpa.github.io
+- Why Pay More (HVAC, Bethlehem PA) — website + AI-search setup + online booking
+- BookKit — ready-to-launch booking site templates across 15 service industries
+
+## Contact
+
+- Phone: 484-246-6557
+- Email: info@beeconnectagency.com
+- Website: https://beeconnectagency.com
+- Service area: Lehigh Valley & Berks County, Pennsylvania
