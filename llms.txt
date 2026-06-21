@@ -23,9 +23,9 @@ Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk r
 
 ## Proof of work
 
-- Dr Clutter (junk removal) — live AI-search-ready site: https://drclutterpa.github.io
-- Why Pay More (HVAC, Bethlehem PA) — website + AI-search setup + online booking
-- BookKit — ready-to-launch booking site templates across 15 service industries
+- BookKit — white-label online booking system (live demo): https://demos.beeconnectagency.com/bookkit/demo.html
+- RepKit — reputation & review management hub (live demo): https://demos.beeconnectagency.com/repkit/demo.html
+- BookKit templates — ready-to-launch booking sites across 15 service industries (live demo): https://demos.beeconnectagency.com/bookkit/industries.html
 
 ## Contact
 
