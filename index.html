@@ -47,6 +47,10 @@
     { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Hive — Full AI Front Desk (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "BeeBot AI Chat Assistant (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "29", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "RepKit Reviews (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "BookKit Online Booking (à la carte, monthly; $99 one-time setup)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Google Business Profile Management (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Website build (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } }
   ]
 }
@@ -157,6 +161,22 @@
   .plan li{padding:8px 0 8px 28px;position:relative;color:var(--ink-soft);border-top:1px dashed var(--line)}
   .plan li:before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900}
 
+  /* Pricing tabs (Monthly plans | À la carte) */
+  .pricing-tabs{display:inline-flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:5px;margin-bottom:26px}
+  .ptab{border:none;background:transparent;color:var(--ink-soft);font-weight:700;font-size:.95rem;padding:9px 20px;border-radius:24px;cursor:pointer;font-family:inherit;transition:background .12s ease,color .12s ease}
+  .ptab.active{background:var(--ink);color:#fff}
+  .ac-note{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+  .ac-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 24px}
+  .ac-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:18px 0;border-top:1px dashed var(--line)}
+  .ac-row:first-child{border-top:none}
+  .ac-name{font-weight:800;font-size:1.06rem}
+  .ac-desc{color:var(--muted);font-size:.95rem;margin-top:3px;max-width:48ch}
+  .ac-priceblock{text-align:right;white-space:nowrap}
+  .ac-price{font-weight:900;font-size:1.25rem}
+  .ac-price small{font-size:.85rem;font-weight:600;color:var(--muted)}
+  .ac-setup{display:block;font-size:.78rem;font-weight:600;color:var(--muted)}
+  .ac-foot{color:var(--muted);font-size:.9rem;margin-top:14px;text-align:center}
+
   /* Steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
   @media(max-width:820px){.steps{grid-template-columns:1fr}}
@@ -190,6 +210,23 @@
   .final p{color:#4a3c00;font-size:1.1rem;margin:14px auto 0;max-width:54ch}
   .final .ctas{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
+  /* Audit form */
+  .audit-form{background:var(--card);border-radius:18px;padding:26px;max-width:640px;margin:26px auto 0;text-align:left;box-shadow:0 18px 44px rgba(0,0,0,.18)}
+  .audit-form .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .audit-form .full{grid-column:1 / -1}
+  .audit-form label{display:block;font-weight:700;font-size:.84rem;color:var(--ink);margin-bottom:5px}
+  .audit-form .req{color:#c0392b}
+  .audit-form input,.audit-form textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.98rem;font-family:inherit;background:#fff;color:var(--ink);outline:none}
+  .audit-form input:focus,.audit-form textarea:focus{border-color:var(--honey-deep);box-shadow:0 0 0 3px rgba(245,183,0,.18)}
+  .audit-form .submit{margin-top:18px;width:100%}
+  .audit-msg{margin-top:12px;font-weight:600;font-size:.96rem;display:none}
+  .audit-msg.show{display:block}
+  .audit-msg.ok{color:var(--good)}
+  .audit-msg.err{color:#c0392b}
+  .audit-alt{text-align:center;margin-top:18px;color:#4a3c00;font-size:.96rem}
+  .audit-alt a{color:var(--ink);font-weight:800;text-decoration:underline;cursor:pointer}
+  @media(max-width:600px){.audit-form{padding:20px}.audit-form .fgrid{grid-template-columns:1fr}}
+
   footer{background:var(--ink);color:#bdb6a6;padding:40px 0;font-size:.92rem}
   footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--honey);text-decoration:none}
@@ -210,6 +247,12 @@
     .sec-head p{font-size:1rem}
     .cards,.plans,.steps{gap:14px}
     .plan{padding:22px}
+    .pricing-tabs{display:flex;width:100%;margin-bottom:20px}
+    .ptab{flex:1;text-align:center;padding:10px 8px}
+    .ac-card{padding:4px 18px}
+    .ac-row{flex-direction:column;gap:4px;padding:16px 0}
+    .ac-priceblock{text-align:left}
+    .ac-desc{max-width:none}
     .pill{font-size:.9rem;padding:8px 13px}
     details summary{font-size:1rem;padding:16px 0}
     .final .ctas{flex-direction:column;align-items:stretch}
@@ -307,6 +350,13 @@
         <h2>Get found in AI. Get the lead. Book the job.</h2>
         <p>Start with a free AI Visibility Audit, then pick a simple monthly plan. No retainers, no jargon, cancel anytime.</p>
       </div>
+
+      <div class="pricing-tabs" role="tablist" aria-label="Pricing options">
+        <button class="ptab active" data-panel="plans" role="tab" aria-selected="true">Monthly plans</button>
+        <button class="ptab" data-panel="ac" role="tab" aria-selected="false">À la carte</button>
+      </div>
+
+      <div id="panel-plans">
       <div class="plans">
         <div class="plan">
           <h3>Spark</h3>
@@ -342,6 +392,56 @@
         </div>
       </div>
       <p style="text-align:center;color:var(--muted);margin-top:18px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time (waived with an annual plan). The AI Visibility Audit that shows what you need is <strong>free</strong>.</p>
+      </div><!-- /panel-plans -->
+
+      <div id="panel-ac" hidden>
+        <p class="ac-note">Rather start small? Pick just the pieces you need. Most owners bundle into a plan above and pay less — but every tool stands on its own, month to month, cancel anytime.</p>
+        <div class="ac-card">
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">AI Visibility Audit</div>
+              <div class="ac-desc">A one-page report showing exactly where AI can't see you — and proof your competitors have the same gap.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">Free</span><span class="ac-setup">first one, no obligation</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">BeeBot — AI Chat Assistant</div>
+              <div class="ac-desc">A chat assistant on your site that answers questions and captures leads 24/7.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$29<small> / mo</small></span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">RepKit — Reviews</div>
+              <div class="ac-desc">Automated review requests after every job, plus one inbox for Google, Yelp &amp; Facebook.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$49<small> / mo</small></span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">BookKit — Online Booking</div>
+              <div class="ac-desc">Customers book the job themselves and track it; you manage everything from one dashboard.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$49<small> / mo</small></span><span class="ac-setup">+ $99 one-time setup</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Google Business Profile Management</div>
+              <div class="ac-desc">Your Google profile optimized, posted to, and monitored every month.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$79<small> / mo</small></span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Website Build</div>
+              <div class="ac-desc">A fast, modern site with AI search built in. Waived with an annual plan.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">from $750</span><span class="ac-setup">one-time</span></div>
+          </div>
+        </div>
+        <p class="ac-foot">Prices are founding-client rates. Not sure what you need? The free audit tells you — start there.</p>
+      </div><!-- /panel-ac -->
     </div>
   </section>
 
@@ -461,11 +561,48 @@
   <section id="contact" class="final">
     <div class="wrap">
       <h2>Find out where AI can't see you.</h2>
-      <p>Free, no obligation. We'll pull your site apart, show you the gaps, and prove your competitors have them too. Then you decide.</p>
-      <div class="ctas">
-        <a class="btn" href="mailto:info@beeconnectagency.com">✉️ Get my free audit</a>
-        <a class="btn ghost" href="mailto:info@beeconnectagency.com" onclick="if(window.BeeBot){window.BeeBot.open();return false;}" style="border-color:var(--ink)">💬 Chat with our assistant</a>
-      </div>
+      <p>Free, no obligation. Fill this out and we'll pull your site apart, show you the gaps, and prove your competitors have them too. Then you decide.</p>
+
+      <form class="audit-form" id="auditForm" novalidate>
+        <div class="fgrid">
+          <div>
+            <label for="af-name">Your name <span class="req">*</span></label>
+            <input id="af-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
+          </div>
+          <div>
+            <label for="af-biz">Business name <span class="req">*</span></label>
+            <input id="af-biz" name="business" type="text" autocomplete="organization" placeholder="Smith Heating &amp; Cooling" required>
+          </div>
+          <div>
+            <label for="af-email">Email <span class="req">*</span></label>
+            <input id="af-email" name="email" type="email" autocomplete="email" placeholder="you@business.com" required>
+          </div>
+          <div>
+            <label for="af-phone">Phone <span style="color:var(--muted);font-weight:600">(optional)</span></label>
+            <input id="af-phone" name="phone" type="tel" autocomplete="tel" placeholder="(610) 555-0123">
+          </div>
+          <div class="full">
+            <label for="af-site">Your website</label>
+            <input id="af-site" name="website" type="text" placeholder="yourbusiness.com — or type “I don’t have one”">
+          </div>
+          <div>
+            <label for="af-industry">Type of business <span class="req">*</span></label>
+            <input id="af-industry" name="industry" type="text" placeholder="HVAC, salon, junk removal…" required>
+          </div>
+          <div>
+            <label for="af-city">City / service area <span class="req">*</span></label>
+            <input id="af-city" name="city" type="text" placeholder="Allentown, PA" required>
+          </div>
+          <div class="full">
+            <label for="af-notes">Anything else? <span style="color:var(--muted);font-weight:600">(optional)</span></label>
+            <textarea id="af-notes" name="notes" rows="2" placeholder="Biggest competitor, what you're hoping for, etc."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn submit">✉️ Get my free audit</button>
+        <div class="audit-msg" id="auditMsg" role="status" aria-live="polite"></div>
+      </form>
+
+      <p class="audit-alt">Prefer to ask first? <a onclick="if(window.BeeBot){window.BeeBot.open();}return false;">💬 Chat with our assistant</a></p>
     </div>
   </section>
 </main>
@@ -485,7 +622,83 @@
   </div>
 </footer>
 
+<!-- Pricing tab toggle (Monthly plans | À la carte) -->
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.ptab');
+  var panels = { plans: document.getElementById('panel-plans'), ac: document.getElementById('panel-ac') };
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+      t.classList.add('active'); t.setAttribute('aria-selected','true');
+      var sel = t.getAttribute('data-panel');
+      Object.keys(panels).forEach(function(k){ if(panels[k]) panels[k].hidden = (k !== sel); });
+    });
+  });
+})();
+</script>
 
+<!-- Free-audit lead form -> beebot-brain /lead -->
+<script>
+(function(){
+  var form = document.getElementById('auditForm');
+  if(!form) return;
+  var msg = document.getElementById('auditMsg');
+  var LEAD_URL = 'https://beebot-brain.interlinkcrafts.workers.dev/lead';
+
+  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function setMsg(kind, text){
+    msg.className = 'audit-msg show ' + kind;
+    msg.textContent = text;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = val('af-name'), business = val('af-biz'), email = val('af-email'),
+        phone = val('af-phone'), website = val('af-site'),
+        industry = val('af-industry'), city = val('af-city'), notes = val('af-notes');
+
+    if(!name || !business || !email || !industry || !city){
+      setMsg('err', 'Please fill in the required fields (marked *).');
+      return;
+    }
+
+    // The lead Worker forwards name/business/contact/need, so pack the audit
+    // details into "need" to guarantee they reach the inbox.
+    var contact = email + (phone ? '  ·  ' + phone : '');
+    var need = [
+      'Website: ' + (website || '(not given)'),
+      'Industry: ' + industry,
+      'City/area: ' + city
+    ].concat(notes ? ['Notes: ' + notes] : []).join('  |  ');
+
+    var btn = form.querySelector('.submit');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    setMsg('', '');
+
+    fetch(LEAD_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        businessId: 'beeconnect',
+        name: name, business: business, contact: contact, need: need,
+        email: email, phone: phone, website: website, industry: industry, city: city
+      })
+    })
+    .then(function(r){ return r.json().catch(function(){ return {}; }); })
+    .then(function(){
+      form.reset();
+      btn.disabled = false; btn.textContent = orig;
+      setMsg('ok', 'Thanks ' + name + "! Got it — we'll send your free AI Visibility Audit to " + email + ' shortly.');
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = orig;
+      setMsg('err', "That didn't send. Please email info@beeconnectagency.com and we'll take care of it.");
+    });
+  });
+})();
+</script>
 
 <!-- ===================== BeeBot chat widget ===================== -->
 <script id="beebot-widget">
