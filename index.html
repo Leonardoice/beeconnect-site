@@ -193,6 +193,30 @@
   footer{background:var(--ink);color:#bdb6a6;padding:40px 0;font-size:.92rem}
   footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--honey);text-decoration:none}
+  .foot-right{text-align:right}
+
+  /* ---- Mobile polish (phones) ---- */
+  @media(max-width:600px){
+    html,body{overflow-x:hidden}
+    .wrap{padding:0 18px}
+    section{padding:42px 0}
+    .hero{padding:44px 0 32px}
+    .hero p.sub{font-size:1.06rem;margin-top:16px}
+    .hero .ctas{flex-direction:column;align-items:stretch;gap:10px;margin-top:24px}
+    .hero .ctas .btn{display:block;width:100%;text-align:center}
+    .strip{padding:24px 0}
+    .strip .n{font-size:1.6rem}
+    .sec-head{margin-bottom:22px}
+    .sec-head p{font-size:1rem}
+    .cards,.plans,.steps{gap:14px}
+    .plan{padding:22px}
+    .pill{font-size:.9rem;padding:8px 13px}
+    details summary{font-size:1rem;padding:16px 0}
+    .final .ctas{flex-direction:column;align-items:stretch}
+    .final .ctas .btn{display:block;width:100%;text-align:center}
+    footer .row{flex-direction:column;align-items:flex-start;text-align:left}
+    .foot-right{text-align:left}
+  }
 </style>
 </head>
 <body>
@@ -453,7 +477,7 @@
         <div class="logo" style="color:#fff;margin-bottom:6px"><span class="dot">🐝</span> Bee Connect Agency</div>
         <div>AI Search Optimization · Lehigh Valley, PA</div>
       </div>
-      <div style="text-align:right">
+      <div class="foot-right">
         <div><a href="mailto:info@beeconnectagency.com">info@beeconnectagency.com</a></div>
         <div style="margin-top:6px">© 2026 Bee Connect Agency. All rights reserved.</div>
       </div>
