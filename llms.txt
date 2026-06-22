@@ -1,14 +1,18 @@
 # Bee Connect Agency
 
-> AI search optimization (AIO / GEO) for local service businesses in the Lehigh Valley and Berks County, Pennsylvania. We get small companies named and recommended inside AI answers from ChatGPT, Gemini, Perplexity, and Google's AI Overviews — so when someone asks AI for the best service business near them, the client comes up first.
+> AI search optimization (AIO / GEO) for local service businesses in the Lehigh Valley and Berks County, Pennsylvania. We get small companies named and recommended inside AI answers from ChatGPT, Gemini, Perplexity, and Google's AI Overviews — so when someone asks AI for the best service business near them, the client comes up first. We also add automated reviews, an AI chat assistant, and online booking so those AI-driven visitors turn into booked jobs.
 
-Bee Connect Agency helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The free AI-search snapshot is no-obligation; setup work is paid.
+Bee Connect Agency helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The first AI Visibility Audit is free and no-obligation; plans are simple and monthly.
 
 ## What we do
 
-- **AI Search Launch (one-time, $600–$900):** hand-written llms.txt; AI-crawler allow-rules (GPTBot, ClaudeBot, PerplexityBot, Google-Extended); LocalBusiness + FAQ + Service schema; answer-formatted pricing and FAQ content; one Spanish-language page.
-- **AI Search Watch (monthly, $75–$150):** monthly check on whether ChatGPT, Perplexity, and Google AI cite the business; review-velocity nudges; content refresh; a plain-English report.
-- **Free AI-search snapshot:** a one-page audit showing exactly where a business is invisible to AI, plus proof that local competitors have the same gap. No charge to look.
+Start with a free AI Visibility Audit, then choose a simple monthly plan. No long contracts.
+
+- **AI Visibility Audit (free, first one):** a one-page report showing exactly where a business is invisible to AI — plus proof that local competitors have the same gap. No charge to look.
+- **Spark — Get Found ($99/month):** hand-built llms.txt; AI-crawler allow-rules (GPTBot, ClaudeBot, PerplexityBot, Google-Extended); LocalBusiness + FAQ + Service schema; Google Business Profile management; and a monthly AI-visibility report.
+- **Buzz — Get Found + Reviews ($179/month):** everything in Spark, plus automated review collection and an AI chat assistant on the website that answers questions and captures leads 24/7. Most popular.
+- **Hive — Full AI Front Desk ($279/month):** everything in Buzz, plus online booking and full lead capture — get found, get the lead, book the job.
+- **Website build (from $750 one-time):** a fast, modern site with AI search built in. Waived with an annual plan.
 
 ## Who we serve
 
@@ -29,7 +33,6 @@ Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk r
 
 ## Contact
 
-- Phone: 484-246-6557
 - Email: info@beeconnectagency.com
 - Website: https://beeconnectagency.com
 - Service area: Lehigh Valley & Berks County, Pennsylvania

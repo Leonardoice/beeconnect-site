@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bee Connect Agency — Be the Business AI Recommends | Lehigh Valley, PA</title>
-<meta name="description" content="Local service businesses are invisible in ChatGPT, Gemini, and Google's AI answers. Bee Connect Agency gets you found first — AI search optimization (AIO/GEO) for Lehigh Valley service companies. Free AI-search snapshot, no obligation.">
+<meta name="description" content="Local service businesses are invisible in ChatGPT, Gemini, and Google's AI answers. Bee Connect Agency gets you found first — AI search optimization (AIO/GEO) for Lehigh Valley service companies. Free AI Visibility Audit, no obligation.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Bee Connect Agency">
 <link rel="canonical" href="https://beeconnectagency.com/">
@@ -23,7 +23,6 @@
   "@id": "https://beeconnectagency.com/#org",
   "name": "Bee Connect Agency",
   "url": "https://beeconnectagency.com/",
-  "telephone": "+1-484-246-6557",
   "email": "info@beeconnectagency.com",
   "description": "AI search optimization (AIO/GEO) for local service businesses. We get small companies cited and recommended by ChatGPT, Gemini, Perplexity, and Google's AI Overviews.",
   "areaServed": [
@@ -42,10 +41,13 @@
   "serviceType": "AI Search Optimization (AIO / GEO)",
   "provider": { "@id": "https://beeconnectagency.com/#org" },
   "areaServed": "Lehigh Valley, Pennsylvania",
-  "description": "Hand-built llms.txt, AI-crawler allow-rules, LocalBusiness + FAQ + Service schema, answer-formatted pricing and FAQ content, and a Spanish page — so AI assistants can see, trust, and recommend your business.",
+  "description": "Get found in AI search, then get the leads and book the job. Simple monthly plans bundle AI-search optimization (llms.txt, AI-crawler rules, schema), Google Business Profile management, automated reviews, an AI chat assistant, and online booking. Start with a free AI Visibility Audit.",
   "offers": [
-    { "@type": "Offer", "name": "AI Search Launch (one-time setup)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "600", "maxPrice": "900", "priceCurrency": "USD" } },
-    { "@type": "Offer", "name": "AI Search Watch (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "75", "maxPrice": "150", "priceCurrency": "USD" } }
+    { "@type": "Offer", "name": "AI Visibility Audit (first one free)", "price": "0", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Hive — Full AI Front Desk (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Website build (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } }
   ]
 }
 </script>
@@ -82,7 +84,7 @@
     {
       "@type": "Question",
       "name": "What does it cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The free AI-search snapshot costs nothing. The AI Search Launch one-time setup runs $600 to $900. Optional monthly AI Search Watch runs $75 to $150 per month. Final pricing depends on your site." }
+      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. After that, plans are simple and monthly: Spark is $99, Buzz is $179, and Hive is $279 per month. Spark gets you found in AI search; Buzz adds automated reviews and an AI chat assistant; Hive is the full AI front desk with online booking. Need a new website too? Builds start around $750 one-time, waived with an annual plan. No long contracts." }
     }
   ]
 }
@@ -143,7 +145,7 @@
 
   /* Offer */
   .offer{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .plans{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:820px){.plans{grid-template-columns:1fr}}
   .plan{border:1px solid var(--line);border-radius:16px;padding:28px;position:relative;background:var(--paper)}
   .plan.feat{border:2px solid var(--honey);box-shadow:0 14px 40px rgba(245,183,0,.16)}
@@ -203,7 +205,7 @@
       <a href="#offer">What we do</a>
       <a href="#proof">Proof</a>
       <a href="#faq">FAQ</a>
-      <a class="cta" href="#contact">Free snapshot</a>
+      <a class="cta" href="#contact">Free audit</a>
     </nav>
   </div>
 </header>
@@ -216,8 +218,8 @@
       <h1>Be the business <span class="hl">AI recommends.</span></h1>
       <p class="sub">When someone asks ChatGPT, Gemini, or Google's AI for the best service company near them, one name comes up first. Right now it probably isn't yours — and it isn't your competitors either. Whoever fixes that owns the answer.</p>
       <div class="ctas">
-        <a class="btn gold" href="#contact">Get your free AI-search snapshot →</a>
-        <a class="btn ghost" href="tel:4842466557">📞 484-246-6557</a>
+        <a class="btn gold" href="#contact">Get your free AI Visibility Audit →</a>
+        <a class="btn ghost" href="#contact" onclick="if(window.BeeBot){window.BeeBot.open();return false;}">💬 Chat with us</a>
       </div>
       <p class="micro">Nothing to buy to look. We pull your site apart and show you exactly where AI can't see you.</p>
     </div>
@@ -278,36 +280,44 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">What we do</span>
-        <h2>One setup makes AI see you. One habit keeps you the answer.</h2>
-        <p>No retainer maze, no jargon. Two simple pieces.</p>
+        <h2>Get found in AI. Get the lead. Book the job.</h2>
+        <p>Start with a free AI Visibility Audit, then pick a simple monthly plan. No retainers, no jargon, cancel anytime.</p>
       </div>
       <div class="plans">
-        <div class="plan feat">
-          <span class="tag">START HERE</span>
-          <h3>AI Search Launch</h3>
-          <div class="price">$600–$900 <small>one-time</small></div>
-          <p style="color:var(--muted)">Everything AI needs to find, trust, and recommend you — built by hand.</p>
+        <div class="plan">
+          <h3>Spark</h3>
+          <div class="price">$99 <small>/ month</small></div>
+          <p style="color:var(--muted)">Get found. The AI-search foundation.</p>
           <ul>
-            <li>Hand-written <strong>llms.txt</strong> (your pricing, services, area, FAQ in AI-readable form)</li>
-            <li>AI-crawler allow-rules so GPTBot, ClaudeBot &amp; PerplexityBot can read you</li>
-            <li>LocalBusiness + FAQ + Service <strong>schema</strong> markup</li>
-            <li>Answer-formatted pricing &amp; FAQ content AI can quote</li>
-            <li>One <strong>Spanish page</strong> — uncontested demand in the Valley</li>
+            <li>Hand-built <strong>llms.txt</strong>, AI-crawler rules &amp; schema so ChatGPT, Gemini &amp; Perplexity can read you</li>
+            <li>Google Business Profile management</li>
+            <li>Monthly AI-visibility report</li>
+            <li>Light site edits</li>
+          </ul>
+        </div>
+        <div class="plan feat">
+          <span class="tag">MOST POPULAR</span>
+          <h3>Buzz</h3>
+          <div class="price">$179 <small>/ month</small></div>
+          <p style="color:var(--muted)">Get found — plus reviews and AI chat.</p>
+          <ul>
+            <li>Everything in Spark</li>
+            <li>Automated review collection (more reviews = more AI trust)</li>
+            <li><strong>AI chat assistant</strong> on your site, answering &amp; capturing leads 24/7</li>
           </ul>
         </div>
         <div class="plan">
-          <h3>AI Search Watch</h3>
-          <div class="price">$75–$150 <small>/ month</small></div>
-          <p style="color:var(--muted)">Optional. Stay the answer as the engines and your competitors change.</p>
+          <h3>Hive</h3>
+          <div class="price">$279 <small>/ month</small></div>
+          <p style="color:var(--muted)">Your full AI front desk.</p>
           <ul>
-            <li>Monthly check on whether ChatGPT, Perplexity &amp; Google AI cite you</li>
-            <li>Review-velocity nudges (reviews drive AI trust)</li>
-            <li>Content refresh so you stay current and quotable</li>
-            <li>Plain-English report — what moved, what's next</li>
+            <li>Everything in Buzz</li>
+            <li><strong>Online booking</strong> — customers book the job themselves</li>
+            <li>Full lead capture + priority edits</li>
           </ul>
         </div>
       </div>
-      <p style="text-align:center;color:var(--muted);margin-top:18px;font-size:.95rem">Final price depends on your site. The snapshot that shows you what's needed is free.</p>
+      <p style="text-align:center;color:var(--muted);margin-top:18px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time (waived with an annual plan). The AI Visibility Audit that shows what you need is <strong>free</strong>.</p>
     </div>
   </section>
 
@@ -320,12 +330,12 @@
       </div>
       <div class="steps">
         <div class="step">
-          <h3>Free snapshot</h3>
+          <h3>Free AI Visibility Audit</h3>
           <p>We forensic your site and show you exactly where AI can't see you — and prove your competitors have the same gap. Nothing to buy to look.</p>
         </div>
         <div class="step">
-          <h3>Launch setup</h3>
-          <p>We build the llms.txt, crawler rules, schema, answer-ready content, and Spanish page. Live in days, not months.</p>
+          <h3>Pick a plan, we set it up</h3>
+          <p>We build the llms.txt, crawler rules, schema, reviews, AI chat, and booking for your plan. Live in days, not months.</p>
         </div>
         <div class="step">
           <h3>Become the answer</h3>
@@ -418,7 +428,7 @@
       </details>
       <details>
         <summary>What does it cost?</summary>
-        <p>The AI-search snapshot is free. The AI Search Launch one-time setup runs $600–$900. Optional monthly AI Search Watch runs $75–$150. Final pricing depends on your site.</p>
+        <p>The first AI Visibility Audit is free. After that, plans are simple and monthly: <strong>Spark $99</strong> (get found in AI), <strong>Buzz $179</strong> (adds reviews + an AI chat assistant), and <strong>Hive $279</strong> (the full AI front desk with online booking). Need a new website too? Builds start around <strong>$750</strong> one-time, waived with an annual plan. No long contracts.</p>
       </details>
     </div>
   </section>
@@ -429,8 +439,8 @@
       <h2>Find out where AI can't see you.</h2>
       <p>Free, no obligation. We'll pull your site apart, show you the gaps, and prove your competitors have them too. Then you decide.</p>
       <div class="ctas">
-        <a class="btn" href="tel:4842466557">📞 Call 484-246-6557</a>
-        <a class="btn ghost" href="mailto:info@beeconnectagency.com" style="border-color:var(--ink)">✉️ Get my free snapshot</a>
+        <a class="btn" href="mailto:info@beeconnectagency.com">✉️ Get my free audit</a>
+        <a class="btn ghost" href="mailto:info@beeconnectagency.com" onclick="if(window.BeeBot){window.BeeBot.open();return false;}" style="border-color:var(--ink)">💬 Chat with our assistant</a>
       </div>
     </div>
   </section>
@@ -444,7 +454,7 @@
         <div>AI Search Optimization · Lehigh Valley, PA</div>
       </div>
       <div style="text-align:right">
-        <div><a href="tel:4842466557">484-246-6557</a> · <a href="mailto:info@beeconnectagency.com">info@beeconnectagency.com</a></div>
+        <div><a href="mailto:info@beeconnectagency.com">info@beeconnectagency.com</a></div>
         <div style="margin-top:6px">© 2026 Bee Connect Agency. All rights reserved.</div>
       </div>
     </div>
@@ -453,4 +463,202 @@
 
 
 
+<!-- ===================== BeeBot chat widget ===================== -->
+<script id="beebot-widget">
+(function () {
+  var CFG = {
+    businessId: "beeconnect",
+    brainUrl:   "https://beebot-brain.interlinkcrafts.workers.dev",
+    name:       "Bee Connect",
+    tagline:    "Get found in AI search",
+    greeting:   "Hi! I'm the Bee Connect assistant. Want to know how to get your business found in AI search like ChatGPT and Google? Ask me anything — or grab a free AI Visibility Audit.",
+    brand:      "#F5B700",
+    ink:        "#1A1A1A",
+    quickReplies: ["What do you do?", "How much does it cost?", "Get my free audit"]
+  };
+
+  var css = ''
+    + '.bb-launcher{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;'
+    + 'background:' + CFG.brand + ';box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;z-index:2147483000;'
+    + 'display:flex;align-items:center;justify-content:center;border:none;transition:transform .15s}'
+    + '.bb-launcher:hover{transform:scale(1.06)}'
+    + '.bb-launcher svg{width:30px;height:30px;fill:' + CFG.ink + '}'
+    + '.bb-panel{position:fixed;bottom:90px;right:20px;width:370px;max-width:calc(100vw - 32px);'
+    + 'height:560px;max-height:calc(100vh - 120px);background:#fff;border-radius:16px;z-index:2147483000;'
+    + 'box-shadow:0 12px 40px rgba(0,0,0,.28);display:none;flex-direction:column;overflow:hidden;'
+    + 'font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}'
+    + '.bb-panel.bb-open{display:flex}'
+    + '.bb-head{background:' + CFG.ink + ';color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}'
+    + '.bb-head .bb-dot{width:10px;height:10px;border-radius:50%;background:' + CFG.brand + '}'
+    + '.bb-head h4{margin:0;font-size:15px;font-weight:700}'
+    + '.bb-head p{margin:0;font-size:12px;opacity:.8}'
+    + '.bb-head .bb-x{margin-left:auto;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1}'
+    + '.bb-body{flex:1;overflow-y:auto;padding:14px;background:#f6f7f9;display:flex;flex-direction:column;gap:10px}'
+    + '.bb-msg{max-width:82%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}'
+    + '.bb-bot{align-self:flex-start;background:#fff;color:#222;border:1px solid #e6e8ec;border-bottom-left-radius:4px}'
+    + '.bb-user{align-self:flex-end;background:' + CFG.ink + ';color:#fff;border-bottom-right-radius:4px}'
+    + '.bb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px;background:#f6f7f9}'
+    + '.bb-chip{border:1px solid ' + CFG.brand + ';color:' + CFG.ink + ';background:#fff;border-radius:16px;'
+    + 'padding:6px 11px;font-size:12.5px;cursor:pointer}'
+    + '.bb-chip:hover{background:' + CFG.brand + ';color:' + CFG.ink + '}'
+    + '.bb-foot{display:flex;gap:8px;padding:10px;border-top:1px solid #eee;background:#fff}'
+    + '.bb-foot input{flex:1;border:1px solid #d8dadf;border-radius:20px;padding:9px 13px;font-size:14px;outline:none}'
+    + '.bb-foot button{background:' + CFG.brand + ';border:none;color:' + CFG.ink + ';border-radius:20px;padding:0 16px;font-weight:700;cursor:pointer}'
+    + '.bb-typing{align-self:flex-start;color:#888;font-size:13px;padding:2px 6px}'
+    + '.bb-form{display:flex;flex-direction:column;gap:8px}'
+    + '.bb-form strong{font-size:14px;color:' + CFG.ink + '}'
+    + '.bb-form input,.bb-form textarea{border:1px solid #d8dadf;border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit;outline:none}'
+    + '.bb-form .bb-submit{background:' + CFG.brand + ';border:none;color:' + CFG.ink + ';border-radius:8px;padding:9px;font-weight:700;cursor:pointer}'
+    + '.bb-form .bb-cancel{background:#eee;border:none;color:#555;border-radius:8px;padding:7px;font-size:12.5px;cursor:pointer}'
+    + '@media(max-width:480px){.bb-panel{right:8px;left:8px;width:auto;bottom:84px}}';
+
+  var style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  var launcher = document.createElement('button');
+  launcher.className = 'bb-launcher';
+  launcher.setAttribute('aria-label', 'Open chat');
+  launcher.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.86 2 11.5c0 2.39 1.19 4.55 3.09 6.08L4 21l4.06-1.6c1.2.39 2.52.6 3.94.6 5.52 0 10-3.86 10-8.5S17.52 3 12 3z"/></svg>';
+
+  var panel = document.createElement('div');
+  panel.className = 'bb-panel';
+  panel.innerHTML =
+      '<div class="bb-head"><span class="bb-dot"></span>'
+    + '<div><h4>' + CFG.name + '</h4><p>' + CFG.tagline + '</p></div>'
+    + '<button class="bb-x" aria-label="Close">&times;</button></div>'
+    + '<div class="bb-body"></div>'
+    + '<div class="bb-chips"></div>'
+    + '<div class="bb-foot"><input type="text" placeholder="Type your message..." />'
+    + '<button>Send</button></div>';
+
+  document.body.appendChild(launcher);
+  document.body.appendChild(panel);
+
+  var body    = panel.querySelector('.bb-body');
+  var chips   = panel.querySelector('.bb-chips');
+  var input   = panel.querySelector('.bb-foot input');
+  var sendBtn = panel.querySelector('.bb-foot button');
+  var closeBtn= panel.querySelector('.bb-x');
+
+  var messages = [];
+  var greeted = false;
+
+  function addMsg(role, text) {
+    var d = document.createElement('div');
+    d.className = 'bb-msg ' + (role === 'user' ? 'bb-user' : 'bb-bot');
+    d.textContent = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+    return d;
+  }
+
+  function renderChips() {
+    chips.innerHTML = '';
+    CFG.quickReplies.forEach(function (q) {
+      var c = document.createElement('button');
+      c.className = 'bb-chip';
+      c.textContent = q;
+      c.onclick = function () {
+        if (q.toLowerCase().indexOf('audit') > -1) { showLeadForm(); }
+        else { input.value = q; sendMessage(); }
+      };
+      chips.appendChild(c);
+    });
+  }
+
+  function openPanel() {
+    panel.classList.add('bb-open');
+    if (!greeted) { greeted = true; addMsg('bot', CFG.greeting); renderChips(); }
+    input.focus();
+  }
+  function closePanel() { panel.classList.remove('bb-open'); }
+
+  launcher.onclick = function () {
+    panel.classList.contains('bb-open') ? closePanel() : openPanel();
+  };
+  closeBtn.onclick = closePanel;
+
+  function sendMessage() {
+    var text = input.value.trim();
+    if (!text) return;
+    addMsg('user', text);
+    messages.push({ role: 'user', content: text });
+    input.value = '';
+
+    var typing = document.createElement('div');
+    typing.className = 'bb-typing';
+    typing.textContent = 'typing…';
+    body.appendChild(typing);
+    body.scrollTop = body.scrollHeight;
+
+    fetch(CFG.brainUrl + '/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ businessId: CFG.businessId, messages: messages })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      typing.remove();
+      var reply = (d && d.reply) ? d.reply
+        : "Sorry, I had trouble there — try again, or grab the free audit below.";
+      addMsg('bot', reply);
+      messages.push({ role: 'assistant', content: reply });
+    })
+    .catch(function () {
+      typing.remove();
+      addMsg('bot', "I couldn't connect just now. Please try again in a moment.");
+    });
+  }
+
+  sendBtn.onclick = sendMessage;
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') sendMessage(); });
+
+  function showLeadForm() {
+    var wrap = document.createElement('div');
+    wrap.className = 'bb-msg bb-bot';
+    wrap.style.maxWidth = '92%';
+    wrap.innerHTML =
+        '<div class="bb-form">'
+      + '<strong>Free AI Visibility Audit</strong>'
+      + '<input class="bb-n" placeholder="Your name" />'
+      + '<input class="bb-b" placeholder="Business name" />'
+      + '<input class="bb-c" placeholder="Best email or phone" />'
+      + '<textarea class="bb-need" rows="2" placeholder="What do you need? (optional)"></textarea>'
+      + '<button class="bb-submit">Send my free audit request</button>'
+      + '<button class="bb-cancel">Maybe later</button>'
+      + '</div>';
+    body.appendChild(wrap);
+    body.scrollTop = body.scrollHeight;
+
+    var sub = wrap.querySelector('.bb-submit');
+    var can = wrap.querySelector('.bb-cancel');
+    can.onclick = function () { wrap.remove(); };
+    sub.onclick = function () {
+      var name    = wrap.querySelector('.bb-n').value.trim();
+      var business= wrap.querySelector('.bb-b').value.trim();
+      var contact = wrap.querySelector('.bb-c').value.trim();
+      var need    = wrap.querySelector('.bb-need').value.trim();
+      if (!name || !contact) { alert('Please add your name and a way to reach you.'); return; }
+      sub.disabled = true; sub.textContent = 'Sending…';
+      fetch(CFG.brainUrl + '/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ businessId: CFG.businessId, name: name, business: business, contact: contact, need: need })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function () {
+        wrap.remove();
+        addMsg('bot', "Thanks " + name + "! Got your details — we'll reach out with your free AI Visibility Audit. Anything else I can answer?");
+      })
+      .catch(function () {
+        sub.disabled = false; sub.textContent = 'Send my free audit request';
+        addMsg('bot', "Hmm, that didn't send. You can also email info@beeconnectagency.com.");
+      });
+    };
+  }
+
+  window.BeeBot = { open: openPanel, close: closePanel };
+})();
+</script>
 </body></html>
