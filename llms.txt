@@ -39,7 +39,8 @@ Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk r
 
 - BookKit — white-label online booking system (live demo): https://demos.beeconnectagency.com/bookkit/demo.html
 - RepKit — reputation & review management hub (live demo): https://demos.beeconnectagency.com/repkit/demo.html
-- BookKit templates — ready-to-launch booking sites across 15 service industries (live demo): https://demos.beeconnectagency.com/bookkit/industries.html
+- BookKit industry samples — BookKit themed live for 15 service industries; pick one to open its sample (live demo): https://demos.beeconnectagency.com/bookkit/industries.html
+- BeeBot — white-label AI chat assistant that answers customer questions and captures leads 24/7 (try it live on this site).
 
 ## Contact
 
