@@ -216,6 +216,8 @@
   .audit-form .full{grid-column:1 / -1}
   .audit-form label{display:block;font-weight:700;font-size:.84rem;color:var(--ink);margin-bottom:5px}
   .audit-form .req{color:#c0392b}
+  .audit-form .opt{color:var(--muted);font-weight:600}
+  .audit-fine{margin-top:12px;text-align:center;color:var(--muted);font-size:.85rem}
   .audit-form input,.audit-form textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.98rem;font-family:inherit;background:#fff;color:var(--ink);outline:none}
   .audit-form input:focus,.audit-form textarea:focus{border-color:var(--honey-deep);box-shadow:0 0 0 3px rgba(245,183,0,.18)}
   .audit-form .submit{margin-top:18px;width:100%}
@@ -578,27 +580,24 @@
             <input id="af-email" name="email" type="email" autocomplete="email" placeholder="you@business.com" required>
           </div>
           <div>
-            <label for="af-phone">Phone <span style="color:var(--muted);font-weight:600">(optional)</span></label>
-            <input id="af-phone" name="phone" type="tel" autocomplete="tel" placeholder="(610) 555-0123">
-          </div>
-          <div class="full">
-            <label for="af-site">Your website</label>
-            <input id="af-site" name="website" type="text" placeholder="yourbusiness.com — or type “I don’t have one”">
+            <label for="af-site">Website <span class="req">*</span></label>
+            <input id="af-site" name="website" type="text" placeholder="yourbusiness.com — or “I don’t have one”" required>
           </div>
           <div>
-            <label for="af-industry">Type of business <span class="req">*</span></label>
-            <input id="af-industry" name="industry" type="text" placeholder="HVAC, salon, junk removal…" required>
+            <label for="af-industry">Type of business <span class="opt">(optional)</span></label>
+            <input id="af-industry" name="industry" type="text" placeholder="HVAC, salon, junk removal…">
           </div>
           <div>
-            <label for="af-city">City / service area <span class="req">*</span></label>
-            <input id="af-city" name="city" type="text" placeholder="Allentown, PA" required>
+            <label for="af-city">City / service area <span class="opt">(optional)</span></label>
+            <input id="af-city" name="city" type="text" placeholder="Allentown, PA">
           </div>
           <div class="full">
-            <label for="af-notes">Anything else? <span style="color:var(--muted);font-weight:600">(optional)</span></label>
+            <label for="af-notes">Anything else? <span class="opt">(optional)</span></label>
             <textarea id="af-notes" name="notes" rows="2" placeholder="Biggest competitor, what you're hoping for, etc."></textarea>
           </div>
         </div>
         <button type="submit" class="btn submit">✉️ Get my free audit</button>
+        <p class="audit-fine">Free · no credit card · no sales calls unless you ask · about 30 seconds</p>
         <div class="audit-msg" id="auditMsg" role="status" aria-live="polite"></div>
       </form>
 
@@ -655,21 +654,21 @@
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var name = val('af-name'), business = val('af-biz'), email = val('af-email'),
-        phone = val('af-phone'), website = val('af-site'),
-        industry = val('af-industry'), city = val('af-city'), notes = val('af-notes');
+        website = val('af-site'), industry = val('af-industry'),
+        city = val('af-city'), notes = val('af-notes');
 
-    if(!name || !business || !email || !industry || !city){
+    if(!name || !business || !email || !website){
       setMsg('err', 'Please fill in the required fields (marked *).');
       return;
     }
 
     // The lead Worker forwards name/business/contact/need, so pack the audit
     // details into "need" to guarantee they reach the inbox.
-    var contact = email + (phone ? '  ·  ' + phone : '');
+    var contact = email;
     var need = [
-      'Website: ' + (website || '(not given)'),
-      'Industry: ' + industry,
-      'City/area: ' + city
+      'Website: ' + website,
+      'Industry: ' + (industry || '(not given)'),
+      'City/area: ' + (city || '(not given)')
     ].concat(notes ? ['Notes: ' + notes] : []).join('  |  ');
 
     var btn = form.querySelector('.submit');
@@ -683,7 +682,7 @@
       body: JSON.stringify({
         businessId: 'beeconnect',
         name: name, business: business, contact: contact, need: need,
-        email: email, phone: phone, website: website, industry: industry, city: city
+        email: email, website: website, industry: industry, city: city
       })
     })
     .then(function(r){ return r.json().catch(function(){ return {}; }); })
