@@ -1,8 +1,8 @@
-# Bee Connect Agency
+# Foundwick
 
 > AI search optimization (AIO / GEO) for local service businesses in the Lehigh Valley and Berks County, Pennsylvania. We get small companies named and recommended inside AI answers from ChatGPT, Gemini, Perplexity, and Google's AI Overviews — so when someone asks AI for the best service business near them, the client comes up first. We also add automated reviews, an AI chat assistant, and online booking so those AI-driven visitors turn into booked jobs.
 
-Bee Connect Agency helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The first AI Visibility Audit is free and no-obligation; plans are simple and monthly.
+Foundwick helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The first AI Visibility Audit is free and no-obligation; plans are simple and monthly.
 
 ## What we do
 
@@ -18,7 +18,7 @@ Start with a free AI Visibility Audit, then choose a simple monthly plan. No lon
 
 Prefer to start small? Each tool is available on its own; most owners bundle into a plan above and pay less. Founding-client rates:
 
-- **BeeBot AI Chat Assistant — $29/month:** a chat assistant on the site that answers questions and captures leads 24/7.
+- **AI Chat Assistant — $29/month:** a chat assistant on the site that answers questions and captures leads 24/7.
 - **RepKit Reviews — $49/month:** automated review requests after each job, plus one inbox for Google, Yelp, and Facebook.
 - **BookKit Online Booking — $49/month (plus a $99 one-time setup):** customers book the job themselves and track it; the owner manages everything from one dashboard.
 - **Google Business Profile Management — $79/month:** the Google profile optimized, posted to, and monitored every month.
@@ -40,10 +40,10 @@ Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk r
 - BookKit — white-label online booking system (live demo): https://demos.beeconnectagency.com/bookkit/demo.html
 - RepKit — reputation & review management hub (live demo): https://demos.beeconnectagency.com/repkit/demo.html
 - BookKit industry samples — BookKit themed live for 15 service industries; pick one to open its sample (live demo): https://demos.beeconnectagency.com/bookkit/industries.html
-- BeeBot — white-label AI chat assistant that answers customer questions and captures leads 24/7 (try it live on this site).
+- AI chat assistant — our white-label chat assistant that answers customer questions and captures leads 24/7 (try it live on this site).
 
 ## Contact
 
-- Email: info@beeconnectagency.com
-- Website: https://beeconnectagency.com
+- Email: info@foundwick.com
+- Website: https://foundwick.com
 - Service area: Lehigh Valley & Berks County, Pennsylvania

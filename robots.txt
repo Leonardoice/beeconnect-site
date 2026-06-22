@@ -1,4 +1,4 @@
-# Bee Connect Agency — robots.txt
+# Foundwick — robots.txt
 # We explicitly welcome AI search crawlers. This is the point of what we do.
 
 # --- AI / answer-engine crawlers (explicitly allowed) ---
@@ -48,4 +48,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://beeconnectagency.com/sitemap.xml
+Sitemap: https://foundwick.com/sitemap.xml
