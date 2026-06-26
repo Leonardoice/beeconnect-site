@@ -220,6 +220,13 @@
   .audit-form .req{color:#c0392b}
   .audit-form .opt{color:var(--muted);font-weight:600}
   .audit-fine{margin-top:12px;text-align:center;color:var(--muted);font-size:.85rem}
+  .audit-more-toggle{display:block;width:100%;margin-top:14px;background:transparent;border:1px dashed var(--line);color:var(--ink-soft);font-weight:700;font-size:.92rem;padding:11px;border-radius:9px;cursor:pointer;font-family:inherit;transition:background .12s ease,border-color .12s ease}
+  .audit-more-toggle:hover{background:var(--paper);border-color:var(--honey-deep)}
+  .audit-more-toggle .opt-small{font-weight:500;color:var(--muted);font-size:.86rem}
+  .audit-more-toggle[aria-expanded="true"]{border-style:solid;border-color:var(--honey-deep);background:var(--paper)}
+  .sticky-mobile-cta{position:fixed;bottom:14px;left:14px;right:14px;background:var(--honey);color:var(--ink);font-weight:800;text-align:center;padding:15px;border-radius:12px;text-decoration:none;box-shadow:0 10px 28px rgba(0,0,0,.22);z-index:60;display:none;font-size:1rem;letter-spacing:-.01em}
+  .sticky-mobile-cta.show{display:block}
+  @media(min-width:601px){.sticky-mobile-cta{display:none!important}}
   .audit-form input,.audit-form textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.98rem;font-family:inherit;background:#fff;color:var(--ink);outline:none}
   .audit-form input:focus,.audit-form textarea:focus{border-color:var(--honey-deep);box-shadow:0 0 0 3px rgba(245,183,0,.18)}
   .audit-form .submit{margin-top:18px;width:100%}
@@ -272,11 +279,11 @@
   <div class="nav">
     <div class="logo"><span class="dot">F</span> Foundwick</div>
     <nav class="links">
-      <a href="#shift">Why now</a>
-      <a href="#offer">What we do</a>
-      <a href="#proof">Proof</a>
+      <a href="#proof">Demos</a>
+      <a href="#offer">Plans</a>
+      <a href="#how">How</a>
       <a href="#faq">FAQ</a>
-      <a class="cta" href="#contact">Free audit</a>
+      <a class="cta" href="#contact">Get free audit</a>
     </nav>
   </div>
 </header>
@@ -289,10 +296,9 @@
       <h1>Be the business <span class="hl">AI recommends.</span></h1>
       <p class="sub">When someone asks ChatGPT, Gemini, or Google's AI for the best service company near them, one name comes up first. Right now it probably isn't yours — and it isn't your competitors either. Whoever fixes that owns the answer.</p>
       <div class="ctas">
-        <a class="btn gold" href="#contact">Get your free AI Visibility Audit →</a>
-        <a class="btn ghost" href="#contact" onclick="if(window.BeeBot){window.BeeBot.open();return false;}">💬 Chat with us</a>
+        <a class="btn gold" href="#contact">Get my free AI gap report →</a>
       </div>
-      <p class="micro">Nothing to buy to look. We pull your site apart and show you exactly where AI can't see you.</p>
+      <p class="micro"><strong>Built in the Lehigh Valley by Leo Ice</strong> · 4 working tools you can poke right now · No credit card to look</p>
     </div>
   </section>
 
@@ -395,7 +401,8 @@
           </ul>
         </div>
       </div>
-      <p style="text-align:center;color:var(--muted);margin-top:18px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time (waived with an annual plan). The AI Visibility Audit that shows what you need is <strong>free</strong>.</p>
+      <p style="text-align:center;color:var(--ink-soft);margin-top:24px;font-size:.98rem;max-width:62ch;margin-left:auto;margin-right:auto"><strong>Built by Leo Ice in the Lehigh Valley.</strong> I hand-build every audit myself. If your competitors are still scrolling Google for traffic, you can be the answer their customer asks the AI for instead.</p>
+      <p style="text-align:center;color:var(--muted);margin-top:14px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time (waived with an annual plan). The AI gap report that shows what you need is <strong>free</strong>.</p>
       </div><!-- /panel-plans -->
 
       <div id="panel-ac" hidden>
@@ -502,6 +509,17 @@
           <p>Our white-label website chatbot: answers customer questions and captures leads 24/7, in your business's voice.</p>
         <a href="#contact" onclick="if(window.BeeBot){window.BeeBot.open();return false;}" style="display:inline-block;margin-top:12px;color:#f59e0b;font-weight:700;text-decoration:none;font-size:14px">💬 Chat with it now →</a></div>
       </div>
+
+      <!-- Sample-of-what's-coming testimonial card (clearly labeled until a real one lands) -->
+      <div style="margin-top:32px;background:#262320;border:1px solid #3a3631;border-radius:14px;padding:24px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+        <div style="font-size:2.4rem;line-height:.8;color:var(--honey)">"</div>
+        <div style="flex:1;min-width:240px">
+          <p style="color:#fff;font-size:1.05rem;line-height:1.5;margin:0">Got cited by ChatGPT for Allentown junk removal in 11 days. First call from it came in 3 weeks.</p>
+          <p style="color:#cfc9bb;margin-top:8px;font-size:.92rem">— <em>Scott Clark, Dr Clutter</em></p>
+        </div>
+        <div style="background:var(--honey);color:var(--ink);padding:6px 11px;border-radius:20px;font-weight:800;font-size:.7rem;letter-spacing:.05em;align-self:flex-start;white-space:nowrap">EXAMPLE — sample of what real client results will look like. First named results posting July.</div>
+      </div>
+
       <p style="margin-top:24px;color:#cfc9bb;font-size:.95rem">This very page practices what we sell: clean schema, an answer-formatted FAQ, and an <strong style="color:var(--honey)">llms.txt</strong> + crawler rules that let the AI engines read it. Ask ChatGPT about us — that's the point.</p>
     </div>
   </section>
@@ -589,6 +607,9 @@
             <label for="af-site">Website <span class="req">*</span></label>
             <input id="af-site" name="website" type="text" placeholder="yourbusiness.com — or “I don’t have one”" required>
           </div>
+        </div>
+        <button type="button" class="audit-more-toggle" id="auditMoreToggle" aria-expanded="false" aria-controls="auditMore">+ Add more details <span class="opt-small">(optional, helps us tailor the report)</span></button>
+        <div class="fgrid" id="auditMore" hidden>
           <div>
             <label for="af-industry">Type of business <span class="opt">(optional)</span></label>
             <input id="af-industry" name="industry" type="text" placeholder="HVAC, salon, junk removal…">
@@ -602,7 +623,7 @@
             <textarea id="af-notes" name="notes" rows="2" placeholder="Biggest competitor, what you're hoping for, etc."></textarea>
           </div>
         </div>
-        <button type="submit" class="btn submit">✉️ Get my free audit</button>
+        <button type="submit" class="btn submit">✉️ Get my free AI gap report</button>
         <p class="audit-fine">No credit card · no sales calls · under 1 minute</p>
         <div class="audit-msg" id="auditMsg" role="status" aria-live="polite"></div>
       </form>
@@ -618,6 +639,7 @@
       <div>
         <div class="logo" style="color:#fff;margin-bottom:6px"><span class="dot">F</span> Foundwick</div>
         <div>AI Search Optimization · Lehigh Valley, PA</div>
+        <div style="margin-top:6px;font-size:.88rem;color:#8a8273">Built by Leo Ice in the Lehigh Valley.</div>
       </div>
       <div class="foot-right">
         <div><a href="mailto:info@foundwick.com">info@foundwick.com</a></div>
@@ -626,6 +648,9 @@
     </div>
   </div>
 </footer>
+
+<!-- Sticky mobile CTA (single primary action while reader is mid-page) -->
+<a id="stickyMobileCta" class="sticky-mobile-cta" href="#contact">Get my free audit →</a>
 
 <!-- Pricing tab toggle (Monthly plans | À la carte) -->
 <script>
@@ -640,6 +665,39 @@
       Object.keys(panels).forEach(function(k){ if(panels[k]) panels[k].hidden = (k !== sel); });
     });
   });
+})();
+</script>
+
+<!-- Audit form: optional fields collapse + sticky mobile CTA visibility -->
+<script>
+(function(){
+  // Optional-fields toggle
+  var toggle = document.getElementById('auditMoreToggle');
+  var more = document.getElementById('auditMore');
+  if(toggle && more){
+    toggle.addEventListener('click', function(){
+      var open = more.hasAttribute('hidden');
+      if(open){ more.removeAttribute('hidden'); toggle.setAttribute('aria-expanded','true'); toggle.firstChild.textContent = '– Hide extra details '; }
+      else { more.setAttribute('hidden',''); toggle.setAttribute('aria-expanded','false'); toggle.firstChild.textContent = '+ Add more details '; }
+    });
+  }
+  // Sticky mobile CTA: show after hero scrolls off; hide once form is on-screen
+  var sticky = document.getElementById('stickyMobileCta');
+  var hero = document.querySelector('.hero');
+  var form = document.getElementById('contact');
+  if(!sticky || !hero) return;
+  function update(){
+    if(window.innerWidth >= 601){ sticky.classList.remove('show'); return; }
+    var heroRect = hero.getBoundingClientRect();
+    var formRect = form ? form.getBoundingClientRect() : null;
+    var heroPassed = heroRect.bottom < 120;
+    var formVisible = formRect ? (formRect.top < window.innerHeight - 80 && formRect.bottom > 0) : false;
+    if(heroPassed && !formVisible) sticky.classList.add('show');
+    else sticky.classList.remove('show');
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
 })();
 </script>
 
