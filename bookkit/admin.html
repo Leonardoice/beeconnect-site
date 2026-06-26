@@ -134,7 +134,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="pin-error" id="pinError">Wrong PIN. Try again.</div>
     <button class="pin-btn" onclick="checkPin()">Unlock</button>
-    <p style="margin-top:16px;font-size:11px;color:#aaa">Default PIN: 2011 (year BookKit started)</p>
+    <p style="margin-top:16px;font-size:11px;color:#aaa">Default PIN: 0000</p>
   </div>
 </div>
 
@@ -186,7 +186,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 // BookKit - Admin Dashboard
 // ==========================================
 
-const ADMIN_PIN = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.admin.pin : '2011';
+const ADMIN_PIN = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.admin.pin : '0000';
 let currentTab = 'today';
 
 // --PIN Input Auto-advance --
