@@ -94,7 +94,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <a class="demo-card" href="admin.html" id="cardAdmin">
     <div class="card-icon">&#x1F4CA;</div>
     <h3>Admin Reputation Hub</h3>
-    <p>PIN-protected dashboard. View all reviews, respond to customers, send review requests, flag negative reviews. PIN: <strong>0000</strong></p>
+    <p>PIN-protected dashboard. View all reviews, respond to customers, send review requests, flag negative reviews. PIN: <strong id="adminPin">1234</strong></p>
     <div class="card-hint" id="hintAdmin">Open Admin Dashboard &rarr;</div>
   </a>
 
@@ -152,7 +152,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
-function init(){const c=APP_CONFIG.colors;const ind=APP_CONFIG.getIndustry();document.getElementById('demoHeader').style.background=`linear-gradient(135deg,${c.primary}0%,${c.primaryDark}100%)`;document.getElementById('demoTitle').textContent=APP_CONFIG.businessName+' - RepKit';document.getElementById('statReviews').style.color=c.primary;document.getElementById('statRate').style.color=c.primary;['cardReview','cardAdmin','cardTracker'].forEach(id=>{const card=document.getElementById(id);card.addEventListener('mouseenter',()=>card.style.borderColor=c.primary);card.addEventListener('mouseleave',()=>card.style.borderColor='#e8e8e8');});['hintReview','hintAdmin','hintTracker'].forEach(id=>{document.getElementById(id).style.color=c.primary;});document.getElementById('poweredLink').style.color=c.primary;}
+function init(){const c=APP_CONFIG.colors;const ind=APP_CONFIG.getIndustry();document.getElementById('demoHeader').style.background=`linear-gradient(135deg,${c.primary}0%,${c.primaryDark}100%)`;document.getElementById('demoTitle').textContent=APP_CONFIG.businessName+' - RepKit';document.getElementById('statReviews').style.color=c.primary;document.getElementById('statRate').style.color=c.primary;['cardReview','cardAdmin','cardTracker'].forEach(id=>{const card=document.getElementById(id);card.addEventListener('mouseenter',()=>card.style.borderColor=c.primary);card.addEventListener('mouseleave',()=>card.style.borderColor='#e8e8e8');});['hintReview','hintAdmin','hintTracker'].forEach(id=>{document.getElementById(id).style.color=c.primary;});document.getElementById('poweredLink').style.color=c.primary;const pinEl=document.getElementById('adminPin');if(pinEl&&APP_CONFIG.admin&&APP_CONFIG.admin.pin)pinEl.textContent=APP_CONFIG.admin.pin;}
 init();</script>
 <script>
 /* (c) 2026 OpsyncHQ */
