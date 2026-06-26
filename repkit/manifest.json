@@ -1,0 +1,41 @@
+{
+  "name": "RepKit - Review Management",
+  "short_name": "RepKit",
+  "description": "Manage your online reputation. Send review requests, track reviews, respond to customers.",
+  "start_url": "/review.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Leave a Review",
+      "url": "/review.html",
+      "icons": [{ "src": "assets/icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Track Request",
+      "url": "/tracker.html",
+      "icons": [{ "src": "assets/icon.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Admin Hub",
+      "url": "/admin.html",
+      "icons": [{ "src": "assets/icon.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reputation Hub | RepKit</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.png">
+<script src="config.js"></script>
+<style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.5;-webkit-font-smoothing:antialiased}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-card{background:#fff;border-radius:16px;padding:32px;max-width:340px;width:100%;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.login-card img{width:64px;height:64px;border-radius:14px;margin-bottom:12px}
+.login-card .login-icon{width:64px;height:64px;border-radius:14px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.login-card h1{font-size:20px;font-weight:800;margin-bottom:4px}
+.login-card p{font-size:13px;color:#888;margin-bottom:20px}
+.pin-input{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.pin-input input{width:48px;height:56px;text-align:center;font-size:24px;font-weight:800;border:2px solid #ddd;border-radius:10px;font-family:inherit}
+.pin-input input:focus{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.pin-error{color:#dc2626;font-size:12px;display:none;margin-bottom:8px}
+.pin-btn{width:100%;padding:14px;border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.pin-btn:hover{opacity:.9}
+.dashboard{display:none}
+.dash-header{background:#1a1a2e;color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+.dash-header img{width:40px;height:40px;border-radius:10px}
+.dash-header-text{flex:1}
+.dash-header-text .brand{font-size:11px;font-weight:700;opacity:.8;letter-spacing:.5px;text-transform:uppercase}
+.dash-header-text .dh-title{font-size:18px;font-weight:800}
+.dash-header .dh-date{font-size:12px;opacity:.7}
+.logout-btn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
+.logout-btn:hover{background:rgba(255,255,255,.25)}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border-bottom:1px solid #e8e8e8}
+.stat{padding:14px 8px;text-align:center;border-right:1px solid #f0f0f0}
+.stat:last-child{border-right:none}
+.stat .stat-num{font-size:22px;font-weight:900}
+.stat .stat-label{font-size:10px;color:#888;text-transform:uppercase;font-weight:600;letter-spacing:.3px}
+.tab-bar{display:flex;background:#fff;border-bottom:1px solid #e8e8e8;padding:0 16px}
+.tab{padding:12px 16px;font-size:13px;font-weight:600;color:#888;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab.active{border-bottom-color:currentColor}
+.tab:hover{color:#333}
+.content{max-width:640px;margin:0 auto;padding:16px}
+.section-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;padding:8px 0 6px}
+.review-card{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;border:1px solid #e8e8e8;transition:box-shadow .2s;padding:16px}
+.review-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.review-card.flagged{border-left:4px solid #dc2626}
+.rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.rc-name{font-size:14px;font-weight:700}
+.rc-platform{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600;color:#fff}
+.rc-stars{color:#FBBF24;font-size:14px;margin-bottom:4px}
+.rc-text{font-size:13px;color:#555;margin-bottom:8px}
+.rc-meta{font-size:11px;color:#aaa;display:flex;gap:12px}
+.rc-actions{display:flex;gap:8px;margin-top:10px}
+.rc-btn{padding:6px 14px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+.rc-btn-reply{background:#eff6ff;color:#2563eb}
+.rc-btn-reply:hover{background:#dbeafe}
+.rc-btn-flag{background:#fef2f2;color:#dc2626}
+.rc-btn-flag:hover{background:#fee2e2}
+.rc-btn-send{color:#fff}
+.rc-btn-send:hover{opacity:.9}
+.reply-box{display:none;margin-top:10px}
+.reply-box textarea{width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;font-family:inherit;resize:none;outline:none}
+.reply-box textarea:focus{border-color:#2563eb}
+.reply-templates{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.reply-tpl{font-size:10px;padding:3px 8px;background:#f0f0f0;border:none;border-radius:6px;cursor:pointer;font-family:inherit}
+.reply-tpl:hover{background:#e0e0e0}
+.reply-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:6px}
+.req-card{background:#fff;border-radius:12px;margin-bottom:8px;border:1px solid #e8e8e8;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.req-info .req-name{font-size:14px;font-weight:600}
+.req-info .req-detail{font-size:11px;color:#888;margin-top:2px}
+.req-status{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:600}
+.req-status.sent{background:#fef3c7;color:#92400e}
+.req-status.opened{background:#dbeafe;color:#1e40af}
+.req-status.completed{background:#dcfce7;color:#166534}
+.req-status.expired{background:#f3f4f6;color:#6b7280}
+.empty-state{text-align:center;padding:40px;color:#aaa;font-size:13px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:12px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}</style>
+</head>
+<body>
+
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <img src="assets/icon.png" alt="" onerror="this.style.display='none';document.getElementById('loginIcon').style.display='flex'">
+    <div class="login-icon" id="loginIcon" style="display:none">&#x2B50;</div>
+    <h1 id="loginTitle">Reputation Hub</h1>
+    <p>Enter your admin PIN</p>
+    <div class="pin-input" id="pinInput"></div>
+    <div class="pin-error" id="pinError">Incorrect PIN. Try again.</div>
+    <button class="pin-btn" id="pinBtn" onclick="checkPin()">Sign In</button>
+  </div>
+</div>
+
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <img src="assets/icon.png" alt="" onerror="this.style.display='none'">
+    <div class="dash-header-text">
+      <div class="brand" id="dashBrand">RepKit</div>
+      <div class="dh-title" id="dashTitle">Reputation Hub</div>
+    </div>
+    <div class="dh-date" id="dashDate"></div>
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <div class="stats-bar" id="statsBar"></div>
+  <div class="tab-bar" id="tabBar"></div>
+  <div class="content" id="content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
+const DEMO_REVIEWS=[{id:1,name:'Sarah Mitchell',platform:'google',rating:5,text:'Absolutely incredible service! Best in the Lehigh Valley.',date:'2 hours ago',responded:false,flagged:false},{id:2,name:'James Rodriguez',platform:'yelp',rating:4,text:'Really happy with the results. Would use again.',date:'Yesterday',responded:true,responseText:'Thank you James! We appreciate your business.',flagged:false},{id:3,name:'Emily Chen',platform:'google',rating:1,text:'Very poor experience. Never showed up on time.',date:'2 days ago',responded:false,flagged:true},{id:4,name:'Michael Thompson',platform:'facebook',rating:5,text:'Five stars isn\'t enough. They went above and beyond.',date:'3 days ago',responded:false,flagged:false},{id:5,name:'Ashley Williams',platform:'google',rating:2,text:'Disappointing. Expected better quality for the price.',date:'4 days ago',responded:false,flagged:true},{id:6,name:'David Kim',platform:'yelp',rating:5,text:'Highly recommend! Will definitely be using them again.',date:'5 days ago',responded:true,responseText:'Thanks David! See you next time.',flagged:false},{id:7,name:'Jessica Martinez',platform:'google',rating:4,text:'Good experience. Only minor thing was scheduling took a bit.',date:'6 days ago',responded:false,flagged:false},{id:8,name:'Ryan O\'Brien',platform:'google',rating:5,text:'Wow, just wow. The quality of work was outstanding.',date:'1 week ago',responded:false,flagged:false},];const DEMO_REQUESTS=[{id:1,name:'Lauren Davis',channel:'sms',status:'sent',sentAt:'1 hour ago',booking:'BK-4821'},{id:2,name:'Kevin Patel',channel:'email',status:'opened',sentAt:'3 hours ago',booking:'BK-4820'},{id:3,name:'Stephanie Cook',channel:'sms',status:'completed',sentAt:'Yesterday',booking:'BK-4819'},{id:4,name:'Jason Miller',channel:'sms',status:'sent',sentAt:'Yesterday',booking:'BK-4818'},{id:5,name:'Nicole Adams',channel:'email',status:'expired',sentAt:'8 days ago',booking:'BK-4810'},{id:6,name:'Andrew Clark',channel:'sms',status:'completed',sentAt:'3 days ago',booking:'BK-4815'},];let currentTab='reviews';let reviews=[...DEMO_REVIEWS];function init(){const c=APP_CONFIG.colors;document.getElementById('pinBtn').style.background=c.primary;document.getElementById('loginTitle').textContent=APP_CONFIG.admin.dashboardTitle;document.getElementById('dashBrand').textContent=APP_CONFIG.businessName;document.getElementById('dashTitle').textContent=APP_CONFIG.admin.dashboardTitle;document.getElementById('dashDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});const pinContainer=document.getElementById('pinInput');for(let i=0;i<4;i++){const inp=document.createElement('input');inp.type='tel';inp.maxLength=1;inp.dataset.idx=i;inp.addEventListener('input',function(){if(this.value&&i<3)pinContainer.children[i+1].focus();});inp.addEventListener('keydown',function(e){if(e.key==='Backspace'&&!this.value&&i>0)pinContainer.children[i-1].focus();if(e.key==='Enter')checkPin();});inp.style.borderColor='#ddd';inp.addEventListener('focus',function(){this.style.borderColor=c.primary;});inp.addEventListener('blur',function(){this.style.borderColor='#ddd';});pinContainer.appendChild(inp);}
+pinContainer.children[0].focus();}
+function checkPin(){const pins=document.getElementById('pinInput').querySelectorAll('input');const entered=Array.from(pins).map(p=>p.value).join('');if(entered===APP_CONFIG.admin.pin){document.getElementById('loginScreen').style.display='none';document.getElementById('dashboard').style.display='block';renderDashboard();}else{document.getElementById('pinError').style.display='block';pins.forEach(p=>{p.value='';p.style.borderColor='#dc2626';});pins[0].focus();}}
+function logout(){document.getElementById('dashboard').style.display='none';document.getElementById('loginScreen').style.display='flex';document.getElementById('pinError').style.display='none';const pins=document.getElementById('pinInput').querySelectorAll('input');pins.forEach(p=>{p.value='';p.style.borderColor='#ddd';});pins[0].focus();}
+function renderDashboard(){renderStats();renderTabs();renderContent();}
+function renderStats(){const c=APP_CONFIG.colors;const total=reviews.length;const avg=(reviews.reduce((s,r)=>s+r.rating,0)/total).toFixed(1);const needReply=reviews.filter(r=>!r.responded).length;const flagged=reviews.filter(r=>r.flagged).length;document.getElementById('statsBar').innerHTML=`<div class="stat"><div class="stat-num"style="color:${c.primary}">${total}</div><div class="stat-label">Total Reviews</div></div><div class="stat"><div class="stat-num"style="color:#FBBF24">${avg}</div><div class="stat-label">Avg Rating</div></div><div class="stat"><div class="stat-num"style="color:#2563eb">${needReply}</div><div class="stat-label">Need Reply</div></div><div class="stat"><div class="stat-num"style="color:#dc2626">${flagged}</div><div class="stat-label">Flagged</div></div>`;}
+function renderTabs(){const c=APP_CONFIG.colors;const tabs=[{key:'reviews',label:'Reviews'},{key:'requests',label:'Requests'},{key:'send',label:'Send Request'},];document.getElementById('tabBar').innerHTML=tabs.map(t=>`<div class="tab ${currentTab===t.key?'active':''}"style="color:${currentTab===t.key?c.primary:'#888'};border-bottom-color:${currentTab===t.key?c.primary:'transparent'}"onclick="switchTab('${t.key}')">${t.label}</div>`).join('');}
+function switchTab(tab){currentTab=tab;renderTabs();renderContent();}
+function renderContent(){const el=document.getElementById('content');if(currentTab==='reviews')renderReviews(el);else if(currentTab==='requests')renderRequests(el);else if(currentTab==='send')renderSendForm(el);}
+function renderReviews(el){const flagged=reviews.filter(r=>r.flagged&&!r.responded);const unreplied=reviews.filter(r=>!r.flagged&&!r.responded);const replied=reviews.filter(r=>r.responded);let html='';if(flagged.length){html+=`<div class="section-label">&#x26A0;&#xFE0F; Needs Attention(${flagged.length})</div>`;html+=flagged.map(r=>reviewCardHTML(r)).join('');}
+if(unreplied.length){html+=`<div class="section-label">Awaiting Reply(${unreplied.length})</div>`;html+=unreplied.map(r=>reviewCardHTML(r)).join('');}
+if(replied.length){html+=`<div class="section-label">Responded(${replied.length})</div>`;html+=replied.map(r=>reviewCardHTML(r)).join('');}
+el.innerHTML=html;}
+function reviewCardHTML(r){const pColors={google:'#4285F4',yelp:'#D32323',facebook:'#1877F2'};const stars='&#x2605;'.repeat(r.rating)+'&#x2606;'.repeat(5-r.rating);const c=APP_CONFIG.colors;return`<div class="review-card ${r.flagged&&!r.responded?'flagged':''}"><div class="rc-top"><span class="rc-name">${r.name}</span><span class="rc-platform"style="background:${pColors[r.platform]||'#666'}">${r.platform}</span></div><div class="rc-stars">${stars}</div><div class="rc-text">${r.text}</div>${r.responded?`<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px;margin-top:8px;font-size:12px;color:#166534"><strong>Your reply:</strong>${r.responseText}</div>`:''}<div class="rc-meta"><span>${r.date}</span><span>${r.responded?'&#x2713; Responded':'Awaiting reply'}</span></div>${!r.responded?`<div class="rc-actions"><button class="rc-btn rc-btn-reply"onclick="toggleReply(${r.id})">Reply</button>${!r.flagged?`<button class="rc-btn rc-btn-flag"onclick="flagReview(${r.id})">Flag</button>`:''}</div><div class="reply-box"id="reply-${r.id}"><div class="reply-templates"><button class="reply-tpl"onclick="useTemplate(${r.id},'positive')">Thank you</button><button class="reply-tpl"onclick="useTemplate(${r.id},'neutral')">We hear you</button><button class="reply-tpl"onclick="useTemplate(${r.id},'negative')">Make it right</button></div><textarea id="reply-text-${r.id}"rows="3"placeholder="Write your response..."></textarea><div class="reply-actions"><button class="rc-btn"style="background:#f0f0f0"onclick="toggleReply(${r.id})">Cancel</button><button class="rc-btn rc-btn-send"style="background:${c.primary}"onclick="sendReply(${r.id})">Post Response</button></div></div>`:''}</div>`;}
+function toggleReply(id){const box=document.getElementById('reply-'+id);box.style.display=box.style.display==='block'?'none':'block';}
+function useTemplate(id,type){const text=APP_CONFIG.responses[type].replace('{business_name}',APP_CONFIG.businessName).replace('{phone}',APP_CONFIG.phoneDisplay);document.getElementById('reply-text-'+id).value=text;}
+function sendReply(id){const text=document.getElementById('reply-text-'+id).value;if(!text.trim())return;const r=reviews.find(rev=>rev.id===id);if(r){r.responded=true;r.responseText=text;r.flagged=false;}
+renderDashboard();showToast('Response posted!');}
+function flagReview(id){const r=reviews.find(rev=>rev.id===id);if(r)r.flagged=true;renderContent();renderStats();showToast('Review flagged for attention');}
+function renderRequests(el){const groups={sent:[],opened:[],completed:[],expired:[]};DEMO_REQUESTS.forEach(r=>groups[r.status]?.push(r));let html='';['sent','opened','completed','expired'].forEach(s=>{if(groups[s].length){html+=`<div class="section-label">${s.charAt(0).toUpperCase()+s.slice(1)}(${groups[s].length})</div>`;html+=groups[s].map(r=>`<div class="req-card"><div class="req-info"><div class="req-name">${r.name}</div><div class="req-detail">via ${r.channel.toUpperCase()}&middot; ${r.sentAt}&middot; ${r.booking}</div></div><span class="req-status ${r.status}">${r.status}</span></div>`).join('');}});el.innerHTML=html||'<div class="empty-state">No requests yet</div>';}
+function renderSendForm(el){const c=APP_CONFIG.colors;el.innerHTML=`<div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.04)"><h3 style="font-size:16px;font-weight:700;margin-bottom:16px">Send Review Request</h3><div style="margin-bottom:12px"><label style="font-size:12px;font-weight:600;color:#666;display:block;margin-bottom:4px">Customer Name</label><input id="sendName"type="text"style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px"placeholder="e.g. John Cooper"></div><div style="margin-bottom:12px"><label style="font-size:12px;font-weight:600;color:#666;display:block;margin-bottom:4px">Phone Number</label><input id="sendPhone"type="tel"style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px"placeholder="(610) 555-0100"></div><div style="margin-bottom:12px"><label style="font-size:12px;font-weight:600;color:#666;display:block;margin-bottom:4px">Channel</label><select id="sendChannel"style="width:100%;padding:10px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;background:#fff"><option value="sms">SMS</option><option value="email">Email</option></select></div><div style="background:#f8f9fa;border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:#666"><strong>Preview:</strong><br>${APP_CONFIG.sms.initial.replace('{customer_name}','[Name]').replace('{business_name}',APP_CONFIG.businessName).replace('{review_link}','repkit.link/r/...')}</div><button onclick="sendRequest()"style="width:100%;padding:14px;border:none;border-radius:12px;background:${c.primary};color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit">Send Review Request</button></div>`;}
+function sendRequest(){const name=document.getElementById('sendName').value;if(!name.trim())return;showToast('Review request sent to '+name+'!');document.getElementById('sendName').value='';document.getElementById('sendPhone').value='';}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+init();</script>
+<script>
+/* (c) 2026 OpsyncHQ */
+(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 OpsyncHQ Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
+</script>
+</body>
+</h

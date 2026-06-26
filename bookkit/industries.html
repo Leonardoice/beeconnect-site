@@ -1,0 +1,295 @@
+<!-- (c) 2026 OpsyncHQ. All rights reserved. Unauthorized reproduction prohibited. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BookKit — Industry Samples</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a); color: #fff; min-height: 100vh; }
+
+  .header { text-align: center; padding: 40px 20px 20px; }
+  .header .badge { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 20px; padding: 6px 16px; font-size: 13px; color: #93c5fd; margin-bottom: 12px; }
+  .header h1 { font-size: 36px; font-weight: 800; }
+  .header h1 span { color: #60a5fa; }
+  .header p { color: #94a3b8; font-size: 15px; max-width: 600px; margin: 8px auto 0; }
+
+  .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 16px 20px; }
+  .filters button { background: rgba(255,255,255,0.08); border: none; color: #cbd5e1; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .filters button:hover { background: rgba(255,255,255,0.15); }
+  .filters button.active { background: #3b82f6; color: #fff; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+
+  .search { max-width: 400px; margin: 0 auto 24px; padding: 0 20px; }
+  .search input { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 16px; color: #fff; font-size: 14px; outline: none; }
+  .search input::placeholder { color: #64748b; }
+  .search input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; }
+  .card:hover { background: rgba(255,255,255,0.08); border-color: rgba(59,130,246,0.4); box-shadow: 0 8px 24px rgba(59,130,246,0.1); transform: translateY(-2px); }
+  .card .top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+  .card .icon { font-size: 32px; }
+  .card .name { font-weight: 600; font-size: 15px; color: #f1f5f9; }
+  .card .badges { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .card .badge-sm { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+  .badge-seg { background: rgba(147,51,234,0.15); color: #c084fc; }
+  .badge-int { background: rgba(59,130,246,0.15); color: #93c5fd; }
+  .badge-mix { background: rgba(100,116,139,0.2); color: #94a3b8; }
+  .badge-time { background: rgba(100,116,139,0.15); color: #94a3b8; }
+  .card .insight { font-size: 12px; color: #64748b; line-height: 1.5; margin-bottom: 10px; }
+  .card .meta { font-size: 11px; color: #475569; display: flex; gap: 8px; }
+
+  /* Modal */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; backdrop-filter: blur(4px); justify-content: center; align-items: center; padding: 20px; }
+  .overlay.open { display: flex; }
+  .modal { background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 32px; position: relative; }
+  .modal .close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.1); border: none; color: #94a3b8; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+  .modal .close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  .modal h2 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .modal .sub { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
+
+  .config-section { margin-bottom: 20px; }
+  .config-section h3 { font-size: 14px; font-weight: 600; color: #e2e8f0; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px; }
+  .config-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 13px; }
+  .config-row .label { color: #94a3b8; }
+  .config-row .value { color: #e2e8f0; font-weight: 500; }
+  .config-row input[type="number"] { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 10px; color: #fff; width: 80px; text-align: center; font-size: 13px; outline: none; }
+  .config-row input[type="number"]:focus { border-color: #3b82f6; }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { font-size: 13px; color: #94a3b8; padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+  .checklist li::before { content: "✓"; color: #22c55e; font-weight: bold; font-size: 12px; }
+
+  .fields-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .field-tag { background: rgba(59,130,246,0.12); color: #93c5fd; font-size: 11px; padding: 3px 10px; border-radius: 8px; }
+
+  .actions { display: flex; gap: 12px; margin-top: 24px; }
+  .btn { flex: 1; padding: 12px; border-radius: 12px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-primary { background: #3b82f6; color: #fff; }
+  .btn-primary:hover { background: #2563eb; box-shadow: 0 4px 12px rgba(37,99,235,0.4); }
+  .btn-secondary { background: rgba(255,255,255,0.08); color: #cbd5e1; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+  .lv-insight-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; }
+  .lv-insight-box .lv-label { font-size: 11px; font-weight: 600; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .lv-insight-box .lv-text { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+
+  .status-bar { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); border-radius: 12px; padding: 12px 16px; margin-top: 16px; text-align: center; font-size: 13px; color: #86efac; display: none; }
+  .status-bar.show { display: block; }
+
+  .empty { text-align: center; padding: 60px 20px; color: #64748b; font-size: 14px; }
+
+  .footer { text-align: center; padding: 20px; }
+  .footer-stats { display: inline-flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.04); border-radius: 16px; padding: 12px 24px; font-size: 13px; color: #64748b; }
+  .footer-stats .num { font-weight: 700; }
+  .footer-stats .blue { color: #60a5fa; }
+  .footer-stats .purple { color: #c084fc; }
+  .footer-stats .green { color: #4ade80; }
+  .footer-stats .sep { width: 1px; height: 16px; background: rgba(255,255,255,0.1); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">White-Label Booking — Industry Samples</div>
+  <h1>Book<span>Kit</span></h1>
+  <p>Pick an industry to open a live sample of BookKit themed for that business — branding, fields, and photo rules all adapt.</p>
+</div>
+
+<div class="filters" id="filters"></div>
+<div class="search"><input type="text" id="search" placeholder="Search categories..."></div>
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty" style="display:none">No categories match your search.</div>
+
+<div class="footer">
+  <div class="footer-stats">
+    <div><span class="num blue">15</span> industries</div>
+    <div class="sep"></div>
+    <div><span class="num purple">3</span> subscription models</div>
+    <div class="sep"></div>
+    <div><span class="num green">LV</span> market-researched</div>
+  </div>
+</div>
+
+<!-- Config Modal -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const INDUSTRIES = {
+  home_cleaning: { name:"Home Cleaning / Maid Service", icon:"🧹", color:"#4FC3F7", bookingLabel:"Cleaning Appointment", customerFields:["address","sqft","rooms","specialRequests"], photoLabel:"Upload photos of areas to clean", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Photos reviewed","Square footage verified","Service area confirmed","Supplies discussed"], lvInsight:"High density in LV — competitors include Life Maid Easy, Scrubb, LV Cleaning Services. Many solo operators on Craigslist without websites.", segment:"mix" },
+  landscaping: { name:"Landscaping / Lawn Care", icon:"🌿", color:"#66BB6A", bookingLabel:"Landscaping Service", customerFields:["address","lotSize","serviceType","specialRequests"], photoLabel:"Upload photos of your yard/property", photoRequired:true, waitingPeriodHours:48, approvalChecklist:["Property photos reviewed","Lot size estimated","Equipment needs assessed","Seasonal timing checked"], lvInsight:"Smiley's Lawn Care (since 2006), DiPhillipos (35+ yrs). Many small operators without web presence running off referrals only.", segment:"no_website" },
+  junk_removal: { name:"Junk Removal / Hauling", icon:"🚛", color:"#FF7043", bookingLabel:"Junk Removal Pickup", tagline:"Fast, Friendly Junk Removal & Hauling", customerFields:["address","itemDescription","estimatedVolume","accessNotes"], photoLabel:"Upload photos of items to be removed", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Item photos reviewed","Volume estimate confirmed","Access route clear","Hazardous materials check","Truck size determined"], pricing:[{id:"min",label:"Minimum Load",sublabel:"A few items",price:150},{id:"quarter",label:"1/4 Truck",sublabel:"Small room cleanout",price:250},{id:"half",label:"1/2 Truck",sublabel:"Garage or basement",price:550},{id:"full",label:"Full Truck",sublabel:"Whole house cleanout",price:1050}], copy:{bookingHeader:"Book a Pickup",walkAwayGuarantee:true,walkAwayText:"Look at the price, and if it's not what you expected — walk away. No fee, no guilt.",confirmationMessage:"We'll text you a confirmation within the hour.",footerText:"Locally owned and operated"}, lvInsight:"Saturated: Dumpster Dudez, Grinch Rentals, Call 2 Haul, and others. Photo-based quoting is STANDARD — BookKit is a natural fit.", segment:"has_website" },
+  handyman: { name:"Handyman / Home Repair", icon:"🔧", color:"#FFA726", bookingLabel:"Repair Service Request", customerFields:["address","issueDescription","urgency","specialRequests"], photoLabel:"Upload photos of the issue/area needing repair", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Issue photos reviewed","Scope of work estimated","Materials list drafted","Time estimate set"], lvInsight:"Ally Handyman, JT Max, Fritz Do It All — plus heavy Craigslist presence. Many solo operators would benefit from professional booking.", segment:"no_website" },
+  plumbing_hvac: { name:"Plumbing / HVAC", icon:"🔩", color:"#42A5F5", bookingLabel:"Service Call", customerFields:["address","systemType","issueDescription","urgency"], photoLabel:"Upload photos of the issue (if visible)", photoRequired:false, waitingPeriodHours:12, approvalChecklist:["Issue assessed","Emergency vs routine classified","Parts availability checked","Tech assigned"], lvInsight:"KMB Plumbing, Cooper Mechanical (45+ yrs), Mastery Plumbing. Established players with websites — subscription integration model.", segment:"has_website" },
+  tattoo_studio: { name:"Tattoo Studio", icon:"🎨", color:"#AB47BC", bookingLabel:"Tattoo Consultation / Session", customerFields:["designDescription","placement","size","colorOrBW"], photoLabel:"Upload reference images / design ideas", photoRequired:true, waitingPeriodHours:72, approvalChecklist:["Reference art reviewed","Design complexity assessed","Session time estimated","Artist availability checked","Age verification noted"], lvInsight:"Steel City Tattoo (since 2000), Famous Tattoo Works, LV Ink, Critical Acclaim, Amaryllis. Photo approval is CRITICAL to this industry.", segment:"has_website" },
+  salon_barber: { name:"Hair Salon / Barbershop", icon:"💇", color:"#EC407A", bookingLabel:"Hair Appointment", customerFields:["serviceType","stylistPreference","hairType","specialRequests"], photoLabel:"Upload inspiration photos (optional)", photoRequired:false, waitingPeriodHours:4, approvalChecklist:["Service type confirmed","Stylist available","Time slot open","Product allergies noted"], lvInsight:"Elysian Salon (Easton), many registered with LV Chamber. Mix of established shops and solo stylists working from home.", segment:"mix" },
+  pet_services: { name:"Pet Sitting / Dog Walking", icon:"🐾", color:"#8D6E63", bookingLabel:"Pet Care Booking", customerFields:["petType","petName","serviceType","duration","specialNeeds"], photoLabel:"Upload photos of your pet(s)", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Pet photos reviewed","Vaccination records requested","Behavioral notes checked","Emergency contact confirmed"], lvInsight:"Pawsitive Purfection, No Worries Pet Sitting (since 2007), Pawfect for You. Growing market with many solo operators.", segment:"no_website" },
+  event_planning: { name:"Wedding / Event Planning", icon:"🎉", color:"#EF5350", bookingLabel:"Event Consultation", customerFields:["eventType","guestCount","date","venue","budget"], photoLabel:"Upload inspiration / venue photos", photoRequired:false, waitingPeriodHours:48, approvalChecklist:["Date availability confirmed","Venue logistics reviewed","Budget range assessed","Vendor availability checked"], lvInsight:"An Affair to Remember, 27+ planners in Allentown alone on Eventective. Discover LV promotes wedding tourism. High-ticket, high-approval-need.", segment:"has_website" },
+  auto_detailing: { name:"Auto Detailing / Mobile Mechanic", icon:"🚗", color:"#78909C", bookingLabel:"Vehicle Service", customerFields:["vehicleType","year","serviceType","location"], photoLabel:"Upload photos of your vehicle's current condition", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Vehicle photos reviewed","Service scope confirmed","Mobile vs shop determined","Parts/supplies checked"], lvInsight:"Many mobile detailers and mechanics operate via Facebook/Instagram only — no formal booking. Huge BookKit opportunity.", segment:"no_website" },
+  pressure_washing: { name:"Pressure Washing", icon:"💦", color:"#26C6DA", bookingLabel:"Pressure Washing Job", customerFields:["address","surfaceType","areaSqFt","specialRequests"], photoLabel:"Upload photos of surfaces to be cleaned", photoRequired:true, waitingPeriodHours:24, approvalChecklist:["Surface photos reviewed","Area size estimated","Water source confirmed","Access checked"], lvInsight:"Mostly one-person operations running off word-of-mouth and Facebook. Very few have any web presence — prime new-website clients.", segment:"no_website" },
+  photography: { name:"Photography", icon:"📸", color:"#7E57C2", bookingLabel:"Photo Session", customerFields:["sessionType","location","date","guestCount","specialRequests"], photoLabel:"Upload style reference photos", photoRequired:false, waitingPeriodHours:48, approvalChecklist:["Date/time available","Location scouted or confirmed","Style match assessed","Equipment needs noted"], lvInsight:"Wedding, portrait, and real estate photographers all over LV. Many use Instagram as their only portfolio — would benefit from integrated booking.", segment:"mix" },
+  personal_training: { name:"Personal Training / Fitness", icon:"💪", color:"#F44336", bookingLabel:"Training Session", customerFields:["fitnessGoals","experience","injuries","preferredTime"], photoLabel:"Upload current physique photos (optional, private)", photoRequired:false, waitingPeriodHours:12, approvalChecklist:["Health questionnaire reviewed","Goals discussed","Schedule compatibility checked","Liability waiver sent"], lvInsight:"Growing segment with many trainers operating independently out of shared gym spaces. Usually book via text — no formal system.", segment:"no_website" },
+  tutoring: { name:"Tutoring / Music Lessons", icon:"📚", color:"#5C6BC0", bookingLabel:"Lesson Booking", customerFields:["subject","studentAge","skillLevel","preferredSchedule"], photoLabel:"Upload relevant materials (optional)", photoRequired:false, waitingPeriodHours:12, approvalChecklist:["Subject/instrument match confirmed","Student level assessed","Schedule slot available","In-person vs virtual decided"], lvInsight:"Referenced on Care.com for LV. Many private tutors and music teachers run informally — booking software adds professionalism and reduces no-shows.", segment:"no_website" },
+  mobile_notary: { name:"Mobile Notary", icon:"📋", color:"#009688", bookingLabel:"Notary Appointment", customerFields:["documentType","signerCount","location","urgency"], photoLabel:"Upload document preview (first page only)", photoRequired:false, waitingPeriodHours:4, approvalChecklist:["Document type verified","Signer count confirmed","Travel distance checked","ID requirements communicated"], lvInsight:"Greater LV Notary already offers mobile service. Growing demand from real estate, legal, healthcare. Fast turnaround needed — short approval window.", segment:"has_website" }
+};
+
+const FIELD_LABELS = { address:"Service Address", sqft:"Square Footage", rooms:"Rooms", specialRequests:"Special Requests", lotSize:"Lot Size", serviceType:"Service Type", itemDescription:"Item Description", estimatedVolume:"Estimated Volume", accessNotes:"Access Notes", issueDescription:"Issue Description", urgency:"Urgency", systemType:"System Type", designDescription:"Design Description", placement:"Body Placement", size:"Size", colorOrBW:"Color/B&W", stylistPreference:"Stylist Preference", hairType:"Hair Type", petType:"Pet Type", petName:"Pet Name", duration:"Duration", specialNeeds:"Special Needs", eventType:"Event Type", guestCount:"Guest Count", date:"Date", venue:"Venue", budget:"Budget", vehicleType:"Vehicle Type", year:"Year", location:"Location", surfaceType:"Surface Type", areaSqFt:"Area (sq ft)", sessionType:"Session Type", fitnessGoals:"Fitness Goals", experience:"Experience Level", injuries:"Injuries/Limitations", preferredTime:"Preferred Time", subject:"Subject/Instrument", studentAge:"Student Age", skillLevel:"Skill Level", preferredSchedule:"Preferred Schedule", documentType:"Document Type", signerCount:"Signer Count" };
+
+let currentFilter = "all";
+let currentSearch = "";
+
+function render() {
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  const entries = Object.entries(INDUSTRIES).filter(([k, v]) => {
+    const matchSearch = v.name.toLowerCase().includes(currentSearch.toLowerCase());
+    const matchSeg = currentFilter === "all" || v.segment === currentFilter;
+    return matchSearch && matchSeg;
+  });
+
+  grid.innerHTML = entries.map(([key, ind]) => `
+    <div class="card" onclick="openDemo('${key}')">
+      <div class="top">
+        <span class="icon">${ind.icon}</span>
+        <div>
+          <div class="name">${ind.name}</div>
+          <div class="badges">
+            <span class="badge-sm ${ind.segment === 'no_website' ? 'badge-seg' : ind.segment === 'has_website' ? 'badge-int' : 'badge-mix'}">
+              ${ind.segment === 'no_website' ? 'New Site' : ind.segment === 'has_website' ? 'Integration' : 'Either'}
+            </span>
+            <span class="badge-sm badge-time">${ind.waitingPeriodHours}h review</span>
+          </div>
+        </div>
+      </div>
+      <div class="insight">${ind.lvInsight}</div>
+      <div class="meta">
+        <span>${ind.photoRequired ? '📷 Photos required' : '📷 Photos optional'}</span>
+        <span>·</span>
+        <span>${ind.approvalChecklist.length} approval checks</span>
+      </div>
+    </div>
+  `).join("");
+
+  empty.style.display = entries.length === 0 ? "block" : "none";
+}
+
+function renderFilters() {
+  const counts = { all: Object.keys(INDUSTRIES).length, no_website: 0, has_website: 0, mix: 0 };
+  Object.values(INDUSTRIES).forEach(v => counts[v.segment]++);
+  const filters = [
+    { key:"all", label:"All Categories" },
+    { key:"no_website", label:"No Website (New Build)" },
+    { key:"has_website", label:"Has Website (Integration)" },
+    { key:"mix", label:"Mixed (Optimize)" }
+  ];
+  document.getElementById("filters").innerHTML = filters.map(f =>
+    `<button class="${currentFilter === f.key ? 'active' : ''}" onclick="setFilter('${f.key}')">${f.label} (${counts[f.key]})</button>`
+  ).join("");
+}
+
+function setFilter(f) { currentFilter = f; renderFilters(); render(); }
+
+function openModal(key) {
+  const ind = INDUSTRIES[key];
+  const segLabel = ind.segment === 'no_website' ? 'New Website Build' : ind.segment === 'has_website' ? 'Website Integration (Subscription)' : 'Either Model';
+
+  document.getElementById("modal-content").innerHTML = `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+      <span style="font-size:36px">${ind.icon}</span>
+      <div>
+        <h2>${ind.name}</h2>
+        <div class="sub">${ind.bookingLabel} · ${segLabel}</div>
+      </div>
+    </div>
+
+    <div class="lv-insight-box">
+      <div class="lv-label">Lehigh Valley Market Intel</div>
+      <div class="lv-text">${ind.lvInsight}</div>
+    </div>
+
+    <div class="config-section">
+      <h3>Approval Settings</h3>
+      <div class="config-row">
+        <span class="label">Review Waiting Period</span>
+        <div><input type="number" id="wp-${key}" value="${ind.waitingPeriodHours}" min="1" max="168" onchange="INDUSTRIES['${key}'].waitingPeriodHours=Number(this.value)"> hours</div>
+      </div>
+      <div class="config-row">
+        <span class="label">Photos Required</span>
+        <span class="value">${ind.photoRequired ? '✅ Yes' : '⬜ Optional'}</span>
+      </div>
+      <div class="config-row">
+        <span class="label">Photo Upload Label</span>
+        <span class="value" style="font-size:12px;color:#94a3b8">"${ind.photoLabel}"</span>
+      </div>
+    </div>
+
+    <div class="config-section">
+      <h3>Approval Checklist (${ind.approvalChecklist.length} items)</h3>
+      <ul class="checklist">${ind.approvalChecklist.map(c => `<li>${c}</li>`).join("")}</ul>
+    </div>
+
+    <div class="config-section">
+      <h3>Customer Form Fields</h3>
+      <div class="fields-list">${ind.customerFields.map(f => `<span class="field-tag">${FIELD_LABELS[f] || f}</span>`).join("")}</div>
+    </div>
+
+    <div class="config-section">
+      <h3>Theme</h3>
+      <div class="config-row">
+        <span class="label">Brand Color</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:24px;height:24px;border-radius:6px;background:${ind.color}"></div>
+          <span class="value">${ind.color}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Back</button>
+      <button class="btn btn-primary" onclick="openDemo('${key}')">✓ Open Booking Demo</button>
+    </div>
+
+    <div class="status-bar" id="status-${key}">
+      ✅ <strong>${ind.name}</strong> selected! Open <code>book.html</code> for the customer view or <code>admin.html</code> for the admin dashboard.
+    </div>
+  `;
+  document.getElementById("modal").classList.add("open");
+}
+
+function closeModal() { document.getElementById("modal").classList.remove("open"); }
+
+function openDemo(key) {
+  const ind = INDUSTRIES[key];
+  // Save the selection so the booking + admin pages can read it too
+  try {
+    localStorage.setItem("bookkit_config", JSON.stringify({
+      selectedIndustry: key, name: ind.name, icon: ind.icon, color: ind.color,
+      bookingLabel: ind.bookingLabel, photoLabel: ind.photoLabel,
+      photoRequired: ind.photoRequired, customerFields: ind.customerFields,
+      waitingPeriodHours: ind.waitingPeriodHours, segment: ind.segment,
+      configuredAt: new Date().toISOString()
+    }));
+  } catch (e) {}
+  // Open the live booking demo, themed for this industry
+  window.location.href = "book.html?industry=" + encodeURIComponent(key);
+}
+
+// ── Init ──
+document.getElementById("search").addEventListener("input", (e) => {
+  currentSearch = e.target.value;
+  render();
+});
+renderFilters();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crew Dashboard | BookKit</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a1a2e">
+<link rel="icon" href="assets/icon.png">
+<script src="config.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* --Login Screen -- */
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-card{background:#fff;border-radius:16px;padding:32px;max-width:340px;width:100%;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.login-card img{width:64px;height:64px;border-radius:14px;margin-bottom:12px}
+.login-card h1{font-size:20px;font-weight:800;margin-bottom:4px}
+.login-card p{font-size:13px;color:#888;margin-bottom:20px}
+.pin-input{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.pin-input input{width:48px;height:56px;text-align:center;font-size:24px;font-weight:800;border:2px solid #ddd;border-radius:10px;font-family:inherit}
+.pin-input input:focus{outline:none;border-color:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.1)}
+.pin-error{color:#dc2626;font-size:12px;display:none;margin-bottom:8px}
+.pin-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#16a34a;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.pin-btn:hover{background:#15803d}
+
+/* --Dashboard -- */
+.dashboard{display:none}
+.dash-header{background:#1a1a2e;color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+.dash-header img{width:40px;height:40px;border-radius:10px}
+.dash-header-text{flex:1}
+.dash-header-text .brand{font-size:11px;font-weight:700;opacity:.8;letter-spacing:.5px;text-transform:uppercase}
+.dash-header-text .dh-title{font-size:18px;font-weight:800}
+.dash-header .dh-date{font-size:12px;opacity:.7}
+.logout-btn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
+.logout-btn:hover{background:rgba(255,255,255,.25)}
+
+/* --Stats Bar -- */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border-bottom:1px solid #e8e8e8}
+.stat{padding:14px 8px;text-align:center;border-right:1px solid #f0f0f0}
+.stat:last-child{border-right:none}
+.stat .stat-num{font-size:22px;font-weight:900}
+.stat .stat-label{font-size:10px;color:#888;text-transform:uppercase;font-weight:600;letter-spacing:.3px}
+.stat.pending .stat-num{color:#d97706}
+.stat.confirmed .stat-num{color:#2563eb}
+.stat.enroute .stat-num{color:#7c3aed}
+.stat.complete .stat-num{color:#16a34a}
+
+/* --Tab Bar -- */
+.tab-bar{display:flex;background:#fff;border-bottom:1px solid #e8e8e8;padding:0 16px}
+.tab{padding:12px 16px;font-size:13px;font-weight:600;color:#888;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.tab.active{color:#16a34a;border-bottom-color:#16a34a}
+.tab:hover{color:#333}
+
+/* --Job Cards -- */
+.jobs-container{max-width:600px;margin:0 auto;padding:16px}
+.section-label{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;padding:8px 0 6px}
+.job-card{background:#fff;border-radius:12px;margin-bottom:10px;overflow:hidden;border:1px solid #e8e8e8;transition:box-shadow .2s}
+.job-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.job-top{display:flex;align-items:center;padding:12px 14px;gap:10px;cursor:pointer}
+.job-status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.job-status-dot.pending{background:#d97706}
+.job-status-dot.confirmed{background:#2563eb}
+.job-status-dot.enroute{background:#7c3aed}
+.job-status-dot.complete{background:#16a34a}
+.job-info{flex:1;min-width:0}
+.job-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.job-meta{font-size:11px;color:#888;display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.job-right{text-align:right;flex-shrink:0}
+.job-price{font-size:16px;font-weight:800;color:#16a34a}
+.job-time{font-size:11px;color:#888}
+
+/* --Job Detail (expanded) -- */
+.job-detail{display:none;padding:0 14px 14px;border-top:1px solid #f0f0f0}
+.job-detail.open{display:block}
+.jd-row{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f8f8f8;font-size:13px}
+.jd-row:last-child{border-bottom:none}
+.jd-label{color:#888;font-weight:600;min-width:80px;font-size:12px}
+.jd-value{font-weight:500}
+.jd-photos{display:flex;gap:6px;margin-top:6px}
+.jd-photos img{width:60px;height:60px;border-radius:8px;object-fit:cover;cursor:pointer;border:1px solid #ddd}
+.jd-photos img:hover{border-color:#16a34a}
+
+/* --Status Actions -- */
+.status-actions{display:flex;gap:8px;padding-top:10px}
+.status-btn{flex:1;padding:10px;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.status-btn.confirm-btn{background:#dbeafe;color:#2563eb}
+.status-btn.confirm-btn:hover{background:#bfdbfe}
+.status-btn.enroute-btn{background:#ede9fe;color:#7c3aed}
+.status-btn.enroute-btn:hover{background:#ddd6fe}
+.status-btn.complete-btn{background:#dcfce7;color:#16a34a}
+.status-btn.complete-btn:hover{background:#bbf7d0}
+.status-btn.call-btn{background:#fff;border:1px solid #ddd;color:#333}
+.status-btn.call-btn:hover{background:#f8f8f8}
+.status-btn.delete-btn{background:#fef2f2;color:#dc2626}
+.status-btn.delete-btn:hover{background:#fee2e2}
+
+/* --Empty State -- */
+.empty-state{text-align:center;padding:40px 20px;color:#aaa}
+.empty-state .empty-icon{font-size:48px;margin-bottom:8px}
+.empty-state p{font-size:14px}
+
+/* --Photo Modal -- */
+.photo-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;padding:20px}
+.photo-modal.open{display:flex}
+.photo-modal img{max-width:100%;max-height:90vh;border-radius:8px}
+.photo-modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer}
+
+/* --Footer -- */
+.dash-footer{text-align:center;padding:20px;font-size:11px;color:#aaa;margin-top:20px}
+
+@media(max-width:400px){
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid #f0f0f0}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <img src="assets/icon.png" alt="BookKit" onerror="this.style.display='none'">
+    <h1>Crew Dashboard</h1>
+    <p>Enter the 4-digit PIN to view bookings.</p>
+    <div class="pin-input" id="pinInput">
+      <input type="tel" maxlength="1" autofocus>
+      <input type="tel" maxlength="1">
+      <input type="tel" maxlength="1">
+      <input type="tel" maxlength="1">
+    </div>
+    <div class="pin-error" id="pinError">Wrong PIN. Try again.</div>
+    <button class="pin-btn" onclick="checkPin()">Unlock</button>
+    <p style="margin-top:16px;font-size:11px;color:#aaa">Default PIN: 2011 (year BookKit started)</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <img src="assets/icon.png" alt="BookKit" onerror="this.style.display='none'">
+    <div class="dash-header-text">
+      <div class="brand">BookKit</div>
+      <div class="dh-title">Crew Dashboard</div>
+    </div>
+    <div class="dh-date" id="dashDate"></div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="stats-bar" id="statsBar">
+    <div class="stat pending"><div class="stat-num" id="stat-pending">0</div><div class="stat-label">Pending</div></div>
+    <div class="stat confirmed"><div class="stat-num" id="stat-confirmed">0</div><div class="stat-label">Confirmed</div></div>
+    <div class="stat enroute"><div class="stat-num" id="stat-enroute">0</div><div class="stat-label">En Route</div></div>
+    <div class="stat complete"><div class="stat-num" id="stat-complete">0</div><div class="stat-label">Done Today</div></div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab('today')">Today</div>
+    <div class="tab" onclick="switchTab('upcoming')">Upcoming</div>
+    <div class="tab" onclick="switchTab('completed')">Completed</div>
+  </div>
+
+  <div class="jobs-container" id="jobsContainer">
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">&#x1F4ED;</div>
+      <p>No bookings yet. They will show up here when customers book online.</p>
+    </div>
+  </div>
+
+  <div class="dash-footer">
+    BookKit Crew Dashboard &middot; <a href="index.html" style="color:#16a34a">Back to site</a>
+  </div>
+</div>
+
+<!-- Photo Modal -->
+<div class="photo-modal" id="photoModal" onclick="closePhotoModal()">
+  <button class="photo-modal-close" onclick="closePhotoModal()">&times;</button>
+  <img id="photoModalImg" src="" alt="Job photo">
+</div>
+
+<script>
+// ==========================================
+// BookKit - Admin Dashboard
+// ==========================================
+
+const ADMIN_PIN = (typeof APP_CONFIG !== 'undefined') ? APP_CONFIG.admin.pin : '2011';
+let currentTab = 'today';
+
+// --PIN Input Auto-advance --
+const pinInputs = document.querySelectorAll('#pinInput input');
+pinInputs.forEach((inp, i) => {
+  inp.addEventListener('input', e => {
+    if (e.target.value && i < 3) pinInputs[i+1].focus();
+  });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Backspace' && !e.target.value && i > 0) pinInputs[i-1].focus();
+    if (e.key === 'Enter') checkPin();
+  });
+});
+
+function checkPin() {
+  const pin = Array.from(pinInputs).map(i => i.value).join('');
+  if (pin === ADMIN_PIN) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadDashboard();
+  } else {
+    document.getElementById('pinError').style.display = 'block';
+    pinInputs.forEach(i => { i.value = ''; });
+    pinInputs[0].focus();
+  }
+}
+
+function logout() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+  pinInputs.forEach(i => { i.value = ''; });
+  pinInputs[0].focus();
+}
+
+// --Load Dashboard --
+function loadDashboard() {
+  // Set date
+  const now = new Date();
+  const opts = { weekday: 'long', month: 'short', day: 'numeric' };
+  document.getElementById('dashDate').textContent = now.toLocaleDateString('en-US', opts);
+
+  renderJobs();
+}
+
+function getBookings() {
+  return JSON.parse(localStorage.getItem('bookkit_bookings') || '[]');
+}
+
+function saveBookings(bookings) {
+  localStorage.setItem('bookkit_bookings', JSON.stringify(bookings));
+}
+
+function renderJobs() {
+  const bookings = getBookings();
+  const today = new Date().toISOString().split('T')[0];
+  const container = document.getElementById('jobsContainer');
+  const empty = document.getElementById('emptyState');
+
+  // Filter by tab
+  let filtered;
+  if (currentTab === 'today') {
+    filtered = bookings.filter(b => b.date === today && b.status !== 'complete');
+  } else if (currentTab === 'upcoming') {
+    filtered = bookings.filter(b => b.date > today);
+  } else {
+    filtered = bookings.filter(b => b.status === 'complete');
+  }
+
+  // Update stats (today only)
+  const todayBookings = bookings.filter(b => b.date === today);
+  document.getElementById('stat-pending').textContent = todayBookings.filter(b => b.status === 'pending').length;
+  document.getElementById('stat-confirmed').textContent = todayBookings.filter(b => b.status === 'confirmed').length;
+  document.getElementById('stat-enroute').textContent = todayBookings.filter(b => b.status === 'enroute').length;
+  document.getElementById('stat-complete').textContent = todayBookings.filter(b => b.status === 'complete').length;
+
+  // Clear container except empty state
+  Array.from(container.children).forEach(child => {
+    if (child.id !== 'emptyState') child.remove();
+  });
+
+  if (!filtered.length) {
+    empty.style.display = 'block';
+    const msgs = { today: 'No jobs for today.', upcoming: 'No upcoming bookings.', completed: 'No completed jobs yet.' };
+    empty.querySelector('p').textContent = msgs[currentTab];
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  // Sort: pending first, then by time
+  filtered.sort((a, b) => {
+    const order = { pending: 0, confirmed: 1, enroute: 2, complete: 3 };
+    return (order[a.status] || 0) - (order[b.status] || 0);
+  });
+
+  filtered.forEach(job => {
+    const card = document.createElement('div');
+    card.className = 'job-card';
+    card.id = 'job-' + job.code;
+
+    const statusLabel = { pending: 'Pending', confirmed: 'Confirmed', enroute: 'En Route', complete: 'Complete' };
+
+    // Get photos
+    const photos = JSON.parse(localStorage.getItem('bookkit_photos_' + job.code) || '[]');
+
+    card.innerHTML = `
+      <div class="job-top" onclick="toggleJob('${job.code}')">
+        <div class="job-status-dot ${job.status}"></div>
+        <div class="job-info">
+          <div class="job-name">${job.name}</div>
+          <div class="job-meta">
+            <span>${job.size}</span>
+            <span>${job.town}</span>
+            <span>${statusLabel[job.status]}</span>
+          </div>
+        </div>
+        <div class="job-right">
+          <div class="job-price">$${job.price.toLocaleString()}</div>
+          <div class="job-time">${job.time}</div>
+        </div>
+      </div>
+      <div class="job-detail" id="detail-${job.code}">
+        <div class="jd-row"><div class="jd-label">Address</div><div class="jd-value">${job.address}, ${job.town}</div></div>
+        <div class="jd-row"><div class="jd-label">Phone</div><div class="jd-value"><a href="tel:${job.phone.replace(/\D/g, '')}">${job.phone}</a></div></div>
+        <div class="jd-row"><div class="jd-label">Code</div><div class="jd-value" style="font-family:monospace;font-weight:700">${job.code}</div></div>
+        ${job.notes ? `<div class="jd-row"><div class="jd-label">Notes</div><div class="jd-value">${job.notes}</div></div>` : ''}
+        ${photos.length ? `<div class="jd-row"><div class="jd-label">Photos</div><div class="jd-value"><div class="jd-photos">${photos.map(p => `<img src="${p}" alt="Job photo" onclick="event.stopPropagation();openPhoto('${p}')">`).join('')}</div></div></div>` : ''}
+        <div class="jd-row"><div class="jd-label">Booked</div><div class="jd-value">${new Date(job.createdAt).toLocaleString()}</div></div>
+        <div class="status-actions">
+          ${job.status === 'pending' ? `<button class="status-btn confirm-btn" onclick="event.stopPropagation();updateStatus('${job.code}','confirmed')">Confirm</button>` : ''}
+          ${job.status === 'confirmed' ? `<button class="status-btn enroute-btn" onclick="event.stopPropagation();updateStatus('${job.code}','enroute')">En Route</button>` : ''}
+          ${job.status === 'enroute' ? `<button class="status-btn complete-btn" onclick="event.stopPropagation();updateStatus('${job.code}','complete')">Mark Done</button>` : ''}
+          <a class="status-btn call-btn" href="tel:${job.phone.replace(/\D/g, '')}" onclick="event.stopPropagation()" style="text-decoration:none;text-align:center">Call</a>
+          <button class="status-btn delete-btn" onclick="event.stopPropagation();deleteJob('${job.code}')">Delete</button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function toggleJob(code) {
+  const detail = document.getElementById('detail-' + code);
+  detail.classList.toggle('open');
+}
+
+function updateStatus(code, newStatus) {
+  const bookings = getBookings();
+  const job = bookings.find(b => b.code === code);
+  if (job) {
+    job.status = newStatus;
+    saveBookings(bookings);
+    renderJobs();
+  }
+}
+
+function deleteJob(code) {
+  if (!confirm('Delete this booking? This cannot be undone.')) return;
+  let bookings = getBookings().filter(b => b.code !== code);
+  saveBookings(bookings);
+  localStorage.removeItem('bookkit_photos_' + code);
+  renderJobs();
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderJobs();
+}
+
+function openPhoto(url) {
+  document.getElementById('photoModalImg').src = url;
+  document.getElementById('photoModal').classList.add('open');
+}
+
+function closePhotoModal() {
+  document.getElementById('photoModal').classList.remove('open');
+}
+
+if (typeof APP_CONFIG !== 'undefined') {
+  document.querySelector('.brand').textContent = APP_CONFIG.businessName;
+}
+</script>
+<script>
+(function(){document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j'))e.preventDefault();if(e.key==='F12')e.preventDefault()});})();
+</script>
+</body>
+</html>

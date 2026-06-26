@@ -1,0 +1,111 @@
+<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track My Review Request | RepKit</title>
+<meta name="description" content="Check the status of your review request.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.png">
+<script src="config.js"></script>
+<style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+.header{color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.header img{width:40px;height:40px;border-radius:10px}
+.header-text .brand{font-size:11px;font-weight:700;opacity:.8;letter-spacing:.5px;text-transform:uppercase}
+.header-text .title{font-size:18px;font-weight:800}
+.container{max-width:460px;margin:0 auto;padding:24px 20px}
+.search-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center;margin-bottom:20px}
+.search-card h1{font-size:22px;font-weight:800;margin-bottom:4px}
+.search-card p{font-size:13px;color:#888;margin-bottom:20px}
+.code-input input{width:100%;max-width:280px;padding:14px 16px;border:2px solid #ddd;border-radius:12px;font-size:18px;font-weight:700;text-align:center;letter-spacing:3px;text-transform:uppercase;font-family:monospace}
+.code-input input:focus{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.search-btn{width:100%;max-width:280px;padding:14px;border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:12px}
+.search-btn:hover{opacity:.9}
+.search-error{color:#dc2626;font-size:13px;margin-top:10px;display:none}
+.result-card{display:none;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.result-header{padding:20px;text-align:center;border-bottom:1px solid #f0f0f0}
+.result-header .status-badge{display:inline-block;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.status-badge.sent{background:#fef3c7;color:#92400e}
+.status-badge.opened{background:#dbeafe;color:#1e40af}
+.status-badge.completed{background:#dcfce7;color:#166534}
+.status-badge.expired{background:#f3f4f6;color:#6b7280}
+.result-header h2{font-size:18px;font-weight:800;margin-top:8px}
+.result-header .result-code{font-size:12px;color:#888;font-family:monospace;margin-top:4px}
+.timeline{padding:20px}
+.tl-step{display:flex;gap:14px;padding-bottom:20px;position:relative}
+.tl-step:last-child{padding-bottom:0}
+.tl-dot-col{display:flex;flex-direction:column;align-items:center;width:24px;flex-shrink:0}
+.tl-dot{width:24px;height:24px;border-radius:50%;border:3px solid #e0e0e0;background:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;z-index:1;transition:all .3s}
+.tl-dot.active{border-color:currentColor;background:currentColor;color:#fff}
+.tl-dot.done{border-color:currentColor;background:currentColor;color:#fff}
+.tl-line{width:3px;flex:1;background:#e0e0e0;margin:4px 0}
+.tl-line.done{background:currentColor}
+.tl-step:last-child .tl-line{display:none}
+.tl-content{flex:1;padding-top:2px}
+.tl-title{font-size:14px;font-weight:700;color:#ccc}
+.tl-title.active,.tl-title.done{color:#1a1a2e}
+.tl-desc{font-size:12px;color:#aaa;margin-top:2px}
+.review-cta{margin:20px;padding:16px;border-radius:12px;text-align:center;display:none}
+.review-cta a{color:#fff;font-weight:700;font-size:14px}
+.powered-by{text-align:center;padding:24px;font-size:11px;color:#aaa}
+.powered-by a{color:#888;text-decoration:none;font-weight:600}</style>
+</head>
+<body>
+
+<div class="header" id="header">
+  <img src="assets/icon.png" alt="" onerror="this.style.display='none'">
+  <div class="header-text">
+    <div class="brand" id="headerBrand">RepKit</div>
+    <div class="title">Review Request Tracker</div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="search-card" id="searchCard">
+    <h1>Track Your Request</h1>
+    <p>Enter the code from your review request message</p>
+    <div class="code-input">
+      <input type="text" id="codeInput" maxlength="8" placeholder="RK-XXXX" oninput="this.value=this.value.toUpperCase()">
+    </div>
+    <button class="search-btn" id="searchBtn" onclick="lookupRequest()">Look Up</button>
+    <div class="search-error" id="searchError">Request not found. Check your code and try again.</div>
+  </div>
+
+  
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <div class="status-badge" id="statusBadge">SENT</div>
+      <h2 id="resultName">Review Request</h2>
+      <div class="result-code" id="resultCode">RK-XXXX</div>
+    </div>
+
+    <div class="timeline" id="timeline"></div>
+
+    <div class="review-cta" id="reviewCta">
+      <a href="review.html" id="reviewLink">Leave Your Review Now &rarr;</a>
+    </div>
+  </div>
+
+  <div class="powered-by">
+    <a href="#">Powered by RepKit &middot; OpsyncHQ</a>
+  </div>
+</div>
+
+<script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
+const DEMO_REQUESTS=[{code:'RK-4821',name:'Sarah Mitchell',status:'completed',sentAt:'2 days ago',openedAt:'2 days ago',completedAt:'1 day ago',platform:'Google',rating:5},{code:'RK-7392',name:'James Rodriguez',status:'opened',sentAt:'1 day ago',openedAt:'6 hours ago',completedAt:null,platform:null,rating:null},{code:'RK-1054',name:'Emily Chen',status:'sent',sentAt:'3 hours ago',openedAt:null,completedAt:null,platform:null,rating:null},{code:'RK-6628',name:'Michael Thompson',status:'expired',sentAt:'10 days ago',openedAt:null,completedAt:null,platform:null,rating:null},];function init(){const c=APP_CONFIG.colors;document.getElementById('header').style.background=c.primary;document.getElementById('searchBtn').style.background=c.primary;document.querySelector('.code-input input').addEventListener('focus',function(){this.style.borderColor=c.primary;});document.getElementById('headerBrand').textContent=APP_CONFIG.businessName;const code=new URLSearchParams(window.location.search).get('code');if(code){document.getElementById('codeInput').value=code.toUpperCase();lookupRequest();}}
+function lookupRequest(){const code=document.getElementById('codeInput').value.trim().toUpperCase();if(!code)return;const req=DEMO_REQUESTS.find(r=>r.code===code);const errorEl=document.getElementById('searchError');if(!req){errorEl.style.display='block';return;}
+errorEl.style.display='none';document.getElementById('searchCard').style.display='none';document.getElementById('resultCard').style.display='block';const badge=document.getElementById('statusBadge');badge.textContent=req.status.toUpperCase();badge.className='status-badge '+req.status;document.getElementById('resultName').textContent='Review Request for '+req.name;document.getElementById('resultCode').textContent=req.code;const c=APP_CONFIG.colors.primary;buildTimeline(req,c);if(req.status==='opened'){const cta=document.getElementById('reviewCta');cta.style.display='block';cta.style.backgroundColor=APP_CONFIG.colors.primaryLight;document.getElementById('reviewLink').style.color=APP_CONFIG.colors.primary;}}
+function buildTimeline(req,color){const steps=[{key:'sent',title:'Request Sent',desc:req.sentAt?`Sent ${req.sentAt}`:'Pending'},{key:'opened',title:'Link Opened',desc:req.openedAt?`Opened ${req.openedAt}`:'Waiting for customer to open'},{key:'completed',title:'Review Submitted',desc:req.completedAt?`${req.platform}&middot; ${req.rating}&#x2605; &middot; ${req.completedAt}`:'Waiting for review'},{key:'thanked',title:'Thank You Sent',desc:req.status==='completed'?'Auto-sent after review':'Sent after review is submitted'},];const statusOrder=['sent','opened','completed','thanked'];const currentIdx=req.status==='expired'?0:statusOrder.indexOf(req.status);const container=document.getElementById('timeline');container.innerHTML='';steps.forEach((step,i)=>{const isDone=i<=currentIdx;const isActive=i===currentIdx;const div=document.createElement('div');div.className='tl-step';div.style.color=color;div.innerHTML=`<div class="tl-dot-col"><div class="tl-dot ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}">${isDone?'&#x2713;':(i+1)}</div><div class="tl-line ${i < currentIdx ? 'done' : ''}"></div></div><div class="tl-content"><div class="tl-title ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}">${step.title}</div><div class="tl-desc">${step.desc}</div></div>`;container.appendChild(div);});}
+init();</script>
+<script>
+/* (c) 2026 OpsyncHQ */
+(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 OpsyncHQ Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
+</script>
+</body>

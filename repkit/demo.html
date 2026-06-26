@@ -1,0 +1,159 @@
+<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Demo | RepKit Review System</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/icon.png">
+<script src="config.js"></script>
+<style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#1a1a2e;line-height:1.6;-webkit-font-smoothing:antialiased}
+.demo-header{color:#fff;padding:32px 20px;text-align:center}
+.demo-header img{width:72px;height:72px;border-radius:16px;margin-bottom:12px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.demo-header .demo-icon{width:72px;height:72px;border-radius:16px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:40px;background:rgba(255,255,255,.2)}
+.demo-header h1{font-size:24px;font-weight:900;margin-bottom:4px}
+.demo-header .subtitle{font-size:14px;opacity:.85;margin-bottom:16px}
+.demo-badge{display:inline-block;background:rgba(255,255,255,.2);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;backdrop-filter:blur(8px)}
+.container{max-width:520px;margin:0 auto;padding:24px 20px}
+.info-banner{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px;margin-bottom:24px;font-size:13px;color:#1e40af}
+.info-banner strong{display:block;font-size:14px;margin-bottom:4px}
+.section-title{font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.demo-card{background:#fff;border-radius:14px;padding:20px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,.05);border:1px solid #e8e8e8;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit;display:block}
+.demo-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-1px)}
+.demo-card .card-icon{font-size:28px;margin-bottom:8px}
+.demo-card h3{font-size:16px;font-weight:800;margin-bottom:4px}
+.demo-card p{font-size:13px;color:#666;margin-bottom:8px}
+.demo-card .card-hint{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.sample-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px}
+.sample-table th{text-align:left;padding:8px 10px;background:#f8f8f8;font-weight:700;color:#666;text-transform:uppercase;font-size:10px;letter-spacing:.3px;border-bottom:1px solid #e8e8e8}
+.sample-table td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+.sample-table .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.stat-card{background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #e8e8e8}
+.stat-card .stat-num{font-size:28px;font-weight:900}
+.stat-card .stat-label{font-size:11px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.powered-by{text-align:center;padding:24px;font-size:11px;color:#aaa;margin-top:20px}
+.powered-by a{text-decoration:none;font-weight:600}
+.powered-by .opsync{font-size:12px;font-weight:700;color:#666;margin-bottom:4px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:12px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}</style>
+</head>
+<body>
+
+<div class="demo-header" id="demoHeader">
+  <img src="assets/icon.png" alt="" onerror="this.style.display='none';document.getElementById('demoIcon').style.display='flex'">
+  <div class="demo-icon" id="demoIcon" style="display:none">&#x2B50;</div>
+  <h1 id="demoTitle">RepKit Review System</h1>
+  <div class="subtitle" id="demoSubtitle">Automated review requests, reputation tracking & response management</div>
+  <div class="demo-badge">Interactive Demo</div>
+</div>
+
+<div class="container">
+
+  <div class="info-banner">
+    <strong>&#x1F44B; Welcome to the RepKit Demo</strong>
+    This is a fully interactive preview loaded with sample data. Explore the customer review page, admin dashboard, and request tracker below. All configured via <code>config.js</code>.
+  </div>
+
+  
+  <div class="section-title">Current Reputation Snapshot</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num" id="statReviews" style="color:#2563eb">85</div>
+      <div class="stat-label">Total Reviews</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#FBBF24">4.6 &#x2605;</div>
+      <div class="stat-label">Avg Rating</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statRate" style="color:#16a34a">72%</div>
+      <div class="stat-label">Response Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:#8b5cf6">33%</div>
+      <div class="stat-label">Conversion Rate</div>
+    </div>
+  </div>
+
+  
+  <div class="section-title">Try It Out</div>
+
+  <a class="demo-card" href="review.html?name=Demo+Customer" id="cardReview">
+    <div class="card-icon">&#x2B50;</div>
+    <h3>Customer Review Page</h3>
+    <p>The branded page customers see when they click the review link in their SMS or email. Rate, comment, and get directed to Google/Yelp/Facebook.</p>
+    <div class="card-hint" id="hintReview">Open Review Page &rarr;</div>
+  </a>
+
+  <a class="demo-card" href="admin.html" id="cardAdmin">
+    <div class="card-icon">&#x1F4CA;</div>
+    <h3>Admin Reputation Hub</h3>
+    <p>PIN-protected dashboard. View all reviews, respond to customers, send review requests, flag negative reviews. PIN: <strong>0000</strong></p>
+    <div class="card-hint" id="hintAdmin">Open Admin Dashboard &rarr;</div>
+  </a>
+
+  <a class="demo-card" href="tracker.html?code=RK-4821" id="cardTracker">
+    <div class="card-icon">&#x1F4CD;</div>
+    <h3>Request Tracker</h3>
+    <p>Customers can track their review request status. Try code <strong>RK-4821</strong> (completed), <strong>RK-7392</strong> (opened), or <strong>RK-1054</strong> (sent).</p>
+    <div class="card-hint" id="hintTracker">Open Tracker &rarr;</div>
+  </a>
+
+  
+  <div class="section-title">Sample Review Data</div>
+  <div style="background:#fff;border-radius:14px;padding:16px;border:1px solid #e8e8e8;margin-bottom:12px;overflow-x:auto">
+    <table class="sample-table">
+      <thead>
+        <tr><th>Customer</th><th>Platform</th><th>Rating</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sarah Mitchell</td><td>Google</td><td>&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</td><td><span class="status-dot" style="background:#16a34a"></span>Responded</td></tr>
+        <tr><td>Emily Chen</td><td>Google</td><td>&#x2B50;</td><td><span class="status-dot" style="background:#dc2626"></span>Flagged</td></tr>
+        <tr><td>James Rodriguez</td><td>Yelp</td><td>&#x2B50;&#x2B50;&#x2B50;&#x2B50;</td><td><span class="status-dot" style="background:#2563eb"></span>Responded</td></tr>
+        <tr><td>Ashley Williams</td><td>Google</td><td>&#x2B50;&#x2B50;</td><td><span class="status-dot" style="background:#dc2626"></span>Flagged</td></tr>
+        <tr><td>David Kim</td><td>Yelp</td><td>&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</td><td><span class="status-dot" style="background:#16a34a"></span>Responded</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <div class="section-title">How RepKit Works</div>
+  <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #e8e8e8;margin-bottom:12px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#2563eb;flex-shrink:0">1</div>
+        <div><strong style="font-size:13px">Customer completes a booking</strong><div style="font-size:12px;color:#888">Via BookKit or manual entry in RepKit admin</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#2563eb;flex-shrink:0">2</div>
+        <div><strong style="font-size:13px">RepKit sends a review request</strong><div style="font-size:12px;color:#888">SMS or email with your branded review link, sent automatically after a configurable delay</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#2563eb;flex-shrink:0">3</div>
+        <div><strong style="font-size:13px">Customer rates + picks a platform</strong><div style="font-size:12px;color:#888">They see your branded review page, rate their experience, and get directed to Google, Yelp, or Facebook</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#2563eb;flex-shrink:0">4</div>
+        <div><strong style="font-size:13px">You manage + respond from the hub</strong><div style="font-size:12px;color:#888">All reviews in one place. Response templates. Negative alerts. Analytics.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="powered-by">
+    <div class="opsync">OpsyncHQ</div>
+    <a href="#" id="poweredLink">Powered by <span>RepKit</span> &middot; White-label reputation management</a>
+  </div>
+</div>
+
+<script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
+function init(){const c=APP_CONFIG.colors;const ind=APP_CONFIG.getIndustry();document.getElementById('demoHeader').style.background=`linear-gradient(135deg,${c.primary}0%,${c.primaryDark}100%)`;document.getElementById('demoTitle').textContent=APP_CONFIG.businessName+' - RepKit';document.getElementById('statReviews').style.color=c.primary;document.getElementById('statRate').style.color=c.primary;['cardReview','cardAdmin','cardTracker'].forEach(id=>{const card=document.getElementById(id);card.addEventListener('mouseenter',()=>card.style.borderColor=c.primary);card.addEventListener('mouseleave',()=>card.style.borderColor='#e8e8e8');});['hintReview','hintAdmin','hintTracker'].forEach(id=>{document.getElementById(id).style.color=c.primary;});document.getElementById('poweredLink').style.color=c.primary;}
+init();</script>
+<script>
+/* (c) 2026 OpsyncHQ */
+(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 OpsyncHQ Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthori
