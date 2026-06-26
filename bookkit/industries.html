@@ -255,11 +255,12 @@ function openModal(key) {
 
     <div class="actions">
       <button class="btn btn-secondary" onclick="closeModal()">Back</button>
-      <button class="btn btn-primary" onclick="openDemo('${key}')">✓ Open Booking Demo</button>
+      <button class="btn btn-primary" onclick="openDemo('${key}')">📅 Customer View</button>
+      <button class="btn btn-primary" onclick="openAdmin('${key}')">📋 Admin Dashboard</button>
     </div>
 
     <div class="status-bar" id="status-${key}">
-      ✅ <strong>${ind.name}</strong> selected! Open <code>book.html</code> for the customer view or <code>admin.html</code> for the admin dashboard.
+      ✅ <strong>${ind.name}</strong> loaded. <strong>Customer View</strong> is the booking flow your customers see. <strong>Admin Dashboard</strong> is your crew's command center (PIN <strong>2011</strong>).
     </div>
   `;
   document.getElementById("modal").classList.add("open");
@@ -267,7 +268,7 @@ function openModal(key) {
 
 function closeModal() { document.getElementById("modal").classList.remove("open"); }
 
-function openDemo(key) {
+function saveIndustry(key) {
   const ind = INDUSTRIES[key];
   // Save the selection so the booking + admin pages can read it too
   try {
@@ -279,8 +280,18 @@ function openDemo(key) {
       configuredAt: new Date().toISOString()
     }));
   } catch (e) {}
+}
+
+function openDemo(key) {
+  saveIndustry(key);
   // Open the live booking demo, themed for this industry
   window.location.href = "book.html?industry=" + encodeURIComponent(key);
+}
+
+function openAdmin(key) {
+  saveIndustry(key);
+  // Open the crew dashboard so the user can see the admin side of BookKit
+  window.location.href = "admin.html?industry=" + encodeURIComponent(key);
 }
 
 // ── Init ──
