@@ -157,7 +157,7 @@ function render() {
   });
 
   grid.innerHTML = entries.map(([key, ind]) => `
-    <div class="card" onclick="openDemo('${key}')">
+    <div class="card" onclick="openModal('${key}')">
       <div class="top">
         <span class="icon">${ind.icon}</span>
         <div>
