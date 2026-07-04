@@ -624,8 +624,10 @@
             <textarea id="af-notes" name="notes" rows="2" placeholder="Biggest competitor, what you're hoping for, etc."></textarea>
           </div>
         </div>
+        <!-- honeypot: hidden from humans, bots fill it -> server drops the lead -->
+        <input id="af-hp" name="company_website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit" class="btn submit">✉️ Send me my free audit</button>
-        <p class="audit-fine">No credit card · no sales calls · under 1 minute</p>
+        <p class="audit-fine">No credit card · no sales calls · under 1 minute. By submitting, you agree Foundwick may contact you (including by text) about your request.</p>
         <div class="audit-msg" id="auditMsg" role="status" aria-live="polite"></div>
       </form>
 
@@ -747,11 +749,13 @@
       body: JSON.stringify({
         businessId: 'beeconnect',
         name: name, business: business, contact: contact, need: need,
-        email: email, website: website, industry: industry, city: city
+        email: email, website: website, industry: industry, city: city,
+        hp: val('af-hp')
       })
     })
     .then(function(r){ return r.json().catch(function(){ return {}; }); })
-    .then(function(){
+    .then(function(d){
+      if (!d || d.ok === false) throw new Error('not delivered');
       form.reset();
       btn.disabled = false; btn.textContent = orig;
       setMsg('ok', 'Thanks ' + name + "! Got it — we'll send your free AI Visibility Audit to " + email + ' shortly.');
@@ -772,7 +776,7 @@
     brainUrl:   "https://beebot-brain.interlinkcrafts.workers.dev",
     name:       "Foundwick",
     tagline:    "Get found in AI search",
-    greeting:   "Hi! I'm the Foundwick assistant. Want to know how to get your business found in AI search like ChatGPT and Google? Ask me anything — or grab a free AI Visibility Audit.",
+    greeting:   "Hi! I'm Foundwick's AI assistant. Want to know how to get your business found in AI search like ChatGPT and Google? Ask me anything — or grab a free AI Visibility Audit.",
     brand:      "#F5B700",
     ink:        "#1A1A1A",
     quickReplies: ["What do you do?", "How much does it cost?", "Get my free audit"]
@@ -903,6 +907,7 @@
       typing.remove();
       var reply = (d && d.reply) ? d.reply
         : "Sorry, I had trouble there — try again, or grab the free audit below.";
+      reply = reply.replace(/\[\[LEAD[^\]]*\]\]/i, '').trim(); // safety: never show the capture tag
       addMsg('bot', reply);
       messages.push({ role: 'assistant', content: reply });
     })
@@ -926,8 +931,10 @@
       + '<input class="bb-b" placeholder="Business name" />'
       + '<input class="bb-c" placeholder="Best email or phone" />'
       + '<textarea class="bb-need" rows="2" placeholder="What do you need? (optional)"></textarea>'
+      + '<input class="bb-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />'
       + '<button class="bb-submit">Send my free audit request</button>'
       + '<button class="bb-cancel">Maybe later</button>'
+      + '<div style="font-size:11px;color:#888;line-height:1.35;margin-top:4px">You are chatting with an AI assistant. By sending this you agree Foundwick may contact you (including by text) about your request.</div>'
       + '</div>';
     body.appendChild(wrap);
     body.scrollTop = body.scrollHeight;
@@ -945,10 +952,11 @@
       fetch(CFG.brainUrl + '/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ businessId: CFG.businessId, name: name, business: business, contact: contact, need: need })
+        body: JSON.stringify({ businessId: CFG.businessId, name: name, business: business, contact: contact, need: need, hp: wrap.querySelector('.bb-hp').value })
       })
-      .then(function (r) { return r.json(); })
-      .then(function () {
+      .then(function (r) { return r.json().catch(function(){ return {}; }); })
+      .then(function (d) {
+        if (!d || d.ok === false) throw new Error('not delivered');
         wrap.remove();
         addMsg('bot', "Thanks " + name + "! Got your details — we'll reach out with your free AI Visibility Audit. Anything else I can answer?");
       })
