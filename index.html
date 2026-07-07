@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html lang="en"><head> 
+<!DOCTYPE html>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Foundwick — Be the Business AI Recommends | Lehigh Valley, PA</title>
@@ -7,7 +7,6 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Foundwick">
 <link rel="canonical" href="https://foundwick.com/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230f4a3e'/%3E%3Cline x1='24' y1='40' x2='24' y2='20' stroke='%23fff' stroke-width='3.5' stroke-linecap='round'/%3E%3Cellipse cx='24' cy='16' rx='5' ry='7' fill='%23e8943a'/%3E%3Cellipse cx='24' cy='15' rx='3' ry='4.5' fill='%23f4b86a'/%3E%3Cpath d='M12 30 Q12 20 24 14' stroke='%23fff' stroke-width='2' fill='none' opacity='0.3' stroke-linecap='round'/%3E%3Cpath d='M36 30 Q36 20 24 14' stroke='%23fff' stroke-width='2' fill='none' opacity='0.3' stroke-linecap='round'/%3E%3Cpath d='M6 34 Q6 18 24 10' stroke='%23fff' stroke-width='2' fill='none' opacity='0.15' stroke-linecap='round'/%3E%3Cpath d='M42 34 Q42 18 24 10' stroke='%23fff' stroke-width='2' fill='none' opacity='0.15' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -48,9 +47,13 @@
     { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Hive — Full AI Front Desk (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "AIO/GEO Deep Audit (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "200", "maxPrice": "300", "priceCurrency": "USD" } },
+    { "@type": "Offer", "name": "GBP Rescue & Optimization (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "250", "maxPrice": "400", "priceCurrency": "USD" } },
+    { "@type": "Offer", "name": "Pro Email Setup (one-time)", "price": "125", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Spanish Site Add-On (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "150", "maxPrice": "250", "priceCurrency": "USD" } },
     { "@type": "Offer", "name": "AI Chat Assistant (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "29", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "RepKit Reviews (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "USD", "unitText": "MONTH" } },
-    { "@type": "Offer", "name": "BookKit Online Booking (à la carte, monthly; $99 one-time setup)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "49", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Care Plan — Hosting + Edits (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Google Business Profile Management (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Website build (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "750", "priceCurrency": "USD" } }
   ]
@@ -89,7 +92,7 @@
     {
       "@type": "Question",
       "name": "What does it cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. After that, plans are simple and monthly: Spark is $99, Buzz is $179, and Hive is $279 per month. Spark gets you found in AI search; Buzz adds automated reviews and an AI chat assistant; Hive is the full AI front desk with online booking. Need a new website too? Builds start around $750 one-time, waived with an annual plan. No long contracts." }
+      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. Monthly plans: Spark $99 (get found in AI), Buzz $179 (adds reviews + AI chat), Hive $279 (full AI front desk with booking). One-time services include a deep AIO/GEO Audit ($200–300), GBP Rescue if your Google profile got suspended ($250–400), Pro Email Setup ($125), and a Spanish Site Add-On ($150–250). Website builds start around $750 one-time, waived with an annual plan. A Care Plan ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts." }
     }
   ]
 }
@@ -98,35 +101,33 @@
 <style>
   :root{
     --honey:#F5B700; --honey-deep:#E0A100; --ink:#1A1A1A; --ink-soft:#3a3a3a;
-    --navy:#0F2440; --navy-mid:#1B3A5C; --teal:#0EA5E9; --teal-soft:#7DD3FC;
     --paper:#FFFDF7; --card:#ffffff; --line:#ece4d0; --muted:#6b6557; --good:#1f9d55;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
-  a{color:inherit;transition:color .2s ease}
-  a:hover{color:var(--teal)}
+  a{color:inherit}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-  .btn{display:inline-block;background:var(--navy);color:#fff;padding:15px 26px;border-radius:10px;font-weight:700;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease;border:none;cursor:pointer;font-size:1rem}
+  .btn{display:inline-block;background:var(--ink);color:#fff;padding:15px 26px;border-radius:10px;font-weight:700;text-decoration:none;transition:transform .12s ease,box-shadow .12s ease;border:none;cursor:pointer;font-size:1rem}
   .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
   .btn.gold{background:var(--honey);color:var(--ink)}
   .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
-  .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--teal)}
+  .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--honey-deep)}
 
   /* Header */
-  header{position:sticky;top:0;z-index:50;background:var(--navy);backdrop-filter:blur(8px);border-bottom:none}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto;background:var(--navy);border-radius:0 0 12px 12px;color:#fff}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.18rem;letter-spacing:-.02em;color:#fff}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,253,247,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1080px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.18rem;letter-spacing:-.02em}
   .logo .dot{width:30px;height:30px;border-radius:8px;background:var(--honey);display:grid;place-items:center;font-size:1.05rem}
   .nav .links{display:flex;gap:22px;align-items:center}
-  .nav .links a{text-decoration:none;font-weight:600;color:rgba(255,255,255,.85);font-size:.95rem}
-  .nav .links a.cta{color:var(--navy);background:var(--honey);padding:9px 16px;border-radius:8px;font-weight:800}
+  .nav .links a{text-decoration:none;font-weight:600;color:var(--ink-soft);font-size:.95rem}
+  .nav .links a.cta{color:var(--ink);background:var(--honey);padding:9px 16px;border-radius:8px;font-weight:800}
   @media(max-width:720px){.nav .links a:not(.cta){display:none}}
 
   /* Hero */
   .hero{padding:72px 0 56px;background:radial-gradient(1100px 420px at 70% -10%,rgba(245,183,0,.18),transparent 60%)}
-  .hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);line-height:1.07;letter-spacing:-.025em;font-weight:900;max-width:14ch;color:var(--navy)}
-  .hero h1 .hl{background:linear-gradient(180deg,transparent 62%,rgba(14,165,233,.3) 62%)}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);line-height:1.07;letter-spacing:-.025em;font-weight:900;max-width:14ch}
+  .hero h1 .hl{background:linear-gradient(180deg,transparent 62%,rgba(245,183,0,.55) 62%)}
   .hero p.sub{font-size:1.22rem;color:var(--ink-soft);max-width:60ch;margin-top:20px}
   .hero .ctas{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .hero .micro{margin-top:14px;color:var(--muted);font-size:.92rem}
@@ -140,12 +141,12 @@
 
   section{padding:60px 0}
   .sec-head{max-width:62ch;margin-bottom:34px}
-  .sec-head h2{font-size:clamp(1.6rem,3.6vw,2.3rem);letter-spacing:-.02em;font-weight:900;line-height:1.12;margin-top:8px;color:var(--navy)}
+  .sec-head h2{font-size:clamp(1.6rem,3.6vw,2.3rem);letter-spacing:-.02em;font-weight:900;line-height:1.12;margin-top:8px}
   .sec-head p{color:var(--ink-soft);font-size:1.08rem;margin-top:12px}
 
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:820px){.cards{grid-template-columns:1fr}}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;border-top:3px solid var(--navy)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
   .card .ic{font-size:1.6rem}
   .card h3{margin:12px 0 6px;font-size:1.12rem}
   .card p{color:var(--muted);font-size:.98rem}
@@ -167,7 +168,7 @@
   /* Pricing tabs (Monthly plans | À la carte) */
   .pricing-tabs{display:inline-flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:5px;margin-bottom:26px}
   .ptab{border:none;background:transparent;color:var(--ink-soft);font-weight:700;font-size:.95rem;padding:9px 20px;border-radius:24px;cursor:pointer;font-family:inherit;transition:background .12s ease,color .12s ease}
-  .ptab.active{background:var(--navy);color:#fff}
+  .ptab.active{background:var(--ink);color:#fff}
   .ac-note{color:var(--muted);font-size:.95rem;margin-bottom:16px}
   .ac-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 24px}
   .ac-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:18px 0;border-top:1px dashed var(--line)}
@@ -187,7 +188,7 @@
   .step:before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--ink);color:var(--honey);font-weight:900;margin-bottom:12px}
 
   /* Proof */
-  .proof{background:var(--navy);color:#fff}
+  .proof{background:var(--ink);color:#fff}
   .proof .sec-head h2{color:#fff}
   .proof .sec-head p{color:#cfc9bb}
   .proof .cards{grid-template-columns:repeat(2,1fr)}
@@ -242,7 +243,7 @@
   .audit-alt a{color:var(--ink);font-weight:800;text-decoration:underline;cursor:pointer}
   @media(max-width:600px){.audit-form{padding:20px}.audit-form .fgrid{grid-template-columns:1fr}}
 
-  footer{background:var(--navy);color:#bdb6a6;padding:40px 0;font-size:.92rem}
+  footer{background:var(--ink);color:#bdb6a6;padding:40px 0;font-size:.92rem}
   footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--honey);text-decoration:none}
   .foot-right{text-align:right}
@@ -281,7 +282,7 @@
 
 <header>
   <div class="nav">
-    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" style="display:block;flex-shrink:0"><line x1="24" y1="40" x2="24" y2="20" stroke="#0f6b5a" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="24" cy="16" rx="5" ry="7" fill="#e8943a"/><ellipse cx="24" cy="15" rx="3" ry="4.5" fill="#f4b86a"/><path d="M12 30 Q12 20 24 14" stroke="#0f6b5a" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/><path d="M36 30 Q36 20 24 14" stroke="#0f6b5a" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/><path d="M6 34 Q6 18 24 10" stroke="#0f6b5a" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/><path d="M42 34 Q42 18 24 10" stroke="#0f6b5a" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/></svg> Foundwick</div>
+    <div class="logo"><span class="dot">F</span> Foundwick</div>
     <nav class="links">
       <a href="#proof">Demos</a>
       <a href="#offer">Plans</a>
@@ -410,8 +411,9 @@
       </div><!-- /panel-plans -->
 
       <div id="panel-ac" hidden>
-        <p class="ac-note">Rather start small? Pick just the pieces you need. Most owners bundle into a plan above and pay less — but every tool stands on its own, month to month, cancel anytime.</p>
+        <p class="ac-note">Rather start small? Pick just the pieces you need. Most owners bundle into a plan above and pay less — but every tool stands on its own, cancel anytime.</p>
         <div class="ac-card">
+          <!-- One-time services -->
           <div class="ac-row">
             <div>
               <div class="ac-name">AI Visibility Audit</div>
@@ -420,6 +422,42 @@
             <div class="ac-priceblock"><span class="ac-price">Free</span><span class="ac-setup">first one, no obligation</span></div>
           </div>
           <div class="ac-row">
+            <div>
+              <div class="ac-name">AIO/GEO Deep Audit</div>
+              <div class="ac-desc">The full deep-dive: llms.txt analysis, robots.txt AI-crawler access, schema review, FAQ content gaps, and a competitor comparison. Comes with a written action plan.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$200–300</span><span class="ac-setup">one-time</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">GBP Rescue &amp; Optimization</div>
+              <div class="ac-desc">Google Business Profile suspended or banned? We handle the reinstatement filing, optimization, and website linking so your listing comes back stronger.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$250–400</span><span class="ac-setup">one-time</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Pro Email Setup</div>
+              <div class="ac-desc">Professional you@yourbusiness.com email — fully configured with spam protection (SPF, DKIM, DMARC). Stop sending quotes from a Gmail address.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$125</span><span class="ac-setup">one-time</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Spanish Site Add-On</div>
+              <div class="ac-desc">Full Spanish translation and page build for your site. In Allentown and Reading, most of your neighbors are searching in Spanish — and nobody else offers it.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$150–250</span><span class="ac-setup">one-time, per site</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Website Build</div>
+              <div class="ac-desc">A fast, modern site with AI search built in. Waived with an annual plan.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">from $750</span><span class="ac-setup">one-time</span></div>
+          </div>
+          <!-- Monthly add-ons -->
+          <div class="ac-row" style="border-top:2px solid var(--line)">
             <div>
               <div class="ac-name">AI Chat Assistant</div>
               <div class="ac-desc">A chat assistant on your site that answers questions and captures leads 24/7.</div>
@@ -435,10 +473,10 @@
           </div>
           <div class="ac-row">
             <div>
-              <div class="ac-name">BookKit — Online Booking</div>
-              <div class="ac-desc">Customers book the job themselves and track it; you manage everything from one dashboard.</div>
+              <div class="ac-name">Care Plan</div>
+              <div class="ac-desc">Hosting, SSL, and up to 30 minutes of site edits per month. Your site stays fast, secure, and current — without you thinking about it.</div>
             </div>
-            <div class="ac-priceblock"><span class="ac-price">$49<small> / mo</small></span><span class="ac-setup">+ $99 one-time setup</span></div>
+            <div class="ac-priceblock"><span class="ac-price">$50–75<small> / mo</small></span></div>
           </div>
           <div class="ac-row">
             <div>
@@ -446,13 +484,6 @@
               <div class="ac-desc">Your Google profile optimized, posted to, and monitored every month.</div>
             </div>
             <div class="ac-priceblock"><span class="ac-price">$79<small> / mo</small></span></div>
-          </div>
-          <div class="ac-row">
-            <div>
-              <div class="ac-name">Website Build</div>
-              <div class="ac-desc">A fast, modern site with AI search built in. Waived with an annual plan.</div>
-            </div>
-            <div class="ac-priceblock"><span class="ac-price">from $750</span><span class="ac-setup">one-time</span></div>
           </div>
         </div>
         <p class="ac-foot">Prices are founding-client rates. Not sure what you need? The free audit tells you — start there.</p>
@@ -582,7 +613,7 @@
       </details>
       <details>
         <summary>What does it cost?</summary>
-        <p>The first AI Visibility Audit is free. After that, plans are simple and monthly: <strong>Spark $99</strong> (get found in AI), <strong>Buzz $179</strong> (adds reviews + an AI chat assistant), and <strong>Hive $279</strong> (the full AI front desk with online booking). Need a new website too? Builds start around <strong>$750</strong> one-time, waived with an annual plan. No long contracts.</p>
+        <p>The first AI Visibility Audit is free. Monthly plans: <strong>Spark $99</strong> (get found in AI), <strong>Buzz $179</strong> (adds reviews + AI chat), <strong>Hive $279</strong> (full AI front desk with booking). We also offer one-time services: a deep <strong>AIO/GEO Audit</strong> ($200–300), <strong>GBP Rescue</strong> if your Google profile got suspended ($250–400), <strong>Pro Email Setup</strong> ($125), and a <strong>Spanish Site Add-On</strong> ($150–250). Website builds start around <strong>$750</strong> one-time, waived with an annual plan. A <strong>Care Plan</strong> ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts.</p>
       </details>
     </div>
   </section>
@@ -643,7 +674,7 @@
   <div class="wrap">
     <div class="row">
       <div>
-        <div class="logo" style="color:#fff;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" style="display:block;flex-shrink:0"><line x1="24" y1="40" x2="24" y2="20" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="24" cy="16" rx="5" ry="7" fill="#e8943a"/><ellipse cx="24" cy="15" rx="3" ry="4.5" fill="#f4b86a"/><path d="M12 30 Q12 20 24 14" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/><path d="M36 30 Q36 20 24 14" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.3" stroke-linecap="round"/><path d="M6 34 Q6 18 24 10" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/><path d="M42 34 Q42 18 24 10" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/></svg> Foundwick</div>
+        <div class="logo" style="color:#fff;margin-bottom:6px"><span class="dot">F</span> Foundwick</div>
         <div>AI Search Optimization · Lehigh Valley, PA</div>
         <div style="margin-top:6px;font-size:.88rem;color:#8a8273">Built by Leo Ice in the Lehigh Valley.</div>
       </div>
