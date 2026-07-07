@@ -44,9 +44,9 @@
   "description": "Get found in AI search, then get the leads and book the job. Simple monthly plans bundle AI-search optimization (llms.txt, AI-crawler rules, schema), Google Business Profile management, automated reviews, an AI chat assistant, and online booking. Start with a free AI Visibility Audit.",
   "offers": [
     { "@type": "Offer", "name": "AI Visibility Audit (first one free)", "price": "0", "priceCurrency": "USD" },
-    { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "USD", "unitText": "MONTH" } },
-    { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "179", "priceCurrency": "USD", "unitText": "MONTH" } },
-    { "@type": "Offer", "name": "Hive — Full AI Front Desk (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "279", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "109", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "189", "priceCurrency": "USD", "unitText": "MONTH" } },
+    { "@type": "Offer", "name": "Hive — Full AI Front Desk (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "289", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "AIO/GEO Deep Audit (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "200", "maxPrice": "300", "priceCurrency": "USD" } },
     { "@type": "Offer", "name": "GBP Rescue & Optimization (one-time)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "250", "maxPrice": "400", "priceCurrency": "USD" } },
     { "@type": "Offer", "name": "Pro Email Setup (one-time)", "price": "125", "priceCurrency": "USD" },
@@ -92,7 +92,7 @@
     {
       "@type": "Question",
       "name": "What does it cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. Monthly plans: Spark $99 (get found in AI), Buzz $179 (adds reviews + AI chat), Hive $279 (full AI front desk with booking). One-time services include a deep AIO/GEO Audit ($200–300), GBP Rescue if your Google profile got suspended ($250–400), Pro Email Setup ($125), and a Spanish Site Add-On ($150–250). Website builds start around $750 one-time, waived with an annual plan. A Care Plan ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts." }
+      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. Monthly plans: Spark from $89/mo (get found in AI), Buzz from $149/mo (adds reviews + AI chat), Hive from $229/mo (full AI front desk with booking). Save 20% with yearly. One-time services include a deep AIO/GEO Audit ($200–300), GBP Rescue if your Google profile got suspended ($250–400), Pro Email Setup ($125), and a Spanish Site Add-On ($150–250). Website builds start around $750 one-time, waived with an annual plan. A Care Plan ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts." }
     }
   ]
 }
@@ -372,10 +372,11 @@
       </div>
 
       <div id="panel-plans">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px;font-weight:700"><span id="bt-m" style="color:var(--navy);cursor:pointer" onclick="toggleBilling(false)">Monthly</span><label style="position:relative;display:inline-block;width:52px;height:28px;cursor:pointer"><input type="checkbox" id="billing-switch" style="opacity:0;width:0;height:0" onchange="toggleBilling(this.checked)"><span style="position:absolute;inset:0;background:var(--navy);border-radius:28px;transition:.3s"></span><span id="tk" style="position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.3s"></span></label><span id="bt-y" style="color:var(--muted);cursor:pointer" onclick="toggleBilling(true)">Yearly <span style="background:var(--teal);color:#fff;padding:2px 8px;border-radius:20px;font-size:.75rem;font-weight:800">SAVE 20%</span></span></div>
       <div class="plans">
         <div class="plan">
           <h3>Spark</h3>
-          <div class="price">$99 <small>/ month</small></div>
+          <div class="price" data-monthly="$109" data-yearly="$89">$109 <small>/ month</small></div>
           <p style="color:var(--muted)">Get found. The AI-search foundation.</p>
           <ul>
             <li>Hand-built <strong>llms.txt</strong>, AI-crawler rules &amp; schema so ChatGPT, Gemini &amp; Perplexity can read you</li>
@@ -387,7 +388,7 @@
         <div class="plan feat">
           <span class="tag">MOST POPULAR</span>
           <h3>Buzz</h3>
-          <div class="price">$179 <small>/ month</small></div>
+          <div class="price" data-monthly="$189" data-yearly="$149">$189 <small>/ month</small></div>
           <p style="color:var(--muted)">Get found — plus reviews and AI chat.</p>
           <ul>
             <li>Everything in Spark</li>
@@ -397,7 +398,7 @@
         </div>
         <div class="plan">
           <h3>Hive</h3>
-          <div class="price">$279 <small>/ month</small></div>
+          <div class="price" data-monthly="$289" data-yearly="$229">$289 <small>/ month</small></div>
           <p style="color:var(--muted)">Your full AI front desk.</p>
           <ul>
             <li>Everything in Buzz</li>
@@ -406,8 +407,8 @@
           </ul>
         </div>
       </div>
-      <p style="text-align:center;color:var(--ink-soft);margin-top:24px;font-size:.98rem;max-width:62ch;margin-left:auto;margin-right:auto"><strong>Built by Leo Ice in the Lehigh Valley.</strong> I hand-build every audit myself. If your competitors are still scrolling Google for traffic, you can be the answer their customer asks the AI for instead.</p>
-      <p style="text-align:center;color:var(--muted);margin-top:14px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time (waived with an annual plan). The audit that shows you what you need is <strong>free</strong>.</p>
+      <p style="text-align:center;color:var(--ink-soft);margin-top:24px;font-size:.98rem;max-width:62ch;margin-left:auto;margin-right:auto">Every audit is hand-built. If your competitors are still scrolling Google for traffic, you can be the answer their customer asks the AI for instead.</p>
+      <p style="text-align:center;color:var(--muted);margin-top:14px;font-size:.95rem">Need a website too? New sites start around <strong>$750</strong> one-time — <strong>waived free when you sign a yearly plan</strong>. The audit that shows you what you need is always <strong>free</strong>.</p>
       </div><!-- /panel-plans -->
 
       <div id="panel-ac" hidden>
@@ -676,7 +677,7 @@
       <div>
         <div class="logo" style="color:#fff;margin-bottom:6px"><span class="dot">F</span> Foundwick</div>
         <div>AI Search Optimization · Lehigh Valley, PA</div>
-        <div style="margin-top:6px;font-size:.88rem;color:#8a8273">Built by Leo Ice in the Lehigh Valley.</div>
+        <div style="margin-top:6px;font-size:.88rem;color:#8a8273">AI Search Optimization for Lehigh Valley.</div>
       </div>
       <div class="foot-right">
         <div><a href="mailto:info@foundwick.com">info@foundwick.com</a></div>
@@ -1004,4 +1005,5 @@
   window.BeeBot = { open: openPanel, close: closePanel };
 })();
 </script>
+<script>function toggleBilling(y){document.querySelectorAll(".price[data-monthly]").forEach(function(e){e.innerHTML=(y?e.dataset.yearly:e.dataset.monthly)+" <small>"+(y?"/ mo \u00b7 billed yearly":"/ month")+"</small>"});var k=document.getElementById("tk");if(k)k.style.left=y?"27px":"3px";document.getElementById("bt-m").style.color=y?"var(--muted)":"var(--navy)";document.getElementById("bt-y").style.color=y?"var(--navy)":"var(--muted)";var s=document.getElementById("billing-switch");if(s)s.checked=y}</script>
 </body></html>
