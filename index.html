@@ -548,7 +548,7 @@
           <div class="ic">💬</div>
           <h3>AI Chat Assistant</h3>
           <p>Our white-label website chatbot: answers customer questions and captures leads 24/7, in your business's voice.</p>
-        <a href="#contact" onclick="if(window.BeeBot){window.BeeBot.open();return false;}" style="display:inline-block;margin-top:12px;color:#f59e0b;font-weight:700;text-decoration:none;font-size:14px">💬 Chat with it now →</a></div>
+        <a href="#contact" onclick="if(window.VoiceKit){window.VoiceKit.open();return false;}" style="display:inline-block;margin-top:12px;color:#f59e0b;font-weight:700;text-decoration:none;font-size:14px">💬 Chat with it now →</a></div>
       </div>
 
       <!-- Sample-of-what's-coming testimonial card (clearly labeled until a real one lands) -->
@@ -671,7 +671,7 @@
         <div class="audit-msg" id="auditMsg" role="status" aria-live="polite"></div>
       </form>
 
-      <p class="audit-alt">Prefer to ask first? <a onclick="if(window.BeeBot){window.BeeBot.open();}return false;">💬 Chat with our assistant</a></p>
+      <p class="audit-alt">Prefer to ask first? <a onclick="if(window.VoiceKit){window.VoiceKit.open();}return false;">💬 Chat — or 🎙 talk — with our assistant</a></p>
     </div>
   </section>
 </main>
@@ -808,207 +808,6 @@
 })();
 </script>
 
-<!-- ===================== BeeBot chat widget ===================== -->
-<script id="beebot-widget">
-(function () {
-  var CFG = {
-    businessId: "beeconnect",
-    brainUrl:   "https://beebot-brain.interlinkcrafts.workers.dev",
-    name:       "Foundwick",
-    tagline:    "Get found in AI search",
-    greeting:   "Hi! I'm Foundwick's AI assistant. Want to know how to get your business found in AI search like ChatGPT and Google? Ask me anything — or grab a free AI Visibility Audit.",
-    brand:      "#F5B700",
-    ink:        "#1A1A1A",
-    quickReplies: ["What do you do?", "How much does it cost?", "Get my free audit"]
-  };
-
-  var css = ''
-    + '.bb-launcher{position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;'
-    + 'background:' + CFG.brand + ';box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;z-index:2147483000;'
-    + 'display:flex;align-items:center;justify-content:center;border:none;transition:transform .15s}'
-    + '.bb-launcher:hover{transform:scale(1.06)}'
-    + '.bb-launcher svg{width:30px;height:30px;fill:' + CFG.ink + '}'
-    + '.bb-panel{position:fixed;bottom:90px;right:20px;width:370px;max-width:calc(100vw - 32px);'
-    + 'height:560px;max-height:calc(100vh - 120px);background:#fff;border-radius:16px;z-index:2147483000;'
-    + 'box-shadow:0 12px 40px rgba(0,0,0,.28);display:none;flex-direction:column;overflow:hidden;'
-    + 'font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}'
-    + '.bb-panel.bb-open{display:flex}'
-    + '.bb-head{background:' + CFG.ink + ';color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px}'
-    + '.bb-head .bb-dot{width:10px;height:10px;border-radius:50%;background:' + CFG.brand + '}'
-    + '.bb-head h4{margin:0;font-size:15px;font-weight:700}'
-    + '.bb-head p{margin:0;font-size:12px;opacity:.8}'
-    + '.bb-head .bb-x{margin-left:auto;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1}'
-    + '.bb-body{flex:1;overflow-y:auto;padding:14px;background:#f6f7f9;display:flex;flex-direction:column;gap:10px}'
-    + '.bb-msg{max-width:82%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}'
-    + '.bb-bot{align-self:flex-start;background:#fff;color:#222;border:1px solid #e6e8ec;border-bottom-left-radius:4px}'
-    + '.bb-user{align-self:flex-end;background:' + CFG.ink + ';color:#fff;border-bottom-right-radius:4px}'
-    + '.bb-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px;background:#f6f7f9}'
-    + '.bb-chip{border:1px solid ' + CFG.brand + ';color:' + CFG.ink + ';background:#fff;border-radius:16px;'
-    + 'padding:6px 11px;font-size:12.5px;cursor:pointer}'
-    + '.bb-chip:hover{background:' + CFG.brand + ';color:' + CFG.ink + '}'
-    + '.bb-foot{display:flex;gap:8px;padding:10px;border-top:1px solid #eee;background:#fff}'
-    + '.bb-foot input{flex:1;border:1px solid #d8dadf;border-radius:20px;padding:9px 13px;font-size:14px;outline:none}'
-    + '.bb-foot button{background:' + CFG.brand + ';border:none;color:' + CFG.ink + ';border-radius:20px;padding:0 16px;font-weight:700;cursor:pointer}'
-    + '.bb-typing{align-self:flex-start;color:#888;font-size:13px;padding:2px 6px}'
-    + '.bb-form{display:flex;flex-direction:column;gap:8px}'
-    + '.bb-form strong{font-size:14px;color:' + CFG.ink + '}'
-    + '.bb-form input,.bb-form textarea{border:1px solid #d8dadf;border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit;outline:none}'
-    + '.bb-form .bb-submit{background:' + CFG.brand + ';border:none;color:' + CFG.ink + ';border-radius:8px;padding:9px;font-weight:700;cursor:pointer}'
-    + '.bb-form .bb-cancel{background:#eee;border:none;color:#555;border-radius:8px;padding:7px;font-size:12.5px;cursor:pointer}'
-    + '@media(max-width:480px){.bb-panel{right:8px;left:8px;width:auto;bottom:84px}}';
-
-  var style = document.createElement('style');
-  style.textContent = css;
-  document.head.appendChild(style);
-
-  var launcher = document.createElement('button');
-  launcher.className = 'bb-launcher';
-  launcher.setAttribute('aria-label', 'Open chat');
-  launcher.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.86 2 11.5c0 2.39 1.19 4.55 3.09 6.08L4 21l4.06-1.6c1.2.39 2.52.6 3.94.6 5.52 0 10-3.86 10-8.5S17.52 3 12 3z"/></svg>';
-
-  var panel = document.createElement('div');
-  panel.className = 'bb-panel';
-  panel.innerHTML =
-      '<div class="bb-head"><span class="bb-dot"></span>'
-    + '<div><h4>' + CFG.name + '</h4><p>' + CFG.tagline + '</p></div>'
-    + '<button class="bb-x" aria-label="Close">&times;</button></div>'
-    + '<div class="bb-body"></div>'
-    + '<div class="bb-chips"></div>'
-    + '<div class="bb-foot"><input type="text" placeholder="Type your message..." />'
-    + '<button>Send</button></div>';
-
-  document.body.appendChild(launcher);
-  document.body.appendChild(panel);
-
-  var body    = panel.querySelector('.bb-body');
-  var chips   = panel.querySelector('.bb-chips');
-  var input   = panel.querySelector('.bb-foot input');
-  var sendBtn = panel.querySelector('.bb-foot button');
-  var closeBtn= panel.querySelector('.bb-x');
-
-  var messages = [];
-  var greeted = false;
-
-  function addMsg(role, text) {
-    var d = document.createElement('div');
-    d.className = 'bb-msg ' + (role === 'user' ? 'bb-user' : 'bb-bot');
-    d.textContent = text;
-    body.appendChild(d);
-    body.scrollTop = body.scrollHeight;
-    return d;
-  }
-
-  function renderChips() {
-    chips.innerHTML = '';
-    CFG.quickReplies.forEach(function (q) {
-      var c = document.createElement('button');
-      c.className = 'bb-chip';
-      c.textContent = q;
-      c.onclick = function () {
-        if (q.toLowerCase().indexOf('audit') > -1) { showLeadForm(); }
-        else { input.value = q; sendMessage(); }
-      };
-      chips.appendChild(c);
-    });
-  }
-
-  function openPanel() {
-    panel.classList.add('bb-open');
-    if (!greeted) { greeted = true; addMsg('bot', CFG.greeting); renderChips(); }
-    input.focus();
-  }
-  function closePanel() { panel.classList.remove('bb-open'); }
-
-  launcher.onclick = function () {
-    panel.classList.contains('bb-open') ? closePanel() : openPanel();
-  };
-  closeBtn.onclick = closePanel;
-
-  function sendMessage() {
-    var text = input.value.trim();
-    if (!text) return;
-    addMsg('user', text);
-    messages.push({ role: 'user', content: text });
-    input.value = '';
-
-    var typing = document.createElement('div');
-    typing.className = 'bb-typing';
-    typing.textContent = 'typing…';
-    body.appendChild(typing);
-    body.scrollTop = body.scrollHeight;
-
-    fetch(CFG.brainUrl + '/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ businessId: CFG.businessId, messages: messages })
-    })
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      typing.remove();
-      var reply = (d && d.reply) ? d.reply
-        : "Sorry, I had trouble there — try again, or grab the free audit below.";
-      reply = reply.replace(/\[\[LEAD[^\]]*\]\]/i, '').trim(); // safety: never show the capture tag
-      addMsg('bot', reply);
-      messages.push({ role: 'assistant', content: reply });
-    })
-    .catch(function () {
-      typing.remove();
-      addMsg('bot', "I couldn't connect just now. Please try again in a moment.");
-    });
-  }
-
-  sendBtn.onclick = sendMessage;
-  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') sendMessage(); });
-
-  function showLeadForm() {
-    var wrap = document.createElement('div');
-    wrap.className = 'bb-msg bb-bot';
-    wrap.style.maxWidth = '92%';
-    wrap.innerHTML =
-        '<div class="bb-form">'
-      + '<strong>Free AI Visibility Audit</strong>'
-      + '<input class="bb-n" placeholder="Your name" />'
-      + '<input class="bb-b" placeholder="Business name" />'
-      + '<input class="bb-c" placeholder="Best email or phone" />'
-      + '<textarea class="bb-need" rows="2" placeholder="What do you need? (optional)"></textarea>'
-      + '<input class="bb-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />'
-      + '<button class="bb-submit">Send my free audit request</button>'
-      + '<button class="bb-cancel">Maybe later</button>'
-      + '<div style="font-size:11px;color:#888;line-height:1.35;margin-top:4px">You are chatting with an AI assistant. By sending this you agree Foundwick may contact you (including by text) about your request.</div>'
-      + '</div>';
-    body.appendChild(wrap);
-    body.scrollTop = body.scrollHeight;
-
-    var sub = wrap.querySelector('.bb-submit');
-    var can = wrap.querySelector('.bb-cancel');
-    can.onclick = function () { wrap.remove(); };
-    sub.onclick = function () {
-      var name    = wrap.querySelector('.bb-n').value.trim();
-      var business= wrap.querySelector('.bb-b').value.trim();
-      var contact = wrap.querySelector('.bb-c').value.trim();
-      var need    = wrap.querySelector('.bb-need').value.trim();
-      if (!name || !contact) { alert('Please add your name and a way to reach you.'); return; }
-      sub.disabled = true; sub.textContent = 'Sending…';
-      fetch(CFG.brainUrl + '/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ businessId: CFG.businessId, name: name, business: business, contact: contact, need: need, hp: wrap.querySelector('.bb-hp').value })
-      })
-      .then(function (r) { return r.json().catch(function(){ return {}; }); })
-      .then(function (d) {
-        if (!d || d.ok === false) throw new Error('not delivered');
-        wrap.remove();
-        addMsg('bot', "Thanks " + name + "! Got your details — we'll reach out with your free AI Visibility Audit. Anything else I can answer?");
-      })
-      .catch(function () {
-        sub.disabled = false; sub.textContent = 'Send my free audit request';
-        addMsg('bot', "Hmm, that didn't send. You can also email info@foundwick.com.");
-      });
-    };
-  }
-
-  window.BeeBot = { open: openPanel, close: closePanel };
-})();
-</script>
+<!-- ChatKit bubble retired on foundwick.com 2026-07-12: VoiceKit (chat + voice, one bubble) is the site assistant; leads still flow through beebot-brain /lead. ChatKit remains the standalone client product. -->
 <script src="https://voicekit.interlinkcrafts.workers.dev/widget.js" data-api="https://voicekit.interlinkcrafts.workers.dev" data-name="Foundwick" data-color="#1a1a2e" data-position="left"></script>
 </body></html>
