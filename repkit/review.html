@@ -1,4 +1,4 @@
-<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!-- (c) 2026 Foundwick. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +91,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <div class="toast" id="toast"></div>
 
-<script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
+<script>/* (c) 2026 Foundwick. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
 let selectedRating=0;function init(){const ind=APP_CONFIG.getIndustry();document.getElementById('bizName').textContent=APP_CONFIG.businessName;document.getElementById('reviewPrompt').textContent=ind.prompt;const bizIcon=document.getElementById('bizIcon');bizIcon.textContent=ind.icon;bizIcon.style.backgroundColor=APP_CONFIG.colors.primaryLight;document.getElementById('reviewHeader').querySelector('h1').style.color=APP_CONFIG.colors.primary;document.documentElement.style.setProperty('--primary',APP_CONFIG.colors.primary);const container=document.getElementById('starsContainer');for(let i=1;i<=5;i++){const btn=document.createElement('button');btn.innerHTML=`<svg viewBox="0 0 24 24"><path class="star-fill"d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`;btn.dataset.rating=i;btn.onclick=()=>selectRating(i);btn.onmouseenter=()=>highlightStars(i);btn.onmouseleave=()=>highlightStars(selectedRating);container.appendChild(btn);}
 const platforms=APP_CONFIG.getEnabledPlatforms();const pContainer=document.getElementById('platformButtons');platforms.forEach(p=>{const btn=document.createElement('button');btn.className='platform-btn';btn.style.backgroundColor=p.color;btn.textContent=`Leave a ${p.name}Review`;btn.onclick=()=>openPlatform(p);pContainer.appendChild(btn);});const params=new URLSearchParams(window.location.search);const name=params.get('name');if(name){document.getElementById('thankYouMsg').textContent=`Thank you,${name}!Your feedback helps ${APP_CONFIG.businessName}grow.`;}}
 function highlightStars(n){const stars=document.querySelectorAll('#starsContainer button');stars.forEach((s,i)=>s.classList.toggle('star-active',i<n));}
@@ -104,8 +104,8 @@ function logReview(rating,platform){const data={rating,platform,comment:document
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 init();</script>
 <script>
-/* (c) 2026 OpsyncHQ */
-(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 OpsyncHQ Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
+/* (c) 2026 Foundwick */
+(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 Foundwick Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
 </script>
 </body>
 </h

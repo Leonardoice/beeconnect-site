@@ -1,4 +1,4 @@
-<!-- (c) 2026 OpsyncHQ. All rights reserved. -->
+<!-- (c) 2026 Foundwick. All rights reserved. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,18 +94,18 @@ a{text-decoration:none}
   </div>
 
   <div class="powered-by">
-    <a href="#">Powered by RepKit &middot; OpsyncHQ</a>
+    <a href="#">Powered by RepKit &middot; Foundwick</a>
   </div>
 </div>
 
-<script>/* (c) 2026 OpsyncHQ. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
+<script>/* (c) 2026 Foundwick. All rights reserved. Unauthorized use, reproduction, or distribution is strictly prohibited. */
 const DEMO_REQUESTS=[{code:'RK-4821',name:'Sarah Mitchell',status:'completed',sentAt:'2 days ago',openedAt:'2 days ago',completedAt:'1 day ago',platform:'Google',rating:5},{code:'RK-7392',name:'James Rodriguez',status:'opened',sentAt:'1 day ago',openedAt:'6 hours ago',completedAt:null,platform:null,rating:null},{code:'RK-1054',name:'Emily Chen',status:'sent',sentAt:'3 hours ago',openedAt:null,completedAt:null,platform:null,rating:null},{code:'RK-6628',name:'Michael Thompson',status:'expired',sentAt:'10 days ago',openedAt:null,completedAt:null,platform:null,rating:null},];function init(){const c=APP_CONFIG.colors;document.getElementById('header').style.background=c.primary;document.getElementById('searchBtn').style.background=c.primary;document.querySelector('.code-input input').addEventListener('focus',function(){this.style.borderColor=c.primary;});document.getElementById('headerBrand').textContent=APP_CONFIG.businessName;const code=new URLSearchParams(window.location.search).get('code');if(code){document.getElementById('codeInput').value=code.toUpperCase();lookupRequest();}}
 function lookupRequest(){const code=document.getElementById('codeInput').value.trim().toUpperCase();if(!code)return;const req=DEMO_REQUESTS.find(r=>r.code===code);const errorEl=document.getElementById('searchError');if(!req){errorEl.style.display='block';return;}
 errorEl.style.display='none';document.getElementById('searchCard').style.display='none';document.getElementById('resultCard').style.display='block';const badge=document.getElementById('statusBadge');badge.textContent=req.status.toUpperCase();badge.className='status-badge '+req.status;document.getElementById('resultName').textContent='Review Request for '+req.name;document.getElementById('resultCode').textContent=req.code;const c=APP_CONFIG.colors.primary;buildTimeline(req,c);if(req.status==='opened'){const cta=document.getElementById('reviewCta');cta.style.display='block';cta.style.backgroundColor=APP_CONFIG.colors.primaryLight;document.getElementById('reviewLink').style.color=APP_CONFIG.colors.primary;}}
 function buildTimeline(req,color){const steps=[{key:'sent',title:'Request Sent',desc:req.sentAt?`Sent ${req.sentAt}`:'Pending'},{key:'opened',title:'Link Opened',desc:req.openedAt?`Opened ${req.openedAt}`:'Waiting for customer to open'},{key:'completed',title:'Review Submitted',desc:req.completedAt?`${req.platform}&middot; ${req.rating}&#x2605; &middot; ${req.completedAt}`:'Waiting for review'},{key:'thanked',title:'Thank You Sent',desc:req.status==='completed'?'Auto-sent after review':'Sent after review is submitted'},];const statusOrder=['sent','opened','completed','thanked'];const currentIdx=req.status==='expired'?0:statusOrder.indexOf(req.status);const container=document.getElementById('timeline');container.innerHTML='';steps.forEach((step,i)=>{const isDone=i<=currentIdx;const isActive=i===currentIdx;const div=document.createElement('div');div.className='tl-step';div.style.color=color;div.innerHTML=`<div class="tl-dot-col"><div class="tl-dot ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}">${isDone?'&#x2713;':(i+1)}</div><div class="tl-line ${i < currentIdx ? 'done' : ''}"></div></div><div class="tl-content"><div class="tl-title ${isDone ? 'done' : ''} ${isActive ? 'active' : ''}">${step.title}</div><div class="tl-desc">${step.desc}</div></div>`;container.appendChild(div);});}
 init();</script>
 <script>
-/* (c) 2026 OpsyncHQ */
-(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 OpsyncHQ Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
+/* (c) 2026 Foundwick */
+(function(){var _0x=['contextmenu','preventDefault','keydown'];document.addEventListener(_0x[0],function(e){e[_0x[1]]()});document.addEventListener(_0x[2],function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j')){e[_0x[1]]()}if(e.key==='F12'){e[_0x[1]]()}});var _c=console;Object.defineProperty(window,'console',{get:function(){return{log:function(){},warn:function(){},error:function(){},info:function(){},debug:function(){},table:function(){},clear:function(){},dir:function(){}};}});if(typeof _c!=='undefined'){_c.log('%c\u26A0 Foundwick Proprietary Software','font-size:16px;font-weight:bold;color:#dc2626');_c.log('%cThis software is protected by copyright law. Unauthorized copying, reverse engineering, or distribution is prohibited.','font-size:12px;color:#666');}})();
 </script>
 </body>

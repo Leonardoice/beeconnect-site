@@ -2,27 +2,30 @@
 
 > AI search optimization (AIO / GEO) for local service businesses in the Lehigh Valley and Berks County, Pennsylvania. We get small companies named and recommended inside AI answers from ChatGPT, Gemini, Perplexity, and Google's AI Overviews — so when someone asks AI for the best service business near them, the client comes up first. We also add automated reviews, an AI chat assistant, and online booking so those AI-driven visitors turn into booked jobs.
 
-Foundwick helps local, independent service businesses become the answer AI gives. We are based in the Lehigh Valley, PA. The first AI Visibility Audit is free and no-obligation; plans are simple and monthly.
+Foundwick helps local, independent service businesses become the answer AI gives. Based in the Lehigh Valley, PA, built and run by founder Leo Ice. The first AI Visibility Audit is free and no-obligation; plans are simple and monthly, with a 20% discount on yearly plans. No long contracts.
 
-## What we do
-
-Start with a free AI Visibility Audit, then choose a simple monthly plan. No long contracts.
+## Monthly plans
 
 - **AI Visibility Audit (free, first one):** a one-page report showing exactly where a business is invisible to AI — plus proof that local competitors have the same gap. No charge to look.
-- **Spark — Get Found ($99/month):** hand-built llms.txt; AI-crawler allow-rules (GPTBot, ClaudeBot, PerplexityBot, Google-Extended); LocalBusiness + FAQ + Service schema; Google Business Profile management; and a monthly AI-visibility report.
-- **Buzz — Get Found + Reviews ($179/month):** everything in Spark, plus automated review collection and an AI chat assistant on the website that answers questions and captures leads 24/7. Most popular.
-- **Hive — Full AI Front Desk ($279/month):** everything in Buzz, plus online booking and full lead capture — get found, get the lead, book the job.
-- **Website build (from $750 one-time):** a fast, modern site with AI search built in. Waived with an annual plan.
+- **Spark — Get Found ($109/month, $89/month billed yearly):** hand-built llms.txt; AI-crawler allow-rules (GPTBot, ClaudeBot, PerplexityBot, Google-Extended); LocalBusiness + FAQ + Service schema; Google Business Profile management; monthly AI-visibility report; light site edits.
+- **Buzz — Get Found + Reviews ($189/month, $149/month billed yearly):** everything in Spark, plus automated review collection and an AI chat assistant on the website that answers questions and captures leads 24/7. Most popular.
+- **Hive — Full AI Front Desk ($289/month, $229/month billed yearly):** everything in Buzz, plus online booking and full lead capture — get found, get the lead, book the job.
+- Yearly subscribers get a **free website build** (normally from $750 one-time).
 
-## À la carte (individual tools, month to month)
+## One-time services
 
-Prefer to start small? Each tool is available on its own; most owners bundle into a plan above and pay less. Founding-client rates:
+- **AIO/GEO Deep Audit ($200–300):** full deep-dive — llms.txt analysis, robots.txt AI-crawler access, schema review, FAQ content gaps, competitor comparison, written action plan.
+- **GBP Rescue & Optimization ($250–400):** Google Business Profile suspended or banned? Reinstatement filing, optimization, and website linking.
+- **Pro Email Setup ($125):** professional you@yourbusiness.com email with SPF, DKIM, and DMARC configured.
+- **Spanish Site Add-On ($150–250 per site):** full Spanish translation and page build. In Allentown and Reading, a large share of customers search in Spanish — almost no local competitor serves them.
+- **Website Build (from $750 one-time):** a fast, modern site with AI search built in. Free with a yearly plan.
 
-- **AI Chat Assistant — $29/month:** a chat assistant on the site that answers questions and captures leads 24/7.
+## À la carte (month to month)
+
+- **AI Chat Assistant — $29/month:** answers questions and captures leads on the site 24/7.
 - **RepKit Reviews — $49/month:** automated review requests after each job, plus one inbox for Google, Yelp, and Facebook.
-- **BookKit Online Booking — $49/month (plus a $99 one-time setup):** customers book the job themselves and track it; the owner manages everything from one dashboard.
-- **Google Business Profile Management — $79/month:** the Google profile optimized, posted to, and monitored every month.
-- **AI Visibility Audit — free (first one):** see exactly where AI can't find you before buying anything.
+- **Care Plan — $50–75/month:** hosting, SSL, and up to 30 minutes of site edits per month.
+- **Google Business Profile Management — $79/month:** the Google profile optimized, posted to, and monitored monthly.
 
 ## Who we serve
 
@@ -32,18 +35,19 @@ Lehigh Valley and Berks County, PA service businesses: HVAC and plumbing, junk r
 
 - ChatGPT has roughly 900 million weekly users (early 2026), up from about 300 million a year earlier.
 - Google's AI Overviews reach billions of users each month.
-- Pew Research (2025) found that when an AI summary appears, people click a website link about 8% of the time, versus 15% without one — the "answer" is increasingly the destination.
+- Pew Research (2025) found that when an AI summary appears, people click a website link about 8% of the time, versus 15% without one — the answer is increasingly the destination.
 - A competitor's ad budget buys nothing inside an AI answer. AI recommends whoever is clearest, best-reviewed, and most machine-readable. The first business in a category to set this up tends to become the default answer.
 
 ## Proof of work
 
-- BookKit — white-label online booking system (live demo): https://demos.beeconnectagency.com/bookkit/demo.html
-- RepKit — reputation & review management hub (live demo): https://demos.beeconnectagency.com/repkit/demo.html
-- BookKit industry samples — BookKit themed live for 15 service industries; pick one to open its sample (live demo): https://demos.beeconnectagency.com/bookkit/industries.html
-- AI chat assistant — our white-label chat assistant that answers customer questions and captures leads 24/7 (try it live on this site).
+- BookKit — white-label online booking system (live demo): https://foundwick.com/bookkit/demo.html
+- BookKit — 15 industry samples (live demo): https://foundwick.com/bookkit/industries.html
+- RepKit — reputation & review management hub (live demo): https://foundwick.com/repkit/demo.html
+- AI chat assistant — our white-label chat assistant, live on this site.
 
 ## Contact
 
 - Email: info@foundwick.com
 - Website: https://foundwick.com
+- Founder: Leo Ice
 - Service area: Lehigh Valley & Berks County, Pennsylvania
