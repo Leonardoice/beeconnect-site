@@ -371,6 +371,43 @@ function closePhotoModal() {
 if (typeof APP_CONFIG !== 'undefined') {
   document.querySelector('.brand').textContent = APP_CONFIG.businessName;
 }
+
+// ── Demo enhancements (2026-07-13) ─────────────────────────────────────────
+// 1) Auto-seed sample bookings when the crew dashboard is opened cold (e.g.
+//    straight from industries.html) so the demo is never an empty room.
+(function bkSeedIfEmpty() {
+  if (typeof APP_CONFIG === 'undefined' || !APP_CONFIG.isDemoMode) return;
+  var existing = [];
+  try { existing = JSON.parse(localStorage.getItem('bookkit_bookings') || '[]'); } catch (e) {}
+  if (existing.length) return;
+  function d(offset) { return new Date(Date.now() + offset * 86400000).toISOString().split('T')[0]; }
+  function disp(iso) { return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }); }
+  var seed = [
+    { code: 'BK-DEMO01', name: 'Maria Gonzalez', phone: '(555) 123-4567', address: '142 Maple Ave', town: 'Your Town', notes: 'Side entrance, gate is unlocked. Standard service requested.', size: 'Standard', price: 150, date: d(0), dateDisplay: disp(d(0)), time: '10:00 AM - 12:00 PM', status: 'confirmed', createdAt: new Date(Date.now() - 86400000 * 2).toISOString() },
+    { code: 'BK-DEMO02', name: 'James Miller', phone: '(555) 987-6543', address: '88 Broad St', town: 'Nearby City', notes: 'Full service - complete top-to-bottom job.', size: 'Full Service', price: 500, date: d(1), dateDisplay: disp(d(1)), time: '8:00 AM - 10:00 AM', status: 'pending', createdAt: new Date(Date.now() - 86400000).toISOString() },
+    { code: 'BK-DEMO03', name: 'Sarah Chen', phone: '(555) 432-1098', address: '305 Cherry Ln', town: 'Metro Area', notes: 'Basic visit - quick single-area service.', size: 'Basic', price: 75, date: d(0), dateDisplay: disp(d(0)), time: '2:00 PM - 4:00 PM', status: 'enroute', createdAt: new Date(Date.now() - 86400000 * 3).toISOString() },
+    { code: 'BK-DEMO04', name: 'Robert Johnson', phone: '(555) 654-3210', address: '19 Oak Dr', town: 'Your Town', notes: 'Premium service, multiple areas covered.', size: 'Premium', price: 300, date: d(-1), dateDisplay: disp(d(-1)), time: '12:00 PM - 2:00 PM', status: 'complete', createdAt: new Date(Date.now() - 86400000 * 5).toISOString() }
+  ];
+  localStorage.setItem('bookkit_bookings', JSON.stringify(seed));
+})();
+
+// 2) Industry awareness: when opened from the industries browser
+//    (admin.html?industry=<key>, with the selection saved by industries.html),
+//    brand the dashboard for that trade — name, icon, and header color.
+(function bkApplyIndustry() {
+  var cfg = null;
+  try { cfg = JSON.parse(localStorage.getItem('bookkit_config') || 'null'); } catch (e) {}
+  var key = new URLSearchParams(location.search).get('industry');
+  if (!cfg || (key && cfg.selectedIndustry !== key)) return;
+  var brand = document.querySelector('.brand');
+  if (brand) brand.textContent = (cfg.icon ? cfg.icon + ' ' : '') + cfg.name + ' (sample)';
+  var title = document.querySelector('.dh-title');
+  if (title) title.textContent = 'Crew Dashboard — ' + cfg.name;
+  if (cfg.color) {
+    var hdr = document.querySelector('.dash-header');
+    if (hdr) hdr.style.background = cfg.color;
+  }
+})();
 </script>
 <script>
 (function(){document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'||e.key==='i'||e.key==='j'))e.preventDefault();if(e.key==='F12')e.preventDefault()});})();
