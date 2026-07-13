@@ -172,10 +172,15 @@
   .plan li{padding:8px 0 8px 28px;position:relative;color:var(--ink-soft);border-top:1px dashed var(--line)}
   .plan li:before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900}
 
-  /* Pricing tabs (Monthly plans | À la carte) */
-  .pricing-tabs{display:inline-flex;gap:4px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:5px;margin-bottom:26px}
-  .ptab{border:none;background:transparent;color:var(--ink-soft);font-weight:700;font-size:.95rem;padding:9px 20px;border-radius:24px;cursor:pointer;font-family:inherit;transition:background .12s ease,color .12s ease}
-  .ptab.active{background:var(--ink);color:#fff}
+  /* Pricing tabs (Pay per lead | Monthly plans | À la carte) — must read as BUTTONS */
+  .ptabs-label{font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .ptabs-label:after{content:" ↓"}
+  .pricing-tabs{display:inline-flex;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:6px;margin-bottom:8px}
+  .ptab{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:.95rem;padding:10px 20px;border-radius:24px;cursor:pointer;font-family:inherit;box-shadow:0 1px 3px rgba(0,0,0,.08);transition:all .15s ease}
+  .ptab:hover{border-color:var(--ink);transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.14)}
+  .ptab.active{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
+  .ptab.active:after{content:" ✓";font-weight:900}
+  .ptabs-hint{font-size:.85rem;color:var(--muted);margin-bottom:22px}
   .ac-note{color:var(--muted);font-size:.95rem;margin-bottom:16px}
   .ac-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:6px 24px}
   .ac-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:18px 0;border-top:1px dashed var(--line)}
@@ -270,8 +275,9 @@
     .sec-head p{font-size:1rem}
     .cards,.plans,.steps{gap:14px}
     .plan{padding:22px}
-    .pricing-tabs{display:flex;width:100%;margin-bottom:20px}
-    .ptab{flex:1;text-align:center;padding:10px 8px}
+    .pricing-tabs{display:flex;flex-direction:column;width:100%;margin-bottom:8px;border-radius:16px;gap:6px}
+    .ptab{flex:1;text-align:center;padding:12px 8px}
+    .ptabs-hint{margin-bottom:18px}
     .ac-card{padding:4px 18px}
     .ac-row{flex-direction:column;gap:4px;padding:16px 0}
     .ac-priceblock{text-align:left}
@@ -373,11 +379,13 @@
         <p>Start with a free AI Visibility Audit, then pick how you want to pay — per lead, or a simple monthly plan. Every price and every limit is published right here. Nobody else dares.</p>
       </div>
 
+      <div class="ptabs-label">Three ways to pay — click to compare</div>
       <div class="pricing-tabs" role="tablist" aria-label="Pricing options">
         <button class="ptab active" data-panel="lep" role="tab" aria-selected="true">Pay per lead</button>
         <button class="ptab" data-panel="plans" role="tab" aria-selected="false">Monthly plans</button>
         <button class="ptab" data-panel="ac" role="tab" aria-selected="false">À la carte</button>
       </div>
+      <div class="ptabs-hint" id="ptabs-hint">You're viewing: <strong>Pay per lead</strong> — the other two buttons switch the prices below.</div>
 
       <div id="panel-lep">
         <p class="ac-note"><strong>The only pay-per-lead deal in the Valley.</strong> Every other agency charges you monthly whether the phone rings or not. Here, the risk sits with me: I build the tools, put them on your site, and you pay when a real lead shows up. I can offer this because I built every tool myself — they cost me almost nothing to run, so I don't need your retainer to survive.</p>
@@ -754,12 +762,14 @@
 (function(){
   var tabs = document.querySelectorAll('.ptab');
   var panels = { lep: document.getElementById('panel-lep'), plans: document.getElementById('panel-plans'), ac: document.getElementById('panel-ac') };
+  var hint = document.getElementById('ptabs-hint');
   tabs.forEach(function(t){
     t.addEventListener('click', function(){
       tabs.forEach(function(x){ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
       t.classList.add('active'); t.setAttribute('aria-selected','true');
       var sel = t.getAttribute('data-panel');
       Object.keys(panels).forEach(function(k){ if(panels[k]) panels[k].hidden = (k !== sel); });
+      if(hint) hint.innerHTML = 'You’re viewing: <strong>' + t.textContent.replace(' ✓','').trim() + '</strong> — the other two buttons switch the prices below.';
     });
   });
 })();
