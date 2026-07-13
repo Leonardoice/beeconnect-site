@@ -44,6 +44,10 @@
   "description": "Get found in AI search, then get the leads and book the job. Simple monthly plans bundle AI-search optimization (llms.txt, AI-crawler rules, schema), Google Business Profile management, automated reviews, an AI chat assistant, and online booking. Start with a free AI Visibility Audit.",
   "offers": [
     { "@type": "Offer", "name": "AI Visibility Audit (first one free)", "price": "0", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Pay-per-lead — qualified lead, most trades", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "30", "priceCurrency": "USD", "unitText": "LEAD" } },
+    { "@type": "Offer", "name": "Pay-per-lead — qualified lead, higher-ticket trades", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "USD", "unitText": "LEAD" } },
+    { "@type": "Offer", "name": "Pay-per-lead tool setup (one-time, per tool)", "priceCurrency": "USD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "150", "maxPrice": "300", "priceCurrency": "USD" } },
+    { "@type": "Offer", "name": "Voice AI Assistant (à la carte, monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "39", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Spark — Get Found (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "109", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Spark — Get Found (billed yearly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "89", "priceCurrency": "USD", "unitText": "MONTH" } },
     { "@type": "Offer", "name": "Buzz — Get Found + Reviews (monthly)", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "189", "priceCurrency": "USD", "unitText": "MONTH" } },
@@ -95,7 +99,7 @@
     {
       "@type": "Question",
       "name": "What does it cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free. Monthly plans: Spark $109/mo (get found in AI), Buzz $189/mo (adds reviews + AI chat), Hive $289/mo (full AI front desk with booking). Go yearly and save 20%: Spark $89, Buzz $149, Hive $229 per month — yearly plans also include a free website build. One-time services include a deep AIO/GEO Audit ($200–300), GBP Rescue if your Google profile got suspended ($250–400), Pro Email Setup ($125), and a Spanish Site Add-On ($150–250). Website builds otherwise start around $750 one-time. A Care Plan ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts." }
+      "acceptedAnswer": { "@type": "Answer", "text": "The first AI Visibility Audit is free, and there are two ways to pay. Pay per lead: one-time tool setup ($150-300 per tool), then $30 per qualified lead for most trades ($50 for higher-ticket work like HVAC installs) — if the phone doesn't ring, you don't pay. Or simple monthly plans: Spark $109/mo (get found in AI), Buzz $189/mo (adds reviews + AI chat), Hive $289/mo (full AI front desk with booking); yearly saves 20% and includes a free website build. One-time services include a deep AIO/GEO Audit ($200-300), GBP Rescue ($250-400), Pro Email Setup ($125), and a Spanish Site Add-On ($150-250). Website builds otherwise start around $750 one-time. Every price and every plan limit is published — Foundwick is the only pay-per-lead AI agency in the Lehigh Valley. No long contracts." }
     }
   ]
 }
@@ -366,15 +370,58 @@
       <div class="sec-head">
         <span class="eyebrow">What we do</span>
         <h2>Get found in AI. Get the lead. Book the job.</h2>
-        <p>Start with a free AI Visibility Audit, then pick a simple monthly plan. No retainers, no jargon, cancel anytime.</p>
+        <p>Start with a free AI Visibility Audit, then pick how you want to pay — per lead, or a simple monthly plan. Every price and every limit is published right here. Nobody else dares.</p>
       </div>
 
       <div class="pricing-tabs" role="tablist" aria-label="Pricing options">
-        <button class="ptab active" data-panel="plans" role="tab" aria-selected="true">Monthly plans</button>
+        <button class="ptab active" data-panel="lep" role="tab" aria-selected="true">Pay per lead</button>
+        <button class="ptab" data-panel="plans" role="tab" aria-selected="false">Monthly plans</button>
         <button class="ptab" data-panel="ac" role="tab" aria-selected="false">À la carte</button>
       </div>
 
-      <div id="panel-plans">
+      <div id="panel-lep">
+        <p class="ac-note"><strong>The only pay-per-lead deal in the Valley.</strong> Every other agency charges you monthly whether the phone rings or not. Here, the risk sits with me: I build the tools, put them on your site, and you pay when a real lead shows up. I can offer this because I built every tool myself — they cost me almost nothing to run, so I don't need your retainer to survive.</p>
+        <div class="ac-card">
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Step 1 — One-time setup</div>
+              <div class="ac-desc">I put the tools on your site (or build you a site that has them): AI chat assistant $150 &middot; Voice assistant $150 &middot; Online booking $300. Pick one or stack them. Live in days.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$150–300</span><span class="ac-setup">per tool, one-time</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Step 2 — You pay per qualified lead</div>
+              <div class="ac-desc">$30 per lead for most trades. $50 for higher-ticket work (HVAC installs, remodels, and similar). Your exact rate is agreed in writing before anything goes live — and it never changes without your signature.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$30–50</span><span class="ac-setup">per qualified lead</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">What counts as a lead (published, not fine print)</div>
+              <div class="ac-desc">A real person with a name, a working phone number or email, asking about a service you actually offer, inside your service area. Spam, wrong numbers, job hunters, and out-of-area price shoppers cost you nothing.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">Defined</span><span class="ac-setup">in your agreement</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Published limits, honest timelines</div>
+              <div class="ac-desc">Every plan states its daily capacity out loud — up to hundreds of conversations a day, stated before you sign. Tools go live in days; AI-search visibility builds over 60–180 days. You'll hear both truths from me before any paperwork.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">No surprises</span><span class="ac-setup">that's the point</span></div>
+          </div>
+          <div class="ac-row">
+            <div>
+              <div class="ac-name">Walking away</div>
+              <div class="ac-desc">90-day evaluation period. After that, 14 days' notice and you're out — you keep your domain, no exit fees, no hostage negotiations.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">14 days</span><span class="ac-setup">notice, anytime</span></div>
+          </div>
+        </div>
+        <p class="ac-foot">Founding-partner rates: the first two businesses get discounted setup in exchange for an honest case study. The free audit tells you if this fits — start there.</p>
+      </div><!-- /panel-lep -->
+
+      <div id="panel-plans" hidden>
       <div class="plans">
         <div class="plan">
           <h3>Spark</h3>
@@ -472,6 +519,13 @@
           </div>
           <div class="ac-row">
             <div>
+              <div class="ac-name">Voice AI Assistant</div>
+              <div class="ac-desc">Visitors talk to your site out loud and it answers back — questions, pricing ranges, lead capture, hands-free. Try it live in the corner of this page.</div>
+            </div>
+            <div class="ac-priceblock"><span class="ac-price">$39<small> / mo</small></span></div>
+          </div>
+          <div class="ac-row">
+            <div>
               <div class="ac-name">RepKit — Reviews</div>
               <div class="ac-desc">Automated review requests after every job, plus one inbox for Google, Yelp &amp; Facebook.</div>
             </div>
@@ -551,14 +605,14 @@
         <a href="#contact" onclick="if(window.VoiceKit){window.VoiceKit.open();return false;}" style="display:inline-block;margin-top:12px;color:#f59e0b;font-weight:700;text-decoration:none;font-size:14px">💬 Chat with it now →</a></div>
       </div>
 
-      <!-- Sample-of-what's-coming testimonial card (clearly labeled until a real one lands) -->
+      <!-- Live-demo proof card: honest proof until the first client case study lands -->
       <div style="margin-top:32px;background:#262320;border:1px solid #3a3631;border-radius:14px;padding:24px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
         <div style="font-size:2.4rem;line-height:.8;color:var(--honey)">"</div>
         <div style="flex:1;min-width:240px">
-          <p style="color:#fff;font-size:1.05rem;line-height:1.5;margin:0">Got cited by ChatGPT for Allentown junk removal in 11 days. First call from it came in 3 weeks.</p>
-          <p style="color:#cfc9bb;margin-top:8px;font-size:.92rem">— <em>Scott Clark, Dr Clutter</em></p>
+          <p style="color:#fff;font-size:1.05rem;line-height:1.5;margin:0">No borrowed testimonials here. The proof is live instead: every tool we sell is running on this page right now. Talk to the voice assistant in the corner — that's what your customers would get.</p>
+          <p style="color:#cfc9bb;margin-top:8px;font-size:.92rem">— <em>First named client results publish here the month they happen.</em></p>
         </div>
-        <div style="background:var(--honey);color:var(--ink);padding:6px 11px;border-radius:20px;font-weight:800;font-size:.7rem;letter-spacing:.05em;align-self:flex-start;white-space:nowrap">EXAMPLE — sample of what real client results will look like. First named results posting July.</div>
+        <div style="background:var(--honey);color:var(--ink);padding:6px 11px;border-radius:20px;font-weight:800;font-size:.7rem;letter-spacing:.05em;align-self:flex-start;white-space:nowrap">TRY IT LIVE — bottom corner of this page</div>
       </div>
 
       <p style="margin-top:24px;color:#cfc9bb;font-size:.95rem">This very page practices what we sell: clean schema, an answer-formatted FAQ, and an <strong style="color:var(--honey)">llms.txt</strong> + crawler rules that let the AI engines read it. Ask ChatGPT about us — that's the point.</p>
@@ -619,7 +673,7 @@
       </details>
       <details>
         <summary>What does it cost?</summary>
-        <p>The first AI Visibility Audit is free. Monthly plans: <strong>Spark $109/mo</strong> (get found in AI), <strong>Buzz $189/mo</strong> (adds reviews + AI chat), <strong>Hive $289/mo</strong> (full AI front desk with booking). Go yearly and <strong>save 20%</strong>: Spark $89, Buzz $149, Hive $229 per month — yearly plans also include a <strong>free website build</strong>. One-time services: a deep <strong>AIO/GEO Audit</strong> ($200–300), <strong>GBP Rescue</strong> if your Google profile got suspended ($250–400), <strong>Pro Email Setup</strong> ($125), and a <strong>Spanish Site Add-On</strong> ($150–250). Website builds otherwise start around <strong>$750</strong> one-time. A <strong>Care Plan</strong> ($50–75/mo) keeps your site hosted, secure, and updated. No long contracts.</p>
+        <p>The first AI Visibility Audit is free, and there are <strong>two ways to pay</strong>. <strong>Pay per lead</strong> — the only deal like it in the Valley: one-time tool setup ($150–300 per tool), then <strong>$30 per qualified lead</strong> for most trades ($50 for higher-ticket work like HVAC installs). If the phone doesn't ring, you don't pay. Or <strong>simple monthly plans</strong>: <strong>Spark $109/mo</strong> (get found in AI), <strong>Buzz $189/mo</strong> (adds reviews + AI chat), <strong>Hive $289/mo</strong> (full AI front desk with booking) — yearly saves 20% and includes a <strong>free website build</strong>. One-time services: <strong>AIO/GEO Audit</strong> ($200–300), <strong>GBP Rescue</strong> ($250–400), <strong>Pro Email Setup</strong> ($125), <strong>Spanish Site Add-On</strong> ($150–250); website builds start around <strong>$750</strong>. Every price and every plan limit is published right here. No long contracts.</p>
       </details>
     </div>
   </section>
@@ -699,7 +753,7 @@
 <script>
 (function(){
   var tabs = document.querySelectorAll('.ptab');
-  var panels = { plans: document.getElementById('panel-plans'), ac: document.getElementById('panel-ac') };
+  var panels = { lep: document.getElementById('panel-lep'), plans: document.getElementById('panel-plans'), ac: document.getElementById('panel-ac') };
   tabs.forEach(function(t){
     t.addEventListener('click', function(){
       tabs.forEach(function(x){ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
